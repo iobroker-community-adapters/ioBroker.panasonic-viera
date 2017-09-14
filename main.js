@@ -65,7 +65,8 @@ function main() {
     if(ip) {
         // in this template all states changes inside the adapters namespace are subscribed
         adapter.subscribeStates('*');
-        
+        checkStatus();
+	    
         setInterval(checkStatus, 60000);
 
     } else {
