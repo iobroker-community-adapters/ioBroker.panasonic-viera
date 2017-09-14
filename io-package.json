@@ -1,0 +1,1053 @@
+{
+    "common": {
+        "name": "panasonic-viera",
+        "version": "0.0.1",
+        "news": {            
+            "0.0.1": {
+                "en": "initial adapter",
+                "de": "Initiale Version",
+                "ru": "Первоначальный адаптер",
+                "pt": "Versão inicial",
+                "fr": "Version initiale",
+                "nl": "Eerste release"
+            }
+        },
+        "title": "Panasonic Viera Smart-TV Adapter",
+        "desc": {
+            "en": "ioBroker Panasonic Viera Smart-TV Adapter",
+            "de": "ioBroker Panasonic Viera Smart-TV Adapter",
+            "ru": "ioBroker Panasonic Viera Smart-TV драйвер как образец",
+            "pt": "Panasonic Viera Smart-TV adaptador para o ioBroker",
+            "fr": "ioBroker adaptateur Panasonic Viera Smart-TV",
+            "nl": "ioBroker Panasonic Viera Smart-TV Adapter"
+        },
+        "platform": "Javascript/Node.js",
+        "mode": "daemon",
+        "icon": "panasonic-viera.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/ldittmar81/ioBroker.template/master/admin/template.png",
+        "keywords": ["panasonic","viera","smart-tv"],
+        "readme": "https://github.com/ldittmar81/ioBroker.template/blob/master/README.md",
+        "loglevel": "info",
+        "type": "media"
+    },
+    "native": {
+        "ip": "",
+        "interval": "60000"
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "connected",
+            "type": "state",
+            "common": {
+                "name": "Panasonic Viera TV connected",
+                "type": "boolean",
+                "role": "indicator.connected",
+                "read": true,
+                "write": false,
+                "def": false,
+                "desc": "Is Panasonic Viera TV connected?"
+            },
+            "native": {}
+        },
+        {
+            "_id": "mute",
+            "type": "state",
+            "common": {
+                "name": "Mute",
+                "type": "boolean",
+                "role": "switch",
+                "read": true,
+                "write": true,
+                "def": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "volume",
+            "type": "state",
+            "common": {
+                "name": "Mute",
+                "type": "number",
+                "role": "level.volume",
+                "read": true,
+                "write": true,
+                "def": 0
+            },
+            "native": {}
+        },
+        {
+            "_id":  "POWER",
+            "type": "state",
+            "common": {
+                "name": "Switch TV OFF",
+                "role": "button.power",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "CH_DOWN",
+            "type": "state",
+            "common": {
+                "name": "channel down",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "CH_UP",
+            "type": "state",
+            "common": {
+                "name": "channel up",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "VOLUP",
+            "type": "state",
+            "common": {
+                "name": "volume up",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "VOLDOWN",
+            "type": "state",
+            "common": {
+                "name": "volume down",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "TV",
+            "type": "state",
+            "common": {
+                "name": "TV",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "CHG_INPUT",
+            "type": "state",
+            "common": {
+                "name": "AV",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "HOME",
+            "type": "state",
+            "common": {
+                "name": "Home screen",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "APPS",
+            "type": "state",
+            "common": {
+                "name": "Apps",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "GUIDE",
+            "type": "state",
+            "common": {
+                "name": "Guide",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "RED",
+            "type": "state",
+            "common": {
+                "name": "red",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "GREEN",
+            "type": "state",
+            "common": {
+                "name": "green",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "YELLOW",
+            "type": "state",
+            "common": {
+                "name": "yellow",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "BLUE",
+            "type": "state",
+            "common": {
+                "name": "blue",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "VTOOLS",
+            "type": "state",
+            "common": {
+                "name": "VIERA tools",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "CANCEL",
+            "type": "state",
+            "common": {
+                "name": "Cancel / Exit",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "SUBMENU",
+            "type": "state",
+            "common": {
+                "name": "Option",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "RETURN",
+            "type": "state",
+            "common": {
+                "name": "Return",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "ENTER",
+            "type": "state",
+            "common": {
+                "name": "Control Center click / enter",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "RIGHT",
+            "type": "state",
+            "common": {
+                "name": "Control RIGHT",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "LEFT",
+            "type": "state",
+            "common": {
+                "name": "Control LEFT",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "UP",
+            "type": "state",
+            "common": {
+                "name": "Control UP",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "DOWN",
+            "type": "state",
+            "common": {
+                "name": "Control DOWN",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "3D",
+            "type": "state",
+            "common": {
+                "name": "3D button",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "SD_CARD",
+            "type": "state",
+            "common": {
+                "name": "SD-card",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "DISP_MODE",
+            "type": "state",
+            "common": {
+                "name": "Display mode / Aspect ratio",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "MENU",
+            "type": "state",
+            "common": {
+                "name": "Menu",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "INTERNET",
+            "type": "state",
+            "common": {
+                "name": "VIERA connect",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "VIERA_LINK",
+            "type": "state",
+            "common": {
+                "name": "VIERA link",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "EPG",
+            "type": "state",
+            "common": {
+                "name": "Guide / EPG",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "TEXT",
+            "type": "state",
+            "common": {
+                "name": "Text / TTV",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "STTL",
+            "type": "state",
+            "common": {
+                "name": "STTL / Subtitles",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "INFO",
+            "type": "state",
+            "common": {
+                "name": "info",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "INDEX",
+            "type": "state",
+            "common": {
+                "name": "TTV index",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "HOLD",
+            "type": "state",
+            "common": {
+                "name": "TTV hold / image freeze",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "R_TUNE",
+            "type": "state",
+            "common": {
+                "name": "Last view",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "REW",
+            "type": "state",
+            "common": {
+                "name": "rewind",
+                "role": "button.rewind",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "PLAY",
+            "type": "state",
+            "common": {
+                "name": "play",
+                "role": "button.play",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "FF",
+            "type": "state",
+            "common": {
+                "name": "fast forward",
+                "role": "button.fastforward",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "SKIP_PREV",
+            "type": "state",
+            "common": {
+                "name": "skip previous",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "PAUSE",
+            "type": "state",
+            "common": {
+                "name": "pause",
+                "role": "button.pause",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "SKIP_NEXT",
+            "type": "state",
+            "common": {
+                "name": "skip next",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "STOP",
+            "type": "state",
+            "common": {
+                "name": "stop",
+                "role": "button.stop",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "REC",
+            "type": "state",
+            "common": {
+                "name": "record",
+                "role": "button.rec",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "D1",
+            "type": "state",
+            "common": {
+                "name": "numeric 1",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "D2",
+            "type": "state",
+            "common": {
+                "name": "numeric 2",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "D3",
+            "type": "state",
+            "common": {
+                "name": "numeric 3",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "D4",
+            "type": "state",
+            "common": {
+                "name": "numeric 4",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "D5",
+            "type": "state",
+            "common": {
+                "name": "numeric 5",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "D6",
+            "type": "state",
+            "common": {
+                "name": "numeric 6",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "D7",
+            "type": "state",
+            "common": {
+                "name": "numeric 7",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "D8",
+            "type": "state",
+            "common": {
+                "name": "numeric 8",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "D9",
+            "type": "state",
+            "common": {
+                "name": "numeric 9",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "D0",
+            "type": "state",
+            "common": {
+                "name": "numeric 0",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "P_NR",
+            "type": "state",
+            "common": {
+                "name": "P-NR (Noise reduction)",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "OFFTIMER",
+            "type": "state",
+            "common": {
+                "name": "off timer",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "R_TUNE",
+            "type": "state",
+            "common": {
+                "name": "Seems to do the same as INFO",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "CHG_NETWORK",
+            "type": "state",
+            "common": {
+                "name": "CHG_NETWORK",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "CC",
+            "type": "state",
+            "common": {
+                "name": "CC",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "SAP",
+            "type": "state",
+            "common": {
+                "name": "SAP",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "RECLIST",
+            "type": "state",
+            "common": {
+                "name": "RECLIST",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "DRIVE",
+            "type": "state",
+            "common": {
+                "name": "DRIVE",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "DATA",
+            "type": "state",
+            "common": {
+                "name": "DATA",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "BD",
+            "type": "state",
+            "common": {
+                "name": "BD",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "FAVORITE",
+            "type": "state",
+            "common": {
+                "name": "FAVORITE",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "DIGA_CTL",
+            "type": "state",
+            "common": {
+                "name": "DIGA_CTL",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "VOD",
+            "type": "state",
+            "common": {
+                "name": "VOD",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "ECO",
+            "type": "state",
+            "common": {
+                "name": "ECO",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "GAME",
+            "type": "state",
+            "common": {
+                "name": "GAME",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "EZ_SYNC",
+            "type": "state",
+            "common": {
+                "name": "EZ_SYNC",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "PICTAI",
+            "type": "state",
+            "common": {
+                "name": "PICTAI",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "MPX",
+            "type": "state",
+            "common": {
+                "name": "MPX",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "SPLIT",
+            "type": "state",
+            "common": {
+                "name": "SPLIT",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "SWAP",
+            "type": "state",
+            "common": {
+                "name": "SWAP",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "R_SCREEN",
+            "type": "state",
+            "common": {
+                "name": "R_SCREEN",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "30S_SKIP",
+            "type": "state",
+            "common": {
+                "name": "30S_SKIP",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "PROG",
+            "type": "state",
+            "common": {
+                "name": "PROG",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "TV_MUTE_ON",
+            "type": "state",
+            "common": {
+                "name": "TV_MUTE_ON",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "TV_MUTE_OFF",
+            "type": "state",
+            "common": {
+                "name": "TV_MUTE_OFF",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "DMS_CH_UP",
+            "type": "state",
+            "common": {
+                "name": "DMS_CH_UP",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id":  "DMS_CH_DOWN",
+            "type": "state",
+            "common": {
+                "name": "DMS_CH_DOWN",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        }
+    ]
+}
