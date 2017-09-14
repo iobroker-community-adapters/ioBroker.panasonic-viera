@@ -79,8 +79,8 @@ function checkStatus() {
     ping.sys.probe(ip, function (isAlive) {
         adapter.setState("connected", {val: isAlive, ack: true});
         if (isAlive) {
-            adapter.setState("mute", {val: sendCommand('getMute'), ack: true});
-            adapter.setState("volume", {val: sendCommand('getVolume'), ack: true});
+            sendCommand('getMute');
+            sendCommand('getVolume');
         }
     });
 }
@@ -90,26 +90,32 @@ function sendCommand(cmd, val) {
     switch (cmd){
         case 'getMute':
             device.getMute(function(data) {
-                return data;
+                adapter.setState("mute", {val: data, ack: true});
             });
             break;
         case 'mute':
             device.setMute(val);
+            device.getMute(function(data) {
+                adapter.setState("mute", {val: data, ack: true});
+            });
             break;
         case 'getVolume':
             device.getVolume(function(data) {
-                return data;
+                adapter.setState("volume", {val: data, ack: true});
             });
             break;
         case 'VOLUP':
         case 'VOLDOWN':
             device.sendCommand(cmd);
             device.getVolume(function(data) {
-                return data;
+                adapter.setState("volume", {val: data, ack: true});
             });
             break;
         case 'volume':
             device.setVolume(val);
+            device.getVolume(function(data) {
+                adapter.setState("volume", {val: data, ack: true});
+            });
             break;
         default:
             device.sendCommand(cmd);
