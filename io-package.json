@@ -37,16 +37,22 @@
     "objects": [],
     "instanceObjects": [
         {
-            "_id": "connected",
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
             "type": "state",
             "common": {
-                "name": "Panasonic Viera TV connected",
-                "type": "boolean",
                 "role": "indicator.connected",
+                "name": "If connected to TV",
+                "type": "boolean",
                 "read": true,
-                "write": false,
-                "def": false,
-                "desc": "Is Panasonic Viera TV connected?"
+                "write": false
             },
             "native": {}
         },
