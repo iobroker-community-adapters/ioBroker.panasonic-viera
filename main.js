@@ -2,7 +2,7 @@
 /*jslint node: true */
 'use strict';
 
-var Controller = require('viera.js');
+var Controller = require(__dirname + '/lib/viera.js');
 var ping       = require('ping');
 
 // you have to require the utils module and call adapter function
