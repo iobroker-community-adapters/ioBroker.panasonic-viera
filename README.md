@@ -17,7 +17,7 @@ Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/ldittma
 ### A Panasonic Viera Smart-TV adapter for ioBroker
 =================
 
-This is an ioBroker adapter for your Panasonic Viera Smart-TV.
+This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panasonic TX-50DX780.
 
 ## Changelog
 
