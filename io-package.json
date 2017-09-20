@@ -1,8 +1,16 @@
 {
     "common": {
         "name": "panasonic-viera",
-        "version": "0.0.3",
-        "news": {            
+        "version": "0.0.5",
+        "news": {
+            "0.0.5": {
+                "en": "Open test phase",
+                "de": "Offene Testphase",
+                "ru": "Открытая тестовая фаза",
+                "pt": "Fase de teste aberta",
+                "fr": "Phase de test ouverte",
+                "nl": "Open testfase"
+            },
             "0.0.1": {
                 "en": "initial adapter",
                 "de": "Initiale Version",
@@ -45,6 +53,46 @@
             "native": {}
         },
         {
+            "_id": "basic",
+            "type": "channel",
+            "common": {
+                "name": "Grundfunktionen"
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel",
+            "type": "channel",
+            "common": {
+                "name": "Sender"
+            },
+            "native": {}
+        },
+        {
+            "_id": "input",
+            "type": "channel",
+            "common": {
+                "name": "Quelle"
+            },
+            "native": {}
+        },
+        {
+            "_id": "player",
+            "type": "channel",
+            "common": {
+                "name": "Player"
+            },
+            "native": {}
+        },
+        {
+            "_id": "others",
+            "type": "channel",
+            "common": {
+                "name": "Others"
+            },
+            "native": {}
+        },
+        {
             "_id": "info.connection",
             "type": "state",
             "common": {
@@ -57,7 +105,7 @@
             "native": {}
         },
         {
-            "_id": "mute",
+            "_id": "basic.mute",
             "type": "state",
             "common": {
                 "name": "Mute",
@@ -70,7 +118,7 @@
             "native": {}
         },
         {
-            "_id": "volume",
+            "_id": "basic.volume",
             "type": "state",
             "common": {
                 "name": "Volume",
@@ -83,7 +131,7 @@
             "native": {}
         },
         {
-            "_id":  "POWER",
+            "_id": "basic.POWER",
             "type": "state",
             "common": {
                 "name": "Switch TV OFF",
@@ -95,7 +143,7 @@
             "native": {}
         },
         {
-            "_id":  "CH_DOWN",
+            "_id": "channel.CH_DOWN",
             "type": "state",
             "common": {
                 "name": "channel down",
@@ -107,7 +155,7 @@
             "native": {}
         },
         {
-            "_id":  "CH_UP",
+            "_id": "channel.CH_UP",
             "type": "state",
             "common": {
                 "name": "channel up",
@@ -119,7 +167,7 @@
             "native": {}
         },
         {
-            "_id":  "VOLUP",
+            "_id": "basic.VOLUP",
             "type": "state",
             "common": {
                 "name": "volume up",
@@ -131,7 +179,7 @@
             "native": {}
         },
         {
-            "_id":  "VOLDOWN",
+            "_id": "basic.VOLDOWN",
             "type": "state",
             "common": {
                 "name": "volume down",
@@ -143,7 +191,7 @@
             "native": {}
         },
         {
-            "_id":  "TV",
+            "_id": "others.TV",
             "type": "state",
             "common": {
                 "name": "TV",
@@ -155,7 +203,7 @@
             "native": {}
         },
         {
-            "_id":  "CHG_INPUT",
+            "_id": "input.CHG_INPUT",
             "type": "state",
             "common": {
                 "name": "AV",
@@ -167,7 +215,7 @@
             "native": {}
         },
         {
-            "_id":  "HOME",
+            "_id": "others.HOME",
             "type": "state",
             "common": {
                 "name": "Home screen",
@@ -179,7 +227,7 @@
             "native": {}
         },
         {
-            "_id":  "APPS",
+            "_id": "others.APPS",
             "type": "state",
             "common": {
                 "name": "Apps",
@@ -191,7 +239,7 @@
             "native": {}
         },
         {
-            "_id":  "GUIDE",
+            "_id": "info.GUIDE",
             "type": "state",
             "common": {
                 "name": "Guide",
@@ -203,7 +251,7 @@
             "native": {}
         },
         {
-            "_id":  "RED",
+            "_id": "basic.RED",
             "type": "state",
             "common": {
                 "name": "red",
@@ -215,7 +263,7 @@
             "native": {}
         },
         {
-            "_id":  "GREEN",
+            "_id": "basic.GREEN",
             "type": "state",
             "common": {
                 "name": "green",
@@ -227,7 +275,7 @@
             "native": {}
         },
         {
-            "_id":  "YELLOW",
+            "_id": "basic.YELLOW",
             "type": "state",
             "common": {
                 "name": "yellow",
@@ -239,7 +287,7 @@
             "native": {}
         },
         {
-            "_id":  "BLUE",
+            "_id": "basic.BLUE",
             "type": "state",
             "common": {
                 "name": "blue",
@@ -251,7 +299,7 @@
             "native": {}
         },
         {
-            "_id":  "VTOOLS",
+            "_id": "info.VTOOLS",
             "type": "state",
             "common": {
                 "name": "VIERA tools",
@@ -263,7 +311,7 @@
             "native": {}
         },
         {
-            "_id":  "CANCEL",
+            "_id": "basic.CANCEL",
             "type": "state",
             "common": {
                 "name": "Cancel / Exit",
@@ -275,7 +323,7 @@
             "native": {}
         },
         {
-            "_id":  "SUBMENU",
+            "_id": "others.SUBMENU",
             "type": "state",
             "common": {
                 "name": "Option",
@@ -287,7 +335,7 @@
             "native": {}
         },
         {
-            "_id":  "RETURN",
+            "_id": "basic.RETURN",
             "type": "state",
             "common": {
                 "name": "Return",
@@ -299,7 +347,7 @@
             "native": {}
         },
         {
-            "_id":  "ENTER",
+            "_id": "basic.ENTER",
             "type": "state",
             "common": {
                 "name": "Control Center click / enter",
@@ -311,7 +359,7 @@
             "native": {}
         },
         {
-            "_id":  "RIGHT",
+            "_id": "basic.RIGHT",
             "type": "state",
             "common": {
                 "name": "Control RIGHT",
@@ -323,7 +371,7 @@
             "native": {}
         },
         {
-            "_id":  "LEFT",
+            "_id": "basic.LEFT",
             "type": "state",
             "common": {
                 "name": "Control LEFT",
@@ -335,7 +383,7 @@
             "native": {}
         },
         {
-            "_id":  "UP",
+            "_id": "basic.UP",
             "type": "state",
             "common": {
                 "name": "Control UP",
@@ -347,7 +395,7 @@
             "native": {}
         },
         {
-            "_id":  "DOWN",
+            "_id": "basic.DOWN",
             "type": "state",
             "common": {
                 "name": "Control DOWN",
@@ -359,7 +407,7 @@
             "native": {}
         },
         {
-            "_id":  "3D",
+            "_id": "others.3D",
             "type": "state",
             "common": {
                 "name": "3D button",
@@ -371,7 +419,7 @@
             "native": {}
         },
         {
-            "_id":  "SD_CARD",
+            "_id": "others.SD_CARD",
             "type": "state",
             "common": {
                 "name": "SD-card",
@@ -383,7 +431,7 @@
             "native": {}
         },
         {
-            "_id":  "DISP_MODE",
+            "_id": "others.DISP_MODE",
             "type": "state",
             "common": {
                 "name": "Display mode / Aspect ratio",
@@ -395,7 +443,7 @@
             "native": {}
         },
         {
-            "_id":  "MENU",
+            "_id": "info.MENU",
             "type": "state",
             "common": {
                 "name": "Menu",
@@ -407,7 +455,7 @@
             "native": {}
         },
         {
-            "_id":  "INTERNET",
+            "_id": "others.INTERNET",
             "type": "state",
             "common": {
                 "name": "VIERA connect",
@@ -419,7 +467,7 @@
             "native": {}
         },
         {
-            "_id":  "VIERA_LINK",
+            "_id": "others.VIERA_LINK",
             "type": "state",
             "common": {
                 "name": "VIERA link",
@@ -431,7 +479,7 @@
             "native": {}
         },
         {
-            "_id":  "EPG",
+            "_id": "info.EPG",
             "type": "state",
             "common": {
                 "name": "Guide / EPG",
@@ -443,7 +491,7 @@
             "native": {}
         },
         {
-            "_id":  "TEXT",
+            "_id": "info.TEXT",
             "type": "state",
             "common": {
                 "name": "Text / TTV",
@@ -455,7 +503,7 @@
             "native": {}
         },
         {
-            "_id":  "STTL",
+            "_id": "others.STTL",
             "type": "state",
             "common": {
                 "name": "STTL / Subtitles",
@@ -467,7 +515,7 @@
             "native": {}
         },
         {
-            "_id":  "INFO",
+            "_id": "info.INFO",
             "type": "state",
             "common": {
                 "name": "info",
@@ -479,7 +527,7 @@
             "native": {}
         },
         {
-            "_id":  "INDEX",
+            "_id": "info.INDEX",
             "type": "state",
             "common": {
                 "name": "TTV index",
@@ -491,7 +539,7 @@
             "native": {}
         },
         {
-            "_id":  "HOLD",
+            "_id": "others.HOLD",
             "type": "state",
             "common": {
                 "name": "TTV hold / image freeze",
@@ -503,7 +551,7 @@
             "native": {}
         },
         {
-            "_id":  "R_TUNE",
+            "_id": "others.R_TUNE",
             "type": "state",
             "common": {
                 "name": "Last view",
@@ -515,7 +563,7 @@
             "native": {}
         },
         {
-            "_id":  "REW",
+            "_id": "player.REW",
             "type": "state",
             "common": {
                 "name": "rewind",
@@ -527,7 +575,7 @@
             "native": {}
         },
         {
-            "_id":  "PLAY",
+            "_id": "player.PLAY",
             "type": "state",
             "common": {
                 "name": "play",
@@ -539,7 +587,7 @@
             "native": {}
         },
         {
-            "_id":  "FF",
+            "_id": "player.FF",
             "type": "state",
             "common": {
                 "name": "fast forward",
@@ -551,7 +599,7 @@
             "native": {}
         },
         {
-            "_id":  "SKIP_PREV",
+            "_id": "player.SKIP_PREV",
             "type": "state",
             "common": {
                 "name": "skip previous",
@@ -563,7 +611,7 @@
             "native": {}
         },
         {
-            "_id":  "PAUSE",
+            "_id": "player.PAUSE",
             "type": "state",
             "common": {
                 "name": "pause",
@@ -575,7 +623,7 @@
             "native": {}
         },
         {
-            "_id":  "SKIP_NEXT",
+            "_id": "player.SKIP_NEXT",
             "type": "state",
             "common": {
                 "name": "skip next",
@@ -587,7 +635,7 @@
             "native": {}
         },
         {
-            "_id":  "STOP",
+            "_id": "player.STOP",
             "type": "state",
             "common": {
                 "name": "stop",
@@ -599,7 +647,7 @@
             "native": {}
         },
         {
-            "_id":  "REC",
+            "_id": "player.REC",
             "type": "state",
             "common": {
                 "name": "record",
@@ -611,7 +659,7 @@
             "native": {}
         },
         {
-            "_id":  "D1",
+            "_id": "channel.D1",
             "type": "state",
             "common": {
                 "name": "numeric 1",
@@ -623,7 +671,7 @@
             "native": {}
         },
         {
-            "_id":  "D2",
+            "_id": "channel.D2",
             "type": "state",
             "common": {
                 "name": "numeric 2",
@@ -635,7 +683,7 @@
             "native": {}
         },
         {
-            "_id":  "D3",
+            "_id": "channel.D3",
             "type": "state",
             "common": {
                 "name": "numeric 3",
@@ -647,7 +695,7 @@
             "native": {}
         },
         {
-            "_id":  "D4",
+            "_id": "channel.D4",
             "type": "state",
             "common": {
                 "name": "numeric 4",
@@ -659,7 +707,7 @@
             "native": {}
         },
         {
-            "_id":  "D5",
+            "_id": "channel.D5",
             "type": "state",
             "common": {
                 "name": "numeric 5",
@@ -671,7 +719,7 @@
             "native": {}
         },
         {
-            "_id":  "D6",
+            "_id": "channel.D6",
             "type": "state",
             "common": {
                 "name": "numeric 6",
@@ -683,7 +731,7 @@
             "native": {}
         },
         {
-            "_id":  "D7",
+            "_id": "channel.D7",
             "type": "state",
             "common": {
                 "name": "numeric 7",
@@ -695,7 +743,7 @@
             "native": {}
         },
         {
-            "_id":  "D8",
+            "_id": "channel.D8",
             "type": "state",
             "common": {
                 "name": "numeric 8",
@@ -707,7 +755,7 @@
             "native": {}
         },
         {
-            "_id":  "D9",
+            "_id": "channel.D9",
             "type": "state",
             "common": {
                 "name": "numeric 9",
@@ -719,7 +767,7 @@
             "native": {}
         },
         {
-            "_id":  "D0",
+            "_id": "channel.D0",
             "type": "state",
             "common": {
                 "name": "numeric 0",
@@ -731,7 +779,7 @@
             "native": {}
         },
         {
-            "_id":  "P_NR",
+            "_id": "others.P_NR",
             "type": "state",
             "common": {
                 "name": "P-NR (Noise reduction)",
@@ -743,7 +791,7 @@
             "native": {}
         },
         {
-            "_id":  "OFFTIMER",
+            "_id": "others.OFFTIMER",
             "type": "state",
             "common": {
                 "name": "off timer",
@@ -755,7 +803,7 @@
             "native": {}
         },
         {
-            "_id":  "R_TUNE",
+            "_id": "others.R_TUNE",
             "type": "state",
             "common": {
                 "name": "Seems to do the same as INFO",
@@ -767,7 +815,7 @@
             "native": {}
         },
         {
-            "_id":  "CHG_NETWORK",
+            "_id": "others.CHG_NETWORK",
             "type": "state",
             "common": {
                 "name": "CHG_NETWORK",
@@ -779,7 +827,7 @@
             "native": {}
         },
         {
-            "_id":  "CC",
+            "_id": "others.CC",
             "type": "state",
             "common": {
                 "name": "CC",
@@ -791,7 +839,7 @@
             "native": {}
         },
         {
-            "_id":  "SAP",
+            "_id": "others.SAP",
             "type": "state",
             "common": {
                 "name": "SAP",
@@ -803,7 +851,7 @@
             "native": {}
         },
         {
-            "_id":  "RECLIST",
+            "_id": "others.RECLIST",
             "type": "state",
             "common": {
                 "name": "RECLIST",
@@ -815,7 +863,7 @@
             "native": {}
         },
         {
-            "_id":  "DRIVE",
+            "_id": "others.DRIVE",
             "type": "state",
             "common": {
                 "name": "DRIVE",
@@ -827,7 +875,7 @@
             "native": {}
         },
         {
-            "_id":  "DATA",
+            "_id": "others.DATA",
             "type": "state",
             "common": {
                 "name": "DATA",
@@ -839,7 +887,7 @@
             "native": {}
         },
         {
-            "_id":  "BD",
+            "_id": "others.BD",
             "type": "state",
             "common": {
                 "name": "BD",
@@ -851,7 +899,7 @@
             "native": {}
         },
         {
-            "_id":  "FAVORITE",
+            "_id": "others.FAVORITE",
             "type": "state",
             "common": {
                 "name": "FAVORITE",
@@ -863,7 +911,7 @@
             "native": {}
         },
         {
-            "_id":  "DIGA_CTL",
+            "_id": "others.DIGA_CTL",
             "type": "state",
             "common": {
                 "name": "DIGA_CTL",
@@ -875,7 +923,7 @@
             "native": {}
         },
         {
-            "_id":  "VOD",
+            "_id": "others.VOD",
             "type": "state",
             "common": {
                 "name": "VOD",
@@ -887,7 +935,7 @@
             "native": {}
         },
         {
-            "_id":  "ECO",
+            "_id": "others.ECO",
             "type": "state",
             "common": {
                 "name": "ECO",
@@ -899,7 +947,7 @@
             "native": {}
         },
         {
-            "_id":  "GAME",
+            "_id": "others.GAME",
             "type": "state",
             "common": {
                 "name": "GAME",
@@ -911,7 +959,7 @@
             "native": {}
         },
         {
-            "_id":  "EZ_SYNC",
+            "_id": "others.EZ_SYNC",
             "type": "state",
             "common": {
                 "name": "EZ_SYNC",
@@ -923,7 +971,7 @@
             "native": {}
         },
         {
-            "_id":  "PICTAI",
+            "_id": "others.PICTAI",
             "type": "state",
             "common": {
                 "name": "PICTAI",
@@ -935,7 +983,7 @@
             "native": {}
         },
         {
-            "_id":  "MPX",
+            "_id": "others.MPX",
             "type": "state",
             "common": {
                 "name": "MPX",
@@ -947,7 +995,7 @@
             "native": {}
         },
         {
-            "_id":  "SPLIT",
+            "_id": "others.SPLIT",
             "type": "state",
             "common": {
                 "name": "SPLIT",
@@ -959,7 +1007,7 @@
             "native": {}
         },
         {
-            "_id":  "SWAP",
+            "_id": "others.SWAP",
             "type": "state",
             "common": {
                 "name": "SWAP",
@@ -971,7 +1019,7 @@
             "native": {}
         },
         {
-            "_id":  "R_SCREEN",
+            "_id": "others.R_SCREEN",
             "type": "state",
             "common": {
                 "name": "R_SCREEN",
@@ -983,7 +1031,7 @@
             "native": {}
         },
         {
-            "_id":  "30S_SKIP",
+            "_id": "others.30S_SKIP",
             "type": "state",
             "common": {
                 "name": "30S_SKIP",
@@ -995,7 +1043,7 @@
             "native": {}
         },
         {
-            "_id":  "PROG",
+            "_id": "others.PROG",
             "type": "state",
             "common": {
                 "name": "PROG",
@@ -1007,7 +1055,7 @@
             "native": {}
         },
         {
-            "_id":  "TV_MUTE_ON",
+            "_id": "others.TV_MUTE_ON",
             "type": "state",
             "common": {
                 "name": "TV_MUTE_ON",
@@ -1019,7 +1067,7 @@
             "native": {}
         },
         {
-            "_id":  "TV_MUTE_OFF",
+            "_id": "others.TV_MUTE_OFF",
             "type": "state",
             "common": {
                 "name": "TV_MUTE_OFF",
@@ -1031,7 +1079,7 @@
             "native": {}
         },
         {
-            "_id":  "DMS_CH_UP",
+            "_id": "others.DMS_CH_UP",
             "type": "state",
             "common": {
                 "name": "DMS_CH_UP",
@@ -1043,7 +1091,7 @@
             "native": {}
         },
         {
-            "_id":  "DMS_CH_DOWN",
+            "_id": "others.DMS_CH_DOWN",
             "type": "state",
             "common": {
                 "name": "DMS_CH_DOWN",
