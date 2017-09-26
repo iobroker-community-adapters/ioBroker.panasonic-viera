@@ -16,16 +16,10 @@ var adapter = utils.adapter('panasonic-viera');
 var device;
 var isConnected = null;
 
-// is called if a subscribed object changes
-/*adapter.on('objectChange', function (id, obj) {
- // Warning, obj can be null if it was deleted
- adapter.log.info('objectChange ' + id + ' ' + JSON.stringify(obj));
- });
- */
 // is called if a subscribed state changes
 adapter.on('stateChange', function (id, state) {
     if (id && state && !state.ack) {
-        id = id.substring(adapter.namespace.length + 1);
+        id = id.substring(id.lastIndexOf('.') + 1);
         sendCommand(id, state.val);
     }
 });

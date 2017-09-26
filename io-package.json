@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "panasonic-viera",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "news": {
             "0.0.5": {
                 "en": "Open test phase",
