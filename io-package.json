@@ -30,14 +30,15 @@
         },
         "title": "Panasonic Viera Smart-TV Adapter",
         "desc": {
-            "en": "ioBroker Panasonic Viera Smart-TV Adapter",
-            "de": "ioBroker Panasonic Viera Smart-TV Adapter",
-            "ru": "ioBroker Panasonic Viera Smart-TV драйвер как образец",
+            "en": "Panasonic Viera Smart-TV Adapter",
+            "de": "Panasonic Viera Smart-TV Adapter",
+            "ru": "Panasonic Viera Smart-TV драйвер как образец",
             "pt": "Panasonic Viera Smart-TV adaptador para o ioBroker",
-            "fr": "ioBroker adaptateur Panasonic Viera Smart-TV",
-            "nl": "ioBroker Panasonic Viera Smart-TV Adapter"
+            "fr": "Adaptateur Panasonic Viera Smart-TV",
+            "nl": "Panasonic Viera Smart-TV Adapter"
         },
         "platform": "Javascript/Node.js",
+        "authors": ["ldittmar <iobroker@lmdsoft.de>"],
         "mode": "daemon",
         "icon": "panasonic-viera.png",
         "enabled": true,
