@@ -1,6 +1,6 @@
 {
   "name": "iobroker.panasonic-viera",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "ioBroker Panasonic Viera Smart-TV Adapter",
   "author": {
     "name": "ldittmar",
@@ -8,12 +8,6 @@
   },
   "homepage": "https://github.com/ldittmar81/ioBroker.panasonic-viera",
   "license": "MIT",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/ldittmar81/ioBroker.panasonic-viera/blob/master/LICENSE"
-    }
-  ],
   "keywords": [
     "panasonic",
     "viera",
@@ -25,11 +19,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-replace": "^1.0.1",
-    "grunt-contrib-jshint": "^1.1.0",
-    "grunt-jscs": "^3.0.1",
-    "grunt-http": "^2.2.0",
+    "gulp": "^3.9.1",
     "mocha": "^4.1.0",
     "chai": "^4.1.2"
   },

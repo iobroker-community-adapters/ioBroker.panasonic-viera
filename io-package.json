@@ -1,15 +1,29 @@
 {
     "common": {
         "name": "panasonic-viera",
-        "version": "0.1.0",
+        "version": "1.0.0",
         "news": {
+            "1.0.0": {
+                "en": "Support of admin3",
+                "de": "Unterstützung von admin3",
+                "ru": "Поддержка admin3",
+                "pt": "Suporte de admin3",
+                "nl": "Ondersteuning van admin3",
+                "fr": "Support de admin3",
+                "it": "Supporto di admin3",
+                "es": "Soporte de admin3",
+                "pl": "Wsparcie dla admin3"
+            },
             "0.1.0": {
                 "en": "Test phase terminated. Adapter enabled.",
                 "de": "Testphase beendet. Adapter freigegeben.",
                 "ru": "Тестовая фаза завершена. Адаптер включен.",
                 "pt": "Fase de teste encerrada. Adaptador habilitado.",
                 "fr": "Phase de test terminée. Adaptateur activé.",
-                "nl": "Testfase beëindigd. Adapter ingeschakeld."
+                "nl": "Testfase beëindigd. Adapter ingeschakeld.",
+                "pl": "Faza testowa została zakończona. Adapter włączony.",
+                "it": "Fase di prova terminata Adattatore abilitato.",
+                "es": "Fase de prueba terminada. Adaptador habilitado."
             },
             "0.0.5": {
                 "en": "Open test phase",
@@ -17,30 +31,51 @@
                 "ru": "Открытая тестовая фаза",
                 "pt": "Fase de teste aberta",
                 "fr": "Phase de test ouverte",
-                "nl": "Open testfase"
+                "nl": "Open testfase",
+                "it": "Fase di test aperta",
+                "es": "Fase de prueba abierta",
+                "pl": "Otwórz fazę testową"
             },
             "0.0.1": {
-                "en": "initial adapter",
+                "en": "initial version",
                 "de": "Initiale Version",
                 "ru": "Первоначальный адаптер",
                 "pt": "Versão inicial",
                 "fr": "Version initiale",
-                "nl": "Eerste release"
+                "nl": "Eerste release",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "początkowa wersja"
             }
         },
         "title": "Panasonic Viera Smart-TV Adapter",
-        "desc": {
+        "titleLang": {
             "en": "Panasonic Viera Smart-TV Adapter",
             "de": "Panasonic Viera Smart-TV Adapter",
             "ru": "Panasonic Viera Smart-TV драйвер как образец",
             "pt": "Panasonic Viera Smart-TV adaptador para o ioBroker",
             "fr": "Adaptateur Panasonic Viera Smart-TV",
-            "nl": "Panasonic Viera Smart-TV Adapter"
+            "nl": "Panasonic Viera Smart-TV Adapter",
+            "it": "Adattatore Smart TV TV Panasonic",
+            "es": "Adaptador de TV inteligente Panasonic Viera",
+            "pl": "Panasonic Viera Smart-TV Adapter"
+        },
+        "dec": {
+            "en": "This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panasonic TX-50DX780 and TX-50EXW.",
+            "de": "Dies ist ein ioBroker-Adapter für Ihren Panasonic Viera Smart-TV. Getestet mit Panasonic TX-50DX780 und TX-50EXW.",
+            "ru": "Это адаптер ioBroker для вашего телевизора Panasonic Viera Smart. Протестировано с Panasonic TX-50DX780 и TX-50EXW.",
+            "pt": "Este é um adaptador ioBroker para a sua Smart TV Panasonic Viera. Testado com Panasonic TX-50DX780 e TX-50EXW.",
+            "fr": "Ceci est un adaptateur ioBroker pour votre Panasonic Viera Smart-TV. Testé avec Panasonic TX-50DX780 et TX-50EXW.",
+            "nl": "Dit is een ioBroker-adapter voor uw Panasonic Viera Smart-TV. Getest met Panasonic TX-50DX780 en TX-50EXW.",
+            "it": "Questo è un adattatore ioBroker per la tua Smart TV Panasonic Viera. Testato con Panasonic TX-50DX780 e TX-50EXW.",
+            "es": "Este es un adaptador ioBroker para su Panasonic Viera Smart-TV. Probado con Panasonic TX-50DX780 y TX-50EXW.",
+            "pl": "Jest to adapter ioBroker do Panasonic Viera Smart-TV. Przetestowane z Panasonic TX-50DX780 i TX-50EXW."
         },
         "platform": "Javascript/Node.js",
         "authors": ["ldittmar <iobroker@lmdsoft.de>"],
         "mode": "daemon",
         "icon": "panasonic-viera.png",
+        "materialize": true,
         "enabled": true,
         "extIcon": "https://raw.githubusercontent.com/ldittmar81/ioBroker.panasonic-viera/master/admin/panasonic-viera.png",
         "keywords": ["panasonic","viera","smart-tv"],

@@ -2,19 +2,18 @@
 /*jslint node: true */
 'use strict';
 
-var Controller = require(__dirname + '/lib/viera.js');
-var ping = require(__dirname + '/lib/ping');
-
 // you have to require the utils module and call adapter function
-var utils = require(__dirname + '/lib/utils'); // Get common adapter utils
+const utils = require(__dirname + '/lib/utils'); // Get common adapter utils
+const Controller = require(__dirname + '/lib/viera.js');
+const ping = require(__dirname + '/lib/ping');
 
 // you have to call the adapter function and pass a options object
 // name has to be set and has to be equal to adapters folder name and main file name excluding extension
 // adapter will be restarted automatically every time as the configuration changed, e.g system.adapter.template.0
-var adapter = utils.Adapter('panasonic-viera');
+const adapter = utils.Adapter('panasonic-viera');
 
-var device;
-var isConnected = null;
+let device;
+let isConnected = null;
 
 // is called if a subscribed state changes
 adapter.on('stateChange', function (id, state) {
