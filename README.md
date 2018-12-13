@@ -1,5 +1,5 @@
 <h1>
-  <img src="https://github.com/ldittmar81/ioBroker.panasonic-viera/blob/master/admin/panasonic-viera.png" width="64"/>
+  <img src="https://raw.githubusercontent.com/ldittmar81/ioBroker.panasonic-viera/master/admin/panasonic-viera.png" width="64"/>
   ioBroker.panasonic-viera
 </h1>
 
