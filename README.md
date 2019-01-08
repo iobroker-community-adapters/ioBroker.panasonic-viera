@@ -20,7 +20,10 @@ This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panas
 
 ## Changelog
 
-### 1.0.0
+#### 1.0.1
+* (ldittmar) compact mode compatibility added
+
+#### 1.0.0
 * (ldittmar) Support of admin3
 
 #### 0.1.0

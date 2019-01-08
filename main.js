@@ -7,25 +7,34 @@ const utils = require(__dirname + '/lib/utils'); // Get common adapter utils
 const Controller = require(__dirname + '/lib/viera.js');
 const ping = require(__dirname + '/lib/ping');
 
-// you have to call the adapter function and pass a options object
-// name has to be set and has to be equal to adapters folder name and main file name excluding extension
-// adapter will be restarted automatically every time as the configuration changed, e.g system.adapter.template.0
-const adapter = utils.Adapter('panasonic-viera');
-
 let device;
 let isConnected = null;
 
-// is called if a subscribed state changes
-adapter.on('stateChange', function (id, state) {
-    if (id && state && !state.ack) {
-        id = id.substring(id.lastIndexOf('.') + 1);
-        sendCommand(id, state.val);
-    }
-});
+// you have to call the adapter function and pass a options object
+// name has to be set and has to be equal to adapters folder name and main file name excluding extension
+// adapter will be restarted automatically every time as the configuration changed, e.g system.adapter.template.0
+let adapter;
+function startAdapter(options) {
+    options = options || {};
+    Object.assign(options, {
+        name: 'panasonic-viera'
+    });
+    adapter = new utils.Adapter(options);
 
-// is called when databases are connected and adapter received configuration.
-// start here!
-adapter.on('ready', main);
+    // is called if a subscribed state changes
+    adapter.on('stateChange', function (id, state) {
+        if (id && state && !state.ack) {
+            id = id.substring(id.lastIndexOf('.') + 1);
+            sendCommand(id, state.val);
+        }
+    });
+
+    // is called when databases are connected and adapter received configuration.
+    // start here!
+    adapter.on('ready', main);
+
+    return adapter;
+}
 
 function setConnected(_isConnected) {
     if (isConnected !== _isConnected) {
@@ -139,3 +148,11 @@ function sendCommand(cmd, val) {
         }
     }
 }
+
+// If started as allInOne/compact mode => return function to create instance
+if (module && module.parent) {
+    module.exports = startAdapter;
+} else {
+    // or start the instance directly
+    startAdapter();
+} 
