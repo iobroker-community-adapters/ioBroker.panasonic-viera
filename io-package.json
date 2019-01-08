@@ -71,7 +71,7 @@
             "es": "Adaptador de TV inteligente Panasonic Viera",
             "pl": "Panasonic Viera Smart-TV Adapter"
         },
-        "dec": {
+        "desc": {
             "en": "This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panasonic TX-50DX780 and TX-50EXW.",
             "de": "Dies ist ein ioBroker-Adapter für Ihren Panasonic Viera Smart-TV. Getestet mit Panasonic TX-50DX780 und TX-50EXW.",
             "ru": "Это адаптер ioBroker для вашего телевизора Panasonic Viera Smart. Протестировано с Panasonic TX-50DX780 и TX-50EXW.",

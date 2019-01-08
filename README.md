@@ -1,6 +1,7 @@
-![Logo](admin/panasonic-viera.png)
-# ioBroker.panasonic-viera
-=================
+<h1>
+  <img src="https://raw.githubusercontent.com/ldittmar81/ioBroker.panasonic-viera/master/admin/panasonic-viera.png" width="64"/>
+  ioBroker.panasonic-viera
+</h1>
 
 [![NPM version](http://img.shields.io/npm/v/iobroker.panasonic-viera.svg)](https://www.npmjs.com/package/iobroker.panasonic-viera)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.panasonic-viera.svg)](https://www.npmjs.com/package/iobroker.panasonic-viera)
@@ -12,9 +13,7 @@
 **Tests:** Linux/Mac: [![Travis-CI](http://img.shields.io/travis/ldittmar81/ioBroker.panasonic-viera/master.svg)](https://travis-ci.org/ldittmar81/ioBroker.panasonic-viera)
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/ldittmar81/ioBroker.panasonic-viera?branch=master&svg=true)](https://ci.appveyor.com/project/ldittmar81/ioBroker-panasonic-viera/)
 
-
-### A Panasonic Viera Smart-TV adapter for ioBroker
-=================
+## A Panasonic Viera Smart-TV adapter for ioBroker
 
 This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panasonic TX-50DX780 and TX-50EXW.
 
@@ -26,13 +25,13 @@ This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panas
 #### 1.0.0
 * (ldittmar) Support of admin3
 
-#### 0.1.0
+### 0.1.0
 * (ldittmar) Test phase terminated. Adapter enabled.
 
-#### 0.0.5
+### 0.0.5
 * (ldittmar) Open beta test phase - please test it and give me feedback here as a issue or in the forum http://forum.iobroker.net/viewtopic.php?f=23&t=3854
 
-#### 0.0.1
+### 0.0.1
 * (ldittmar) initial release
 
 ## License
