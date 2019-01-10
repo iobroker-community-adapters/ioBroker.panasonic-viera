@@ -17,21 +17,17 @@ let adapter;
 function startAdapter(options) {
     options = options || {};
     Object.assign(options, {
-        name: 'panasonic-viera'
+        name: 'panasonic-viera',
+        stateChange: function (id, state) {
+            if (id && state && !state.ack) {
+                id = id.substring(id.lastIndexOf('.') + 1);
+                sendCommand(id, state.val);
+            }
+        },
+        ready: main
     });
+
     adapter = new utils.Adapter(options);
-
-    // is called if a subscribed state changes
-    adapter.on('stateChange', function (id, state) {
-        if (id && state && !state.ack) {
-            id = id.substring(id.lastIndexOf('.') + 1);
-            sendCommand(id, state.val);
-        }
-    });
-
-    // is called when databases are connected and adapter received configuration.
-    // start here!
-    adapter.on('ready', main);
 
     return adapter;
 }
