@@ -11,7 +11,7 @@
 [![NPM](https://nodei.co/npm/iobroker.panasonic-viera.png?downloads=true)](https://nodei.co/npm/iobroker.panasonic-viera/)
 
 **Tests:** Linux/Mac: [![Travis-CI](http://img.shields.io/travis/ldittmar81/ioBroker.panasonic-viera/master.svg)](https://travis-ci.org/ldittmar81/ioBroker.panasonic-viera)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/ldittmar81/ioBroker.panasonic-viera?branch=master&svg=true)](https://ci.appveyor.com/project/ldittmar81/ioBroker-panasonic-viera/)
+Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/ldittmar81/ioBroker.panasonic-viera?branch=master&svg=true)](https://ci.appveyor.com/project/ldittmar81/ioBroker-panasonic-viera/) [![Greenkeeper badge](https://badges.greenkeeper.io/ldittmar81/ioBroker.panasonic-viera.svg)](https://greenkeeper.io/)
 
 ## A Panasonic Viera Smart-TV adapter for ioBroker
 
