@@ -91,14 +91,20 @@
         },
         "compact": true,
         "platform": "Javascript/Node.js",
-        "authors": ["ldittmar <iobroker@lmdsoft.de>"],
+        "authors": [
+            "ldittmar <iobroker@lmdsoft.de>"
+        ],
         "mode": "daemon",
         "icon": "panasonic-viera.png",
         "materialize": true,
         "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/ldittmar81/ioBroker.panasonic-viera/master/admin/panasonic-viera.png",
-        "keywords": ["panasonic","viera","smart-tv"],
-        "readme": "https://github.com/ldittmar81/ioBroker.panasonic-viera/blob/master/README.md",
+        "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.panasonic-viera/master/admin/panasonic-viera.png",
+        "keywords": [
+            "panasonic",
+            "viera",
+            "smart-tv"
+        ],
+        "readme": "https://github.com/iobroker-community-adapters/ioBroker.panasonic-viera/blob/master/README.md",
         "loglevel": "info",
         "type": "multimedia"
     },
