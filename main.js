@@ -74,9 +74,11 @@ function sendCommand(cmd, val) {
             case 'getMute':
                 device.getMute(function (err, data) {
                     if (err) {
-                        adapter.log.error('getMute: ' + err);
+                        //adapter.log.error('getMute: ' + err);
+                        adapter.setState('info.tv_on', {val: false, ack: true});
                     } else {
                         adapter.setState('mute', {val: data, ack: true});
+                        adapter.setState('info.tv_on', {val: true, ack: true});
                     }
                 });
                 break;
@@ -99,9 +101,11 @@ function sendCommand(cmd, val) {
             case 'getVolume':
                 device.getVolume(function (err, data) {
                     if (err) {
-                        adapter.log.error('getVolume: ' + err);
+                        //adapter.log.error('getVolume: ' + err);
+                        adapter.setState('info.tv_on', {val: false, ack: true});
                     } else {
                         adapter.setState('volume', {val: data, ack: true});
+                        adapter.setState('info.tv_on', {val: true, ack: true});
                     }
                 });
                 break;

@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "panasonic-viera",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "news": {
+            "1.0.2": {
+                "en": "some fixes",
+                "de": "einige Korrekturen",
+                "ru": "некоторые исправления",
+                "pt": "algumas correções",
+                "nl": "enkele fixes",
+                "fr": "quelques corrections",
+                "es": "algunas correcciones",
+                "it": "alcune correzioni",
+                "pl": "niektóre poprawki",
+                "zh-cn": "一些修复"
+                
+            },
             "1.0.1": {
                 "en": "compact mode compatibility added",
                 "de": "Kompaktmodus-Kompatibilität hinzugefügt",
@@ -112,6 +125,19 @@
             "type": "channel",
             "common": {
                 "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.tv_on",
+            "type": "state",
+            "common": {
+                "role": "indicator.tv_on",
+                "name": "Indicator if TV is switched on",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
             },
             "native": {}
         },
