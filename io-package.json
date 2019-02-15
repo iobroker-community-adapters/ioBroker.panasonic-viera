@@ -77,18 +77,18 @@
                 "zh-cn": "初始版本"
             }
         },
-        "title": "Panasonic Viera Smart-TV Adapter",
+        "title": "Panasonic Viera Smart-TV",
         "titleLang": {
-            "en": "Panasonic Viera Smart-TV Adapter",
-            "de": "Panasonic Viera Smart-TV Adapter",
-            "ru": "Panasonic Viera Smart-TV драйвер как образец",
-            "pt": "Panasonic Viera Smart-TV adaptador para o ioBroker",
-            "fr": "Adaptateur Panasonic Viera Smart-TV",
-            "nl": "Panasonic Viera Smart-TV Adapter",
-            "it": "Adattatore Smart TV TV Panasonic",
-            "es": "Adaptador de TV inteligente Panasonic Viera",
-            "pl": "Panasonic Viera Smart-TV Adapter",
-            "zh-cn": "Panasonic Viera智能电视适配器"
+            "en": "Panasonic Viera Smart-TV",
+            "de": "Panasonic Viera Smart-TV",
+            "ru": "Panasonic Viera Smart-TV",
+            "pt": "Panasonic Viera Smart-TV",
+            "fr": "Panasonic Viera Smart-TV",
+            "nl": "Panasonic Viera Smart-TV",
+            "it": "Panasonic Viera Smart-TV",
+            "es": "Panasonic Viera Smart-TV",
+            "pl": "Panasonic Viera Smart-TV",
+            "zh-cn": "松下Viera智能電視"
         },
         "desc": {
             "en": "This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panasonic TX-50DX780 and TX-50EXW.",
@@ -104,6 +104,7 @@
         },
         "compact": true,
         "platform": "Javascript/Node.js",
+        "license": "MIT",
         "authors": [
             "ldittmar <iobroker@lmdsoft.de>"
         ],
