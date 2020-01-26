@@ -18,6 +18,9 @@ This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panas
 
 ## Changelog
 
+### 1.0.4
+* (boriswerner) Added direct inputs HDMI1 to HDMI4
+
 ### 1.0.2
 * (cyberindy) some fixes
 

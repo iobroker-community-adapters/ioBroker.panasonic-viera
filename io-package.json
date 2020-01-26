@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "panasonic-viera",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "news": {
             "1.0.2": {
                 "en": "some fixes",
@@ -303,6 +303,54 @@
             "type": "state",
             "common": {
                 "name": "AV",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "input.HDMI1",
+            "type": "state",
+            "common": {
+                "name": "HDMI1",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "input.HDMI2",
+            "type": "state",
+            "common": {
+                "name": "HDMI2",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "input.HDMI3",
+            "type": "state",
+            "common": {
+                "name": "HDMI3",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "input.HDMI4",
+            "type": "state",
+            "common": {
+                "name": "HDMI4",
                 "role": "button",
                 "type": "boolean",
                 "read": false,
