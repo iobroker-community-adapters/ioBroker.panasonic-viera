@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "panasonic-viera",
-        "version": "1.0.2",
+        "version": "2.0.0",
         "news": {
             "1.0.2": {
                 "en": "some fixes",
@@ -14,7 +14,6 @@
                 "it": "alcune correzioni",
                 "pl": "niektóre poprawki",
                 "zh-cn": "一些修复"
-                
             },
             "1.0.1": {
                 "en": "compact mode compatibility added",
@@ -123,8 +122,8 @@
         "type": "multimedia"
     },
     "native": {
-        "ip": ""
-        "app_id": ""
+        "ip": "",
+        "app_id": "",
         "encryption_key": ""
     },
     "objects": [],
