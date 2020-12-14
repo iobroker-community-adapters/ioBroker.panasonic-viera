@@ -124,6 +124,8 @@
     },
     "native": {
         "ip": ""
+        "app_id": ""
+        "encryption_key": ""
     },
     "objects": [],
     "instanceObjects": [
