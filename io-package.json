@@ -215,6 +215,18 @@
       "native": {}
     },
     {
+      "_id": "basic.MUTE",
+      "type": "state",
+      "common": {
+        "name": "Mute On/Off",
+        "role": "button",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
       "_id": "basic.volume",
       "type": "state",
       "common": {
@@ -231,7 +243,7 @@
       "_id": "basic.POWER",
       "type": "state",
       "common": {
-        "name": "Switch TV OFF",
+        "name": "Switch TV On/Off",
         "role": "button",
         "type": "boolean",
         "read": false,

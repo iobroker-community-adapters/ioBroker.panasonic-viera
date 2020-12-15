@@ -57,6 +57,7 @@ const stateKeyMap = {
   'info.MENU': VieraKeys.menu,
   'others.MPX': VieraKeys.mpx,
   // 'basic.mute':         VieraKeys.mute,
+  'basic.MUTE': VieraKeys.mute,
   'others.NET_BS': VieraKeys.net_bs,
   'others.NET_CS': VieraKeys.net_cs,
   'others.NET_TD': VieraKeys.net_td,
@@ -140,7 +141,7 @@ function main() {
     adapter.subscribeStates('*');
     checkStatus();
 
-    setInterval(checkStatus, 60000);
+    setInterval(checkStatus, 30000);
   } else {
     adapter.log.error('Please configure the Panasonic Viera adapter');
   }
@@ -169,7 +170,7 @@ function sendCommand(cmd, value) {
             return viera.getMute();
           })
           .then(mute => {
-            adapter.setState('mute', {val: mute, ack: true});
+            adapter.setState('basic.mute', {val: mute, ack: true});
             adapter.setState('info.tv_on', {val: true, ack: true});
           })
           .catch(error => {
@@ -186,8 +187,8 @@ function sendCommand(cmd, value) {
           .then(() => {
             return viera.getMute();
           })
-          .then(data => {
-            adapter.setState('mute', {val: data, ack: true});
+          .then(mute => {
+            adapter.setState('basic.mute', {val: mute, ack: true});
           })
           .catch(error => {
             adapter.log.error('getMute: ' + error);
@@ -200,7 +201,7 @@ function sendCommand(cmd, value) {
             return viera.getVolume();
           })
           .then(volume => {
-            adapter.setState('volume', {val: volume, ack: true});
+            adapter.setState('basic.volume', {val: volume, ack: true});
             adapter.setState('info.tv_on', {val: true, ack: true});
           })
           .catch(error => {
@@ -218,7 +219,7 @@ function sendCommand(cmd, value) {
             return viera.getVolume();
           })
           .then(volume => {
-            adapter.setState('volume', {val: volume, ack: true});
+            adapter.setState('basic.volume', {val: volume, ack: true});
             adapter.setState('info.tv_on', {val: true, ack: true});
           })
           .catch(error => {
@@ -235,7 +236,7 @@ function sendCommand(cmd, value) {
             return viera.getVolume();
           })
           .then(volume => {
-            adapter.setState('volume', {val: volume, ack: true});
+            adapter.setState('basic.volume', {val: volume, ack: true});
             adapter.setState('info.tv_on', {val: true, ack: true});
           })
           .catch(error => {
@@ -252,7 +253,7 @@ function sendCommand(cmd, value) {
             return viera.getVolume();
           })
           .then(volume => {
-            adapter.setState('volume', {val: volume, ack: true});
+            adapter.setState('basic.volume', {val: volume, ack: true});
             adapter.setState('info.tv_on', {val: true, ack: true});
           })
           .catch(error => {
