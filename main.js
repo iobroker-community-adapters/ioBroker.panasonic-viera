@@ -144,9 +144,9 @@ function main() {
 
 function checkStatus() {
   ping.promise.probe(adapter.config.ip)
-    .then(isAlive => {
-      setConnected(isAlive);
-      if (isAlive) {
+    .then(result => {
+      setConnected(result.alive);
+      if (result.alive) {
         sendCommand('getMute');
         sendCommand('getVolume');
       }
