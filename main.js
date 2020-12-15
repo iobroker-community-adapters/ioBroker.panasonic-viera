@@ -89,7 +89,7 @@ const stateKeyMap = {
   'others.TV': VieraKeys.tv,
   'others.TV_MUTE_ON': VieraKeys.tv_mute_on,
   'others.TV_MUTE_OFF': VieraKeys.tv_mute_off,
-  'others.DMS_CH_UP': VieraKeys.dms_ch_up,,
+  'others.DMS_CH_UP': VieraKeys.dms_ch_up,
   'others.DMS_CH_DOWN': VieraKeys.dms_ch_down,
   'basic.UP': VieraKeys.up,
   'others.VIERA_LINK': VieraKeys.link,
