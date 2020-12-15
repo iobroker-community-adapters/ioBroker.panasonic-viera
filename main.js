@@ -173,7 +173,7 @@ function sendCommand(cmd, value) {
             adapter.setState('info.tv_on', {val: true, ack: true});
           })
           .catch(error => {
-            adapter.log.error('getMute: ' + error);
+            adapter.log.debug('getMute: ' + error);
             adapter.setState('info.tv_on', {val: false, ack: true});
           });
         break;
@@ -204,7 +204,7 @@ function sendCommand(cmd, value) {
             adapter.setState('info.tv_on', {val: true, ack: true});
           })
           .catch(error => {
-            adapter.log.error('getVolume: ' + error);
+            adapter.log.debug('getVolume: ' + error);
             adapter.setState('info.tv_on', {val: false, ack: true});
           });
         break;
