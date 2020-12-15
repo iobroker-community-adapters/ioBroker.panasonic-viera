@@ -1,3 +1,4 @@
+/* eslint-disable max-depth,no-await-in-loop,no-new-func,unicorn/prefer-string-slice */
 'use strict';
 
 const gulp = require('gulp');
@@ -25,7 +26,7 @@ function lang2data(lang, isFlat) {
   let string = isFlat ? '' : '{\n';
   let count = 0;
   for (const w in lang) {
-    if (lang.hasOwnProperty(w)) {
+    if ({}.hasOwnProperty.call(lang, w)) {
       count++;
       if (isFlat) {
         string += (lang[w] === '' ? (isFlat[w] || w) : lang[w]) + '\n';
@@ -73,11 +74,11 @@ function writeWordJs(data, src) {
   text += '\'use strict\';\n\n';
   text += 'systemDictionary = {\n';
   for (const word in data) {
-    if (data.hasOwnProperty(word)) {
+    if ({}.hasOwnProperty.call(data, word)) {
       text += '    ' + padRight('"' + word.replace(/"/g, '\\"') + '": {', 50);
       let line = '';
       for (const lang in data[word]) {
-        if (data[word].hasOwnProperty(lang)) {
+        if ({}.hasOwnProperty.call(data[word], lang)) {
           line += '"' + lang + '": "' + padRight(data[word][lang].replace(/"/g, '\\"') + '",', 50) + ' ';
         }
       }
@@ -104,13 +105,13 @@ function words2languages(src) {
   const data = readWordJs(src);
   if (data) {
     for (const word in data) {
-      if (data.hasOwnProperty(word)) {
+      if ({}.hasOwnProperty.call(data, word)) {
         for (const lang in data[word]) {
-          if (data[word].hasOwnProperty(lang)) {
+          if ({}.hasOwnProperty.call(data[word], lang)) {
             langs[lang][word] = data[word][lang];
             //  Pre-fill all other languages
             for (const j in langs) {
-              if (langs.hasOwnProperty(j)) {
+              if ({}.hasOwnProperty.call(langs, j)) {
                 langs[j][word] = langs[j][word] || EMPTY;
               }
             }
@@ -124,7 +125,7 @@ function words2languages(src) {
     }
 
     for (const l in langs) {
-      if (!langs.hasOwnProperty(l)) {
+      if (!{}.hasOwnProperty.call(langs, l)) {
         continue;
       }
 
@@ -151,13 +152,13 @@ function words2languagesFlat(src) {
   const data = readWordJs(src);
   if (data) {
     for (const word in data) {
-      if (data.hasOwnProperty(word)) {
+      if ({}.hasOwnProperty.call(data, word)) {
         for (const lang in data[word]) {
-          if (data[word].hasOwnProperty(lang)) {
+          if ({}.hasOwnProperty.call(data[word], lang)) {
             langs[lang][word] = data[word][lang];
             //  Pre-fill all other languages
             for (const j in langs) {
-              if (langs.hasOwnProperty(j)) {
+              if ({}.hasOwnProperty.call(langs, j)) {
                 langs[j][word] = langs[j][word] || EMPTY;
               }
             }
@@ -169,7 +170,7 @@ function words2languagesFlat(src) {
     const keys = Object.keys(langs.en);
     keys.sort();
     for (const l in langs) {
-      if (!langs.hasOwnProperty(l)) {
+      if (!{}.hasOwnProperty.call(langs, l)) {
         continue;
       }
 
@@ -186,7 +187,7 @@ function words2languagesFlat(src) {
     }
 
     for (const ll in langs) {
-      if (!langs.hasOwnProperty(ll)) {
+      if (!{}.hasOwnProperty.call(langs, ll)) {
         continue;
       }
 
@@ -256,7 +257,7 @@ function languagesFlat2words(src) {
 
     const words = langs[lang];
     for (const word in words) {
-      if (words.hasOwnProperty(word)) {
+      if ({}.hasOwnProperty.call(words, word)) {
         bigOne[word] = bigOne[word] || {};
         if (words[word] !== EMPTY) {
           bigOne[word][lang] = words[word];
@@ -272,7 +273,7 @@ function languagesFlat2words(src) {
   if (aWords) {
     // Merge words together
     for (const w in aWords) {
-      if (aWords.hasOwnProperty(w)) {
+      if ({}.hasOwnProperty.call(aWords, w)) {
         if (!bigOne[w]) {
           console.warn('Take from actual words.js: ' + w);
           bigOne[w] = aWords[w];
@@ -341,7 +342,7 @@ function languages2words(src) {
     langs[lang] = JSON.parse(langs[lang]);
     const words = langs[lang];
     for (const word in words) {
-      if (words.hasOwnProperty(word)) {
+      if ({}.hasOwnProperty.call(words, word)) {
         bigOne[word] = bigOne[word] || {};
         if (words[word] !== EMPTY) {
           bigOne[word][lang] = words[word];
@@ -357,7 +358,7 @@ function languages2words(src) {
   if (aWords) {
     // Merge words together
     for (const w in aWords) {
-      if (aWords.hasOwnProperty(w)) {
+      if ({}.hasOwnProperty.call(aWords, w)) {
         if (!bigOne[w]) {
           console.warn('Take from actual words.js: ' + w);
           bigOne[w] = aWords[w];
@@ -388,9 +389,11 @@ async function translateNotExisting(object, baseText) {
   if (t) {
     for (const l in languages) {
       if (!object[l]) {
-        object[l] = await translate(t, l);
+        object[l] = translate(t, l);
       }
     }
+
+    await Promise.all(object);
   }
 }
 
@@ -470,10 +473,15 @@ gulp.task('updateReadme', done => {
 gulp.task('translate', async done => {
   if (iopackage && iopackage.common) {
     if (iopackage.common.news) {
+      const results = [];
       for (const k in iopackage.common.news) {
-        const nw = iopackage.common.news[k];
-        await translateNotExisting(nw);
+        if ({}.hasOwnProperty.call(iopackage.common.news, k)) {
+          const nw = iopackage.common.news[k];
+          results.push(translateNotExisting(nw));
+        }
       }
+
+      await Promise.all(results);
     }
 
     if (iopackage.common.titleLang) {
@@ -487,27 +495,31 @@ gulp.task('translate', async done => {
     if (fs.existsSync('./admin/i18n/en/translations.json')) {
       const enTranslations = require('./admin/i18n/en/translations.json');
       for (const l in languages) {
-        let existing = {};
-        if (fs.existsSync('./admin/i18n/' + l + '/translations.json')) {
-          existing = require('./admin/i18n/' + l + '/translations.json');
-        }
-
-        for (const t in enTranslations) {
-          if (!existing[t]) {
-            existing[t] = await translate(enTranslations[t], l);
+        if ({}.hasOwnProperty.call(languages, l)) {
+          let existing = {};
+          if (fs.existsSync('./admin/i18n/' + l + '/translations.json')) {
+            existing = require('./admin/i18n/' + l + '/translations.json');
           }
-        }
 
-        if (!fs.existsSync('./admin/i18n/' + l + '/')) {
-          fs.mkdirSync('./admin/i18n/' + l + '/');
-        }
+          for (const t in enTranslations) {
+            if (!existing[t]) {
+              existing[t] = await translate(enTranslations[t], l);
+            }
+          }
 
-        fs.writeFileSync('./admin/i18n/' + l + '/translations.json', JSON.stringify(existing, null, 4));
+          if (!fs.existsSync('./admin/i18n/' + l + '/')) {
+            fs.mkdirSync('./admin/i18n/' + l + '/');
+          }
+
+          fs.writeFileSync('./admin/i18n/' + l + '/translations.json', JSON.stringify(existing, null, 4));
+        }
       }
     }
   }
 
   fs.writeFileSync('io-package.json', JSON.stringify(iopackage, null, 4));
+
+  done();
 });
 
 gulp.task('translateAndUpdateWordsJS', gulp.series('translate', 'adminLanguages2words'));
