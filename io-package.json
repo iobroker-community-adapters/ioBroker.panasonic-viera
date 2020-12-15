@@ -312,6 +312,54 @@
       "native": {}
     },
     {
+      "_id": "input.HDMI1",
+      "type": "state",
+      "common": {
+        "name": "HDMI1 input",
+        "role": "button",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "input.HDMI2",
+      "type": "state",
+      "common": {
+        "name": "HDMI2 input",
+        "role": "button",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "input.HDMI3",
+      "type": "state",
+      "common": {
+        "name": "HDMI3 input",
+        "role": "button",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
+      "_id": "input.HDMI4",
+      "type": "state",
+      "common": {
+        "name": "HDMI4 input",
+        "role": "button",
+        "type": "boolean",
+        "read": false,
+        "write": true
+      },
+      "native": {}
+    },
+    {
       "_id": "others.HOME",
       "type": "state",
       "common": {
