@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
-    "node-panasonic-viera": "^0.1.0"
+    "node-panasonic-viera": "^0.2.0"
   },
   "devDependencies": {
     "gulp": "^4.0.0",
@@ -33,14 +33,21 @@
     "set-value": ">=2.0.1",
     "kind-of": ">=6.0.3",
     "minimist": ">=0.2.1",
-    "yargs-parser": ">=5.0.0-security.0"
+    "yargs-parser": ">=5.0.0-security.0",
+    "eslint": ">=7.12.0",
+    "xo": "^0.36.1"
+  },
+  "xo": {
+    "space": 2
   },
   "main": "main.js",
   "scripts": {
     "test": "npm run test:package && npm run test:unit",
     "test:package": "mocha test/package --exit",
     "test:unit": "mocha test/unit --exit",
-    "test:integration": "mocha test/integration --exit"
+    "test:integration": "mocha test/integration --exit",
+    "lint": "xo",
+    "lintfix": "xo --fix"
   },
   "bugs": {
     "url": "https://github.com/iobroker-community-adapters/ioBroker.panasonic-viera/issues"

@@ -7,6 +7,89 @@ const utils = require('@iobroker/adapter-core'); // Get common adapter utils
 const ping = require(__dirname + '/lib/ping');
 const {VieraKeys, Viera} = require('node-panasonic-viera');
 
+// mapping table for state <> VieraKeys mapping
+const stateKeyMap = {
+  'others.30S_SKIP':    VieraKeys.thirty_second_skip,
+  'others.3D':          VieraKeys.toggle_3d,
+  'others.APPS':        VieraKeys.apps,
+  'others.ASPECT':      VieraKeys.aspect,
+  'basic.BACK':         VieraKeys.back,
+  'basic.BLUE':         VieraKeys.blue,
+  'basic.CANCEL':       VieraKeys.cancel,
+  'others.CC':          VieraKeys.cc,
+  'others.CHAT':        VieraKeys.chat_mode,
+  'channel.CH_DOWN':    VieraKeys.ch_down,
+  'input.CHG_INPUT':    VieraKeys.input_key,
+  'others.CHG_NETWORK': VieraKeys.network,
+  'channel.CH_UP':      VieraKeys.ch_up,
+  'channel.D0':         VieraKeys.num_0,
+  'channel.D1':         VieraKeys.num_1,
+  'channel.D2':         VieraKeys.num_2,
+  'channel.D3':         VieraKeys.num_3,
+  'channel.D4':         VieraKeys.num_4,
+  'channel.D5':         VieraKeys.num_5,
+  'channel.D6':         VieraKeys.num_6,
+  'channel.D7':         VieraKeys.num_7,
+  'channel.D8':         VieraKeys.num_8,
+  'channel.D9':         VieraKeys.num_9,
+  'others.DIGA_CTL':    VieraKeys.diga_control,
+  'others.DISP_MODE':   VieraKeys.display,
+  'basic.DOWN':         VieraKeys.down,
+  'basic.ENTER':        VieraKeys.enter,
+  'info.EPG':           VieraKeys.epg,
+  'basic.CANCEL':       VieraKeys.exit,
+  'others.EZ_SYNC':     VieraKeys.ez_sync,
+  'others.FAVORITE':    VieraKeys.favorite,
+  'player.FF':          VieraKeys.fast_forward,
+  'others.GAME':        VieraKeys.game,
+  'basic.GREEN':        VieraKeys.green,
+  'info.GUIDE':         VieraKeys.guide,
+  'others.HOLD':        VieraKeys.hold,
+  'others.HOME':        VieraKeys.home,
+  'info.INDEX':         VieraKeys.index,
+  'info.INFO':          VieraKeys.info,
+  'others.INTERNET':    VieraKeys.connect,
+  'basic.left':         VieraKeys.left,
+  'info.MENU':          VieraKeys.menu,
+  'others.MPX':         VieraKeys.mpx,
+//'basic.mute':         VieraKeys.mute,
+  'others.NET_BS':      VieraKeys.net_bs,
+  'others.NET_CS':      VieraKeys.net_cs,
+  'others.NET_TD':      VieraKeys.net_td,
+  'others.OFFTIMER':    VieraKeys.off_timer,
+  'player.PAUSE':       VieraKeys.pause,
+  'others.PICTAI':      VieraKeys.pictai,
+  'player.PLAY':        VieraKeys.play,
+  'others.P_NR':        VieraKeys.p_nr,
+  'basic.POWER':        VieraKeys.power,
+  'others.PROG':        VieraKeys.program,
+  'player.REC':         VieraKeys.record,
+  'basic.RED':          VieraKeys.red,
+  'basic.RETURN':       VieraKeys.return_key,
+  'player.REW':         VieraKeys.rewind,
+  'basic.RIGHT':        VieraKeys.right,
+  'others.R_SCREEN':    VieraKeys.r_screen,
+  'others.R_TUNE':      VieraKeys.last_view,
+  'others.SAP':         VieraKeys.sap,
+  'others.SD_CARD':     VieraKeys.toggle_sd_card,
+  'player.SKIP_NEXT':   VieraKeys.skip_next,
+  'player.SKIP_PREV':   VieraKeys.skip_prev,
+  'others.SPLIT':       VieraKeys.split,
+  'player.STOP':        VieraKeys.stop,
+  'others.STTL':        VieraKeys.subtitles,
+  'others.SUBMENU':     VieraKeys.option,
+  'others.SURROUND':    VieraKeys.surround,
+  'others.SWAP':        VieraKeys.swap,
+  'info.TEXT':          VieraKeys.text,
+  'others.TV':          VieraKeys.tv,
+  'basic.UP':           VieraKeys.up,
+  'others.VIERA_LINK':  VieraKeys.link,
+//'basic.VOLDOWN':      VieraKeys.volume_down,
+//'basic.VOLUP':        VieraKeys.volume_up,
+  'info.VTOOLS':        VieraKeys.vtools,
+  'basic.YELLOW':       VieraKeys.yellow
+}
+
 let viera = null;
 let isConnected = null;
 
@@ -20,8 +103,13 @@ function startAdapter(options) {
         name: 'panasonic-viera',
         stateChange: function (id, state) {
             if (id && state && !state.ack) {
-                id = id.substring(id.lastIndexOf('.') + 1);
-                sendCommand(id, state.val);
+		let cmd = id.split('.').slice(-2).join('.');
+		adapter.log.debug("state triggered: " + cmd + ": " + state.val);
+		if (typeof(objMap[cmd]) !== 'undefined') {
+                  cmd = objMap[cmd];
+		}
+		adapter.log.debug("sending command: " + cmd);
+                sendCommand(cmd, state.val);
             }
         },
         ready: main
@@ -87,7 +175,7 @@ function sendCommand(cmd, val) {
                     });
                 break;
 
-            case 'mute':
+            case 'basic.mute':
                 viera.connect(adapter.config.ip, adapter.config.app_id, adapter.config.encryption_key)
                     .then(() => {
                         return viera.setMute(val);
@@ -152,7 +240,7 @@ function sendCommand(cmd, val) {
                     });
                 break;
  
-            case 'volume':
+            case 'basic.volume':
                 viera.connect(adapter.config.ip, adapter.config.app_id, adapter.config.encryption_key)
                     .then(() => {
                         return viera.setVolume(val);
