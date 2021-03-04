@@ -65,7 +65,7 @@ function readWordJs(src) {
 }
 
 function padRight(text, totalLength) {
-  return text + (text.length < totalLength ? new Array(totalLength - text.length).join(' ') : '');
+  return text.padEnd(totalLength, ' ');
 }
 
 function writeWordJs(data, src) {
@@ -251,9 +251,9 @@ function languagesFlat2words(src) {
 
     const values = fs.readFileSync(src + 'i18n/' + lang + '/flat.txt').toString().split('\n');
     langs[lang] = {};
-    keys.forEach((word, i) => {
+    for (const [i, word] of keys.entries()) {
       langs[lang][word] = values[i];
-    });
+    }
 
     const words = langs[lang];
     for (const word in words) {
@@ -279,15 +279,15 @@ function languagesFlat2words(src) {
           bigOne[w] = aWords[w];
         }
 
-        dirs.forEach(lang => {
+        for (const lang of dirs) {
           if (temporaryIgnore.has(lang)) {
-            return;
+            continue;
           }
 
           if (!bigOne[w][lang]) {
             console.warn('Missing "' + lang + '": ' + w);
           }
-        });
+        }
       }
     }
   }
@@ -364,15 +364,15 @@ function languages2words(src) {
           bigOne[w] = aWords[w];
         }
 
-        dirs.forEach(lang => {
+        for (const lang of dirs) {
           if (temporaryIgnore.has(lang)) {
-            return;
+            continue;
           }
 
           if (!bigOne[w][lang]) {
             console.warn('Missing "' + lang + '": ' + w);
           }
-        });
+        }
       }
     }
   }
