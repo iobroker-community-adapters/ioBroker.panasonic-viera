@@ -16,6 +16,12 @@ Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/iobroke
 This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panasonic TX-50DX780 and TX-50EXW.
 
 ## Changelog
+<!--
+	Placeholder for the next version (at the beginning of the line):
+	### **WORK IN PROGRESS**
+-->
+### **WORK IN PROGRESS**
+* (jens-maus) changed adapter to use node-panasonic-viera to support modern TV models
 
 ### 1.0.2
 * (cyberindy) some fixes
@@ -39,7 +45,7 @@ This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panas
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2018 ldittmar <iobroker@lmdsoft.de>
+Copyright (c) 2018-2021 ldittmar <iobroker@lmdsoft.de>, Jens Maus <mail@jens-maus.de>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

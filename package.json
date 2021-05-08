@@ -26,18 +26,19 @@
     "ping": "^0.4.0"
   },
   "devDependencies": {
-    "gulp": "^4.0.0",
-    "chai": "^4.1.2",
-    "mocha": "^8.2.1",
-    "axios": "^0.21.0",
+    "@alcalzone/release-script": "^1.10.0",
     "@iobroker/testing": "^2.3.0",
-    "set-value": ">=2.0.1",
+    "axios": "^0.21.0",
+    "chai": "^4.1.2",
+    "eslint": ">=7.12.0",
+    "gulp": "^4.0.0",
+    "hosted-git-info": ">=2.8.9",
     "kind-of": ">=6.0.3",
     "minimist": ">=0.2.1",
-    "yargs-parser": ">=5.0.0-security.0",
-    "eslint": ">=7.12.0",
+    "mocha": "^8.2.1",
+    "set-value": ">=2.0.1",
     "xo": "^0.39.1",
-    "hosted-git-info": ">=2.8.9"
+    "yargs-parser": ">=5.0.0-security.0"
   },
   "xo": {
     "space": 2
@@ -49,7 +50,8 @@
     "test:unit": "mocha test/unit --exit",
     "test:integration": "mocha test/integration --exit",
     "lint": "xo",
-    "lintfix": "xo --fix"
+    "lintfix": "xo --fix",
+    "release": "release-script"
   },
   "bugs": {
     "url": "https://github.com/iobroker-community-adapters/ioBroker.panasonic-viera/issues"
