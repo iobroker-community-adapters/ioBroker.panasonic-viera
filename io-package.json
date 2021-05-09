@@ -1,1335 +1,1347 @@
 {
-  "common": {
-    "name": "panasonic-viera",
-    "version": "1.0.2",
-    "news": {
-      "1.0.2": {
-        "en": "some fixes",
-        "de": "einige Korrekturen",
-        "ru": "некоторые исправления",
-        "pt": "algumas correções",
-        "nl": "enkele fixes",
-        "fr": "quelques corrections",
-        "es": "algunas correcciones",
-        "it": "alcune correzioni",
-        "pl": "niektóre poprawki",
-        "zh-cn": "一些修复"
-      },
-      "1.0.1": {
-        "en": "compact mode compatibility added",
-        "de": "Kompaktmodus-Kompatibilität hinzugefügt",
-        "ru": "добавлена ​​совместимость с компактным режимом",
-        "pt": "compatibilidade de modo compacto adicionada",
-        "nl": "compatibiliteit met compacte modus toegevoegd",
-        "fr": "Compatibilité en mode compact ajoutée",
-        "it": "aggiunta la compatibilità in modalità compatta",
-        "es": "compatibilidad de modo compacto agregado",
-        "pl": "Dodano kompatybilność w trybie kompaktowym",
-        "zh-cn": "增加了紧凑模式兼容性"
-      },
-      "1.0.0": {
-        "en": "Support of admin3",
-        "de": "Unterstützung von admin3",
-        "ru": "Поддержка admin3",
-        "pt": "Suporte de admin3",
-        "nl": "Ondersteuning van admin3",
-        "fr": "Support de admin3",
-        "it": "Supporto di admin3",
-        "es": "Soporte de admin3",
-        "pl": "Wsparcie dla admin3",
-        "zh-cn": "支持管理员3"
-      },
-      "0.1.0": {
-        "en": "Test phase terminated. Adapter enabled.",
-        "de": "Testphase beendet. Adapter freigegeben.",
-        "ru": "Тестовая фаза завершена. Адаптер включен.",
-        "pt": "Fase de teste encerrada. Adaptador habilitado.",
-        "fr": "Phase de test terminée. Adaptateur activé.",
-        "nl": "Testfase beëindigd. Adapter ingeschakeld.",
-        "pl": "Faza testowa została zakończona. Adapter włączony.",
-        "it": "Fase di prova terminata Adattatore abilitato.",
-        "es": "Fase de prueba terminada. Adaptador habilitado.",
-        "zh-cn": "测试阶段终止。 启用适配器。"
-      },
-      "0.0.5": {
-        "en": "Open test phase",
-        "de": "Offene Testphase",
-        "ru": "Открытая тестовая фаза",
-        "pt": "Fase de teste aberta",
-        "fr": "Phase de test ouverte",
-        "nl": "Open testfase",
-        "it": "Fase di test aperta",
-        "es": "Fase de prueba abierta",
-        "pl": "Otwórz fazę testową",
-        "zh-cn": "开放测试阶段"
-      },
-      "0.0.1": {
-        "en": "initial version",
-        "de": "Initiale Version",
-        "ru": "Первоначальный адаптер",
-        "pt": "Versão inicial",
-        "fr": "Version initiale",
-        "nl": "Eerste release",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "początkowa wersja",
-        "zh-cn": "初始版本"
-      }
-    },
-    "title": "Panasonic Viera Smart-TV",
-    "titleLang": {
-      "en": "Panasonic Viera Smart-TV",
-      "de": "Panasonic Viera Smart-TV",
-      "ru": "Panasonic Viera Smart-TV",
-      "pt": "Panasonic Viera Smart-TV",
-      "fr": "Panasonic Viera Smart-TV",
-      "nl": "Panasonic Viera Smart-TV",
-      "it": "Panasonic Viera Smart-TV",
-      "es": "Panasonic Viera Smart-TV",
-      "pl": "Panasonic Viera Smart-TV",
-      "zh-cn": "松下Viera智能電視"
-    },
-    "desc": {
-      "en": "This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panasonic TX-50DX780 and TX-50EXW.",
-      "de": "Dies ist ein ioBroker-Adapter für Ihren Panasonic Viera Smart-TV. Getestet mit Panasonic TX-50DX780 und TX-50EXW.",
-      "ru": "Это адаптер ioBroker для вашего телевизора Panasonic Viera Smart. Протестировано с Panasonic TX-50DX780 и TX-50EXW.",
-      "pt": "Este é um adaptador ioBroker para a sua Smart TV Panasonic Viera. Testado com Panasonic TX-50DX780 e TX-50EXW.",
-      "fr": "Ceci est un adaptateur ioBroker pour votre Panasonic Viera Smart-TV. Testé avec Panasonic TX-50DX780 et TX-50EXW.",
-      "nl": "Dit is een ioBroker-adapter voor uw Panasonic Viera Smart-TV. Getest met Panasonic TX-50DX780 en TX-50EXW.",
-      "it": "Questo è un adattatore ioBroker per la tua Smart TV Panasonic Viera. Testato con Panasonic TX-50DX780 e TX-50EXW.",
-      "es": "Este es un adaptador ioBroker para su Panasonic Viera Smart-TV. Probado con Panasonic TX-50DX780 y TX-50EXW.",
-      "pl": "Jest to adapter ioBroker do Panasonic Viera Smart-TV. Przetestowane z Panasonic TX-50DX780 i TX-50EXW.",
-      "zh-cn": "这是适用于Panasonic Viera智能电视的ioBroker适配器。 使用Panasonic TX-50DX780和TX-50EXW进行测试。"
-    },
-    "compact": true,
-    "platform": "Javascript/Node.js",
-    "license": "MIT",
-    "authors": [
-      "ldittmar <iobroker@lmdsoft.de>"
-    ],
-    "mode": "daemon",
-    "icon": "panasonic-viera.png",
-    "materialize": true,
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.panasonic-viera/master/admin/panasonic-viera.png",
-    "keywords": [
-      "panasonic",
-      "viera",
-      "smart-tv"
-    ],
-    "readme": "https://github.com/iobroker-community-adapters/ioBroker.panasonic-viera/blob/master/README.md",
-    "loglevel": "info",
-    "type": "multimedia"
-  },
-  "native": {
-    "ip": "",
-    "app_id": "",
-    "encryption_key": ""
-  },
-  "objects": [],
-  "instanceObjects": [
-    {
-      "_id": "info",
-      "type": "channel",
-      "common": {
-        "name": "Information"
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.tv_on",
-      "type": "state",
-      "common": {
-        "role": "indicator.tv_on",
-        "name": "Indicator if TV is switched on",
-        "type": "boolean",
-        "read": true,
-        "write": false,
-        "def": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic",
-      "type": "channel",
-      "common": {
-        "name": "Grundfunktionen"
-      },
-      "native": {}
-    },
-    {
-      "_id": "channel",
-      "type": "channel",
-      "common": {
-        "name": "Sender"
-      },
-      "native": {}
-    },
-    {
-      "_id": "input",
-      "type": "channel",
-      "common": {
-        "name": "Quelle"
-      },
-      "native": {}
-    },
-    {
-      "_id": "player",
-      "type": "channel",
-      "common": {
-        "name": "Player"
-      },
-      "native": {}
-    },
-    {
-      "_id": "others",
-      "type": "channel",
-      "common": {
-        "name": "Others"
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.connection",
-      "type": "state",
-      "common": {
-        "role": "indicator.connected",
-        "name": "If connected to TV",
-        "type": "boolean",
-        "read": true,
-        "write": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.mute",
-      "type": "state",
-      "common": {
-        "name": "Mute",
-        "type": "boolean",
-        "role": "switch",
-        "read": true,
-        "write": true,
-        "def": false
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.MUTE",
-      "type": "state",
-      "common": {
-        "name": "Mute On/Off",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.volume",
-      "type": "state",
-      "common": {
-        "name": "Volume",
-        "type": "number",
-        "role": "level",
-        "read": true,
-        "write": true,
-        "def": 0
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.POWER",
-      "type": "state",
-      "common": {
-        "name": "Switch TV On/Off",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "channel.CH_DOWN",
-      "type": "state",
-      "common": {
-        "name": "channel down",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "channel.CH_UP",
-      "type": "state",
-      "common": {
-        "name": "channel up",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.VOLUP",
-      "type": "state",
-      "common": {
-        "name": "volume up",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.VOLDOWN",
-      "type": "state",
-      "common": {
-        "name": "volume down",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.TV",
-      "type": "state",
-      "common": {
-        "name": "TV",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "input.CHG_INPUT",
-      "type": "state",
-      "common": {
-        "name": "AV",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "input.HDMI1",
-      "type": "state",
-      "common": {
-        "name": "HDMI1 input",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "input.HDMI2",
-      "type": "state",
-      "common": {
-        "name": "HDMI2 input",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "input.HDMI3",
-      "type": "state",
-      "common": {
-        "name": "HDMI3 input",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "input.HDMI4",
-      "type": "state",
-      "common": {
-        "name": "HDMI4 input",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.HOME",
-      "type": "state",
-      "common": {
-        "name": "Home screen",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.APPS",
-      "type": "state",
-      "common": {
-        "name": "Apps",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.ASPECT",
-      "type": "state",
-      "common": {
-        "name": "Aspect",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.GUIDE",
-      "type": "state",
-      "common": {
-        "name": "Guide",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.RED",
-      "type": "state",
-      "common": {
-        "name": "red",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.GREEN",
-      "type": "state",
-      "common": {
-        "name": "green",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.YELLOW",
-      "type": "state",
-      "common": {
-        "name": "yellow",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.BLUE",
-      "type": "state",
-      "common": {
-        "name": "blue",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.VTOOLS",
-      "type": "state",
-      "common": {
-        "name": "VIERA tools",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.CANCEL",
-      "type": "state",
-      "common": {
-        "name": "Cancel / Exit",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.SUBMENU",
-      "type": "state",
-      "common": {
-        "name": "Option",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.SURROUND",
-      "type": "state",
-      "common": {
-        "name": "Surround ON/OFF",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.RETURN",
-      "type": "state",
-      "common": {
-        "name": "Return",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.BACK",
-      "type": "state",
-      "common": {
-        "name": "Back",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.ENTER",
-      "type": "state",
-      "common": {
-        "name": "Control Center click / enter",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.RIGHT",
-      "type": "state",
-      "common": {
-        "name": "Control RIGHT",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.LEFT",
-      "type": "state",
-      "common": {
-        "name": "Control LEFT",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.UP",
-      "type": "state",
-      "common": {
-        "name": "Control UP",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "basic.DOWN",
-      "type": "state",
-      "common": {
-        "name": "Control DOWN",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.3D",
-      "type": "state",
-      "common": {
-        "name": "3D button",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.SD_CARD",
-      "type": "state",
-      "common": {
-        "name": "SD-card",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.DISP_MODE",
-      "type": "state",
-      "common": {
-        "name": "Display mode / Aspect ratio",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.MENU",
-      "type": "state",
-      "common": {
-        "name": "Menu",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.INTERNET",
-      "type": "state",
-      "common": {
-        "name": "VIERA connect",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.VIERA_LINK",
-      "type": "state",
-      "common": {
-        "name": "VIERA link",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.EPG",
-      "type": "state",
-      "common": {
-        "name": "Guide / EPG",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.TEXT",
-      "type": "state",
-      "common": {
-        "name": "Text / TTV",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.STTL",
-      "type": "state",
-      "common": {
-        "name": "STTL / Subtitles",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.INFO",
-      "type": "state",
-      "common": {
-        "name": "info",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.INDEX",
-      "type": "state",
-      "common": {
-        "name": "TTV index",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.HOLD",
-      "type": "state",
-      "common": {
-        "name": "TTV hold / image freeze",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.R_TUNE",
-      "type": "state",
-      "common": {
-        "name": "Last view",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "player.REW",
-      "type": "state",
-      "common": {
-        "name": "rewind",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "player.PLAY",
-      "type": "state",
-      "common": {
-        "name": "play",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "player.FF",
-      "type": "state",
-      "common": {
-        "name": "fast forward",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "player.SKIP_PREV",
-      "type": "state",
-      "common": {
-        "name": "skip previous",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "player.PAUSE",
-      "type": "state",
-      "common": {
-        "name": "pause",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "player.SKIP_NEXT",
-      "type": "state",
-      "common": {
-        "name": "skip next",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "player.STOP",
-      "type": "state",
-      "common": {
-        "name": "stop",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "player.REC",
-      "type": "state",
-      "common": {
-        "name": "record",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "channel.D1",
-      "type": "state",
-      "common": {
-        "name": "numeric 1",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "channel.D2",
-      "type": "state",
-      "common": {
-        "name": "numeric 2",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "channel.D3",
-      "type": "state",
-      "common": {
-        "name": "numeric 3",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "channel.D4",
-      "type": "state",
-      "common": {
-        "name": "numeric 4",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "channel.D5",
-      "type": "state",
-      "common": {
-        "name": "numeric 5",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "channel.D6",
-      "type": "state",
-      "common": {
-        "name": "numeric 6",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "channel.D7",
-      "type": "state",
-      "common": {
-        "name": "numeric 7",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "channel.D8",
-      "type": "state",
-      "common": {
-        "name": "numeric 8",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "channel.D9",
-      "type": "state",
-      "common": {
-        "name": "numeric 9",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "channel.D0",
-      "type": "state",
-      "common": {
-        "name": "numeric 0",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.P_NR",
-      "type": "state",
-      "common": {
-        "name": "P-NR (Noise reduction)",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.OFFTIMER",
-      "type": "state",
-      "common": {
-        "name": "off timer",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.CHG_NETWORK",
-      "type": "state",
-      "common": {
-        "name": "CHG_NETWORK",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.CC",
-      "type": "state",
-      "common": {
-        "name": "CC",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.CHAT",
-      "type": "state",
-      "common": {
-        "name": "CHAT",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.SAP",
-      "type": "state",
-      "common": {
-        "name": "SAP",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.RECLIST",
-      "type": "state",
-      "common": {
-        "name": "RECLIST",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.DRIVE",
-      "type": "state",
-      "common": {
-        "name": "DRIVE",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.DATA",
-      "type": "state",
-      "common": {
-        "name": "DATA",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.BD",
-      "type": "state",
-      "common": {
-        "name": "BD",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.FAVORITE",
-      "type": "state",
-      "common": {
-        "name": "FAVORITE",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.DIGA_CTL",
-      "type": "state",
-      "common": {
-        "name": "DIGA_CTL",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.VOD",
-      "type": "state",
-      "common": {
-        "name": "VOD",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.ECO",
-      "type": "state",
-      "common": {
-        "name": "ECO",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.GAME",
-      "type": "state",
-      "common": {
-        "name": "GAME",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.EZ_SYNC",
-      "type": "state",
-      "common": {
-        "name": "EZ_SYNC",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.PICTAI",
-      "type": "state",
-      "common": {
-        "name": "PICTAI",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.MPX",
-      "type": "state",
-      "common": {
-        "name": "MPX",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.SPLIT",
-      "type": "state",
-      "common": {
-        "name": "SPLIT",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.SWAP",
-      "type": "state",
-      "common": {
-        "name": "SWAP",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.R_SCREEN",
-      "type": "state",
-      "common": {
-        "name": "R_SCREEN",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.30S_SKIP",
-      "type": "state",
-      "common": {
-        "name": "30S_SKIP",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.PROG",
-      "type": "state",
-      "common": {
-        "name": "PROG",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.TV_MUTE_ON",
-      "type": "state",
-      "common": {
-        "name": "TV_MUTE_ON",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.TV_MUTE_OFF",
-      "type": "state",
-      "common": {
-        "name": "TV_MUTE_OFF",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.NET_BS",
-      "type": "state",
-      "common": {
-        "name": "Net BS",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.NET_CS",
-      "type": "state",
-      "common": {
-        "name": "Net CS",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.NET_TD",
-      "type": "state",
-      "common": {
-        "name": "Net TD",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.DMS_CH_UP",
-      "type": "state",
-      "common": {
-        "name": "DMS_CH_UP",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    },
-    {
-      "_id": "others.DMS_CH_DOWN",
-      "type": "state",
-      "common": {
-        "name": "DMS_CH_DOWN",
-        "role": "button",
-        "type": "boolean",
-        "read": false,
-        "write": true
-      },
-      "native": {}
-    }
-  ]
+    "common": {
+        "name": "panasonic-viera",
+        "version": "2.0.0",
+        "news": {
+            "2.0.0": {
+                "en": "added support to set Application and Encryption Key in adapter admin\nchanged adapter to use node-panasonic-viera to support modern TV models",
+                "de": "Unterstützung zum Festlegen des Anwendungs- und Verschlüsselungsschlüssels im Adapteradministrator hinzugefügt\nDer Adapter wurde geändert, um Node-Panasonic-Viera zur Unterstützung moderner TV-Modelle zu verwenden",
+                "ru": "добавлена поддержка установки приложения и ключа шифрования в админке адаптера\nизменен адаптер для использования node-panasonic-viera для поддержки современных моделей телевизоров",
+                "pt": "adicionado suporte para definir o aplicativo e a chave de criptografia no administrador do adaptador\nadaptador alterado para usar node-panasonic-viera para suportar modelos de TV modernos",
+                "nl": "ondersteuning toegevoegd om applicatie en coderingssleutel in te stellen in adapter admin\ngewijzigde adapter om node-panasonic-viera te gebruiken om moderne tv-modellen te ondersteunen",
+                "fr": "Ajout de la prise en charge de la définition de l'application et de la clé de chiffrement dans l'administrateur de l'adaptateur\nadaptateur changé pour utiliser node-panasonic-viera pour prendre en charge les modèles de téléviseurs modernes",
+                "it": "aggiunto il supporto per impostare l'applicazione e la chiave di crittografia nell'amministratore dell'adattatore\nadattatore cambiato per utilizzare node-panasonic-viera per supportare i moderni modelli di TV",
+                "es": "soporte agregado para configurar la aplicación y la clave de cifrado en el administrador del adaptador\nAdaptador cambiado para usar node-panasonic-viera para admitir modelos de TV modernos",
+                "pl": "dodano obsługę ustawiania klucza aplikacji i klucza szyfrowania w administratorze adaptera\nzmieniono adapter, aby używać node-panasonic-viera do obsługi nowoczesnych modeli telewizorów",
+                "zh-cn": "添加了对在适配器管理中设置应用程序和加密密钥的支持\n更改了适配器以使用node-panasonic-viera来支持现代电视模型"
+            },
+            "1.0.2": {
+                "en": "some fixes",
+                "de": "einige Korrekturen",
+                "ru": "некоторые исправления",
+                "pt": "algumas correções",
+                "nl": "enkele fixes",
+                "fr": "quelques corrections",
+                "es": "algunas correcciones",
+                "it": "alcune correzioni",
+                "pl": "niektóre poprawki",
+                "zh-cn": "一些修复"
+            },
+            "1.0.1": {
+                "en": "compact mode compatibility added",
+                "de": "Kompaktmodus-Kompatibilität hinzugefügt",
+                "ru": "добавлена ​​совместимость с компактным режимом",
+                "pt": "compatibilidade de modo compacto adicionada",
+                "nl": "compatibiliteit met compacte modus toegevoegd",
+                "fr": "Compatibilité en mode compact ajoutée",
+                "it": "aggiunta la compatibilità in modalità compatta",
+                "es": "compatibilidad de modo compacto agregado",
+                "pl": "Dodano kompatybilność w trybie kompaktowym",
+                "zh-cn": "增加了紧凑模式兼容性"
+            },
+            "1.0.0": {
+                "en": "Support of admin3",
+                "de": "Unterstützung von admin3",
+                "ru": "Поддержка admin3",
+                "pt": "Suporte de admin3",
+                "nl": "Ondersteuning van admin3",
+                "fr": "Support de admin3",
+                "it": "Supporto di admin3",
+                "es": "Soporte de admin3",
+                "pl": "Wsparcie dla admin3",
+                "zh-cn": "支持管理员3"
+            },
+            "0.1.0": {
+                "en": "Test phase terminated. Adapter enabled.",
+                "de": "Testphase beendet. Adapter freigegeben.",
+                "ru": "Тестовая фаза завершена. Адаптер включен.",
+                "pt": "Fase de teste encerrada. Adaptador habilitado.",
+                "fr": "Phase de test terminée. Adaptateur activé.",
+                "nl": "Testfase beëindigd. Adapter ingeschakeld.",
+                "pl": "Faza testowa została zakończona. Adapter włączony.",
+                "it": "Fase di prova terminata Adattatore abilitato.",
+                "es": "Fase de prueba terminada. Adaptador habilitado.",
+                "zh-cn": "测试阶段终止。 启用适配器。"
+            },
+            "0.0.5": {
+                "en": "Open test phase",
+                "de": "Offene Testphase",
+                "ru": "Открытая тестовая фаза",
+                "pt": "Fase de teste aberta",
+                "fr": "Phase de test ouverte",
+                "nl": "Open testfase",
+                "it": "Fase di test aperta",
+                "es": "Fase de prueba abierta",
+                "pl": "Otwórz fazę testową",
+                "zh-cn": "开放测试阶段"
+            },
+            "0.0.1": {
+                "en": "initial version",
+                "de": "Initiale Version",
+                "ru": "Первоначальный адаптер",
+                "pt": "Versão inicial",
+                "fr": "Version initiale",
+                "nl": "Eerste release",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "początkowa wersja",
+                "zh-cn": "初始版本"
+            }
+        },
+        "title": "Panasonic Viera Smart-TV",
+        "titleLang": {
+            "en": "Panasonic Viera Smart-TV",
+            "de": "Panasonic Viera Smart-TV",
+            "ru": "Panasonic Viera Smart-TV",
+            "pt": "Panasonic Viera Smart-TV",
+            "fr": "Panasonic Viera Smart-TV",
+            "nl": "Panasonic Viera Smart-TV",
+            "it": "Panasonic Viera Smart-TV",
+            "es": "Panasonic Viera Smart-TV",
+            "pl": "Panasonic Viera Smart-TV",
+            "zh-cn": "松下Viera智能電視"
+        },
+        "desc": {
+            "en": "This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panasonic TX-50DX780 and TX-50EXW.",
+            "de": "Dies ist ein ioBroker-Adapter für Ihren Panasonic Viera Smart-TV. Getestet mit Panasonic TX-50DX780 und TX-50EXW.",
+            "ru": "Это адаптер ioBroker для вашего телевизора Panasonic Viera Smart. Протестировано с Panasonic TX-50DX780 и TX-50EXW.",
+            "pt": "Este é um adaptador ioBroker para a sua Smart TV Panasonic Viera. Testado com Panasonic TX-50DX780 e TX-50EXW.",
+            "fr": "Ceci est un adaptateur ioBroker pour votre Panasonic Viera Smart-TV. Testé avec Panasonic TX-50DX780 et TX-50EXW.",
+            "nl": "Dit is een ioBroker-adapter voor uw Panasonic Viera Smart-TV. Getest met Panasonic TX-50DX780 en TX-50EXW.",
+            "it": "Questo è un adattatore ioBroker per la tua Smart TV Panasonic Viera. Testato con Panasonic TX-50DX780 e TX-50EXW.",
+            "es": "Este es un adaptador ioBroker para su Panasonic Viera Smart-TV. Probado con Panasonic TX-50DX780 y TX-50EXW.",
+            "pl": "Jest to adapter ioBroker do Panasonic Viera Smart-TV. Przetestowane z Panasonic TX-50DX780 i TX-50EXW.",
+            "zh-cn": "这是适用于Panasonic Viera智能电视的ioBroker适配器。 使用Panasonic TX-50DX780和TX-50EXW进行测试。"
+        },
+        "compact": true,
+        "platform": "Javascript/Node.js",
+        "license": "MIT",
+        "authors": [
+            "ldittmar <iobroker@lmdsoft.de>"
+        ],
+        "mode": "daemon",
+        "icon": "panasonic-viera.png",
+        "materialize": true,
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.panasonic-viera/master/admin/panasonic-viera.png",
+        "keywords": [
+            "panasonic",
+            "viera",
+            "smart-tv"
+        ],
+        "readme": "https://github.com/iobroker-community-adapters/ioBroker.panasonic-viera/blob/master/README.md",
+        "loglevel": "info",
+        "type": "multimedia"
+    },
+    "native": {
+        "ip": "",
+        "app_id": "",
+        "encryption_key": ""
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.tv_on",
+            "type": "state",
+            "common": {
+                "role": "indicator.tv_on",
+                "name": "Indicator if TV is switched on",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic",
+            "type": "channel",
+            "common": {
+                "name": "Grundfunktionen"
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel",
+            "type": "channel",
+            "common": {
+                "name": "Sender"
+            },
+            "native": {}
+        },
+        {
+            "_id": "input",
+            "type": "channel",
+            "common": {
+                "name": "Quelle"
+            },
+            "native": {}
+        },
+        {
+            "_id": "player",
+            "type": "channel",
+            "common": {
+                "name": "Player"
+            },
+            "native": {}
+        },
+        {
+            "_id": "others",
+            "type": "channel",
+            "common": {
+                "name": "Others"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "If connected to TV",
+                "type": "boolean",
+                "read": true,
+                "write": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.mute",
+            "type": "state",
+            "common": {
+                "name": "Mute",
+                "type": "boolean",
+                "role": "switch",
+                "read": true,
+                "write": true,
+                "def": false
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.MUTE",
+            "type": "state",
+            "common": {
+                "name": "Mute On/Off",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.volume",
+            "type": "state",
+            "common": {
+                "name": "Volume",
+                "type": "number",
+                "role": "level",
+                "read": true,
+                "write": true,
+                "def": 0
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.POWER",
+            "type": "state",
+            "common": {
+                "name": "Switch TV On/Off",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel.CH_DOWN",
+            "type": "state",
+            "common": {
+                "name": "channel down",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel.CH_UP",
+            "type": "state",
+            "common": {
+                "name": "channel up",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.VOLUP",
+            "type": "state",
+            "common": {
+                "name": "volume up",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.VOLDOWN",
+            "type": "state",
+            "common": {
+                "name": "volume down",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.TV",
+            "type": "state",
+            "common": {
+                "name": "TV",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "input.CHG_INPUT",
+            "type": "state",
+            "common": {
+                "name": "AV",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "input.HDMI1",
+            "type": "state",
+            "common": {
+                "name": "HDMI1 input",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "input.HDMI2",
+            "type": "state",
+            "common": {
+                "name": "HDMI2 input",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "input.HDMI3",
+            "type": "state",
+            "common": {
+                "name": "HDMI3 input",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "input.HDMI4",
+            "type": "state",
+            "common": {
+                "name": "HDMI4 input",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.HOME",
+            "type": "state",
+            "common": {
+                "name": "Home screen",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.APPS",
+            "type": "state",
+            "common": {
+                "name": "Apps",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.ASPECT",
+            "type": "state",
+            "common": {
+                "name": "Aspect",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.GUIDE",
+            "type": "state",
+            "common": {
+                "name": "Guide",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.RED",
+            "type": "state",
+            "common": {
+                "name": "red",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.GREEN",
+            "type": "state",
+            "common": {
+                "name": "green",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.YELLOW",
+            "type": "state",
+            "common": {
+                "name": "yellow",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.BLUE",
+            "type": "state",
+            "common": {
+                "name": "blue",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.VTOOLS",
+            "type": "state",
+            "common": {
+                "name": "VIERA tools",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.CANCEL",
+            "type": "state",
+            "common": {
+                "name": "Cancel / Exit",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.SUBMENU",
+            "type": "state",
+            "common": {
+                "name": "Option",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.SURROUND",
+            "type": "state",
+            "common": {
+                "name": "Surround ON/OFF",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.RETURN",
+            "type": "state",
+            "common": {
+                "name": "Return",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.BACK",
+            "type": "state",
+            "common": {
+                "name": "Back",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.ENTER",
+            "type": "state",
+            "common": {
+                "name": "Control Center click / enter",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.RIGHT",
+            "type": "state",
+            "common": {
+                "name": "Control RIGHT",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.LEFT",
+            "type": "state",
+            "common": {
+                "name": "Control LEFT",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.UP",
+            "type": "state",
+            "common": {
+                "name": "Control UP",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "basic.DOWN",
+            "type": "state",
+            "common": {
+                "name": "Control DOWN",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.3D",
+            "type": "state",
+            "common": {
+                "name": "3D button",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.SD_CARD",
+            "type": "state",
+            "common": {
+                "name": "SD-card",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.DISP_MODE",
+            "type": "state",
+            "common": {
+                "name": "Display mode / Aspect ratio",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.MENU",
+            "type": "state",
+            "common": {
+                "name": "Menu",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.INTERNET",
+            "type": "state",
+            "common": {
+                "name": "VIERA connect",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.VIERA_LINK",
+            "type": "state",
+            "common": {
+                "name": "VIERA link",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.EPG",
+            "type": "state",
+            "common": {
+                "name": "Guide / EPG",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.TEXT",
+            "type": "state",
+            "common": {
+                "name": "Text / TTV",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.STTL",
+            "type": "state",
+            "common": {
+                "name": "STTL / Subtitles",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.INFO",
+            "type": "state",
+            "common": {
+                "name": "info",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.INDEX",
+            "type": "state",
+            "common": {
+                "name": "TTV index",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.HOLD",
+            "type": "state",
+            "common": {
+                "name": "TTV hold / image freeze",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.R_TUNE",
+            "type": "state",
+            "common": {
+                "name": "Last view",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.REW",
+            "type": "state",
+            "common": {
+                "name": "rewind",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.PLAY",
+            "type": "state",
+            "common": {
+                "name": "play",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.FF",
+            "type": "state",
+            "common": {
+                "name": "fast forward",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.SKIP_PREV",
+            "type": "state",
+            "common": {
+                "name": "skip previous",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.PAUSE",
+            "type": "state",
+            "common": {
+                "name": "pause",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.SKIP_NEXT",
+            "type": "state",
+            "common": {
+                "name": "skip next",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.STOP",
+            "type": "state",
+            "common": {
+                "name": "stop",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "player.REC",
+            "type": "state",
+            "common": {
+                "name": "record",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel.D1",
+            "type": "state",
+            "common": {
+                "name": "numeric 1",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel.D2",
+            "type": "state",
+            "common": {
+                "name": "numeric 2",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel.D3",
+            "type": "state",
+            "common": {
+                "name": "numeric 3",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel.D4",
+            "type": "state",
+            "common": {
+                "name": "numeric 4",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel.D5",
+            "type": "state",
+            "common": {
+                "name": "numeric 5",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel.D6",
+            "type": "state",
+            "common": {
+                "name": "numeric 6",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel.D7",
+            "type": "state",
+            "common": {
+                "name": "numeric 7",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel.D8",
+            "type": "state",
+            "common": {
+                "name": "numeric 8",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel.D9",
+            "type": "state",
+            "common": {
+                "name": "numeric 9",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "channel.D0",
+            "type": "state",
+            "common": {
+                "name": "numeric 0",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.P_NR",
+            "type": "state",
+            "common": {
+                "name": "P-NR (Noise reduction)",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.OFFTIMER",
+            "type": "state",
+            "common": {
+                "name": "off timer",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.CHG_NETWORK",
+            "type": "state",
+            "common": {
+                "name": "CHG_NETWORK",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.CC",
+            "type": "state",
+            "common": {
+                "name": "CC",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.CHAT",
+            "type": "state",
+            "common": {
+                "name": "CHAT",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.SAP",
+            "type": "state",
+            "common": {
+                "name": "SAP",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.RECLIST",
+            "type": "state",
+            "common": {
+                "name": "RECLIST",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.DRIVE",
+            "type": "state",
+            "common": {
+                "name": "DRIVE",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.DATA",
+            "type": "state",
+            "common": {
+                "name": "DATA",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.BD",
+            "type": "state",
+            "common": {
+                "name": "BD",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.FAVORITE",
+            "type": "state",
+            "common": {
+                "name": "FAVORITE",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.DIGA_CTL",
+            "type": "state",
+            "common": {
+                "name": "DIGA_CTL",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.VOD",
+            "type": "state",
+            "common": {
+                "name": "VOD",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.ECO",
+            "type": "state",
+            "common": {
+                "name": "ECO",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.GAME",
+            "type": "state",
+            "common": {
+                "name": "GAME",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.EZ_SYNC",
+            "type": "state",
+            "common": {
+                "name": "EZ_SYNC",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.PICTAI",
+            "type": "state",
+            "common": {
+                "name": "PICTAI",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.MPX",
+            "type": "state",
+            "common": {
+                "name": "MPX",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.SPLIT",
+            "type": "state",
+            "common": {
+                "name": "SPLIT",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.SWAP",
+            "type": "state",
+            "common": {
+                "name": "SWAP",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.R_SCREEN",
+            "type": "state",
+            "common": {
+                "name": "R_SCREEN",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.30S_SKIP",
+            "type": "state",
+            "common": {
+                "name": "30S_SKIP",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.PROG",
+            "type": "state",
+            "common": {
+                "name": "PROG",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.TV_MUTE_ON",
+            "type": "state",
+            "common": {
+                "name": "TV_MUTE_ON",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.TV_MUTE_OFF",
+            "type": "state",
+            "common": {
+                "name": "TV_MUTE_OFF",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.NET_BS",
+            "type": "state",
+            "common": {
+                "name": "Net BS",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.NET_CS",
+            "type": "state",
+            "common": {
+                "name": "Net CS",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.NET_TD",
+            "type": "state",
+            "common": {
+                "name": "Net TD",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.DMS_CH_UP",
+            "type": "state",
+            "common": {
+                "name": "DMS_CH_UP",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        },
+        {
+            "_id": "others.DMS_CH_DOWN",
+            "type": "state",
+            "common": {
+                "name": "DMS_CH_DOWN",
+                "role": "button",
+                "type": "boolean",
+                "read": false,
+                "write": true
+            },
+            "native": {}
+        }
+    ]
 }
