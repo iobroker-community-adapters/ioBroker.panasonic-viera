@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "panasonic-viera",
-    "version": "2.0.0",
+    "version": "1.0.2",
     "news": {
       "1.0.2": {
         "en": "some fixes",

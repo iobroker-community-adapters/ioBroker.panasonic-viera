@@ -7,7 +7,7 @@
 
 ## A Panasonic Viera Smart-TV adapter for ioBroker
 
-This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panasonic TX-50DX780 and TX-50EXW.
+This is an ioBroker adapter for your Panasonic Viera Smart-TV.
 
 ## Changelog
 <!--
@@ -15,6 +15,7 @@ This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panas
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+* (jens-maus) added support to set Application and Encryption Key in adapter admin
 * (jens-maus) changed adapter to use node-panasonic-viera to support modern TV models
 
 ### 1.0.2
