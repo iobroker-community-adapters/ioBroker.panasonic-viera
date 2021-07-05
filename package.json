@@ -35,7 +35,7 @@
     "hosted-git-info": ">=2.8.9",
     "kind-of": ">=6.0.3",
     "minimist": ">=0.2.1",
-    "mocha": "^8.2.1",
+    "mocha": "^9.0.2",
     "set-value": ">=2.0.1",
     "xo": "^0.39.1",
     "yargs-parser": ">=5.0.0-security.0"
