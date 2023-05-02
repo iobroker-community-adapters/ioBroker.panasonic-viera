@@ -1,13 +1,13 @@
 // Don't silently swallow unhandled rejections
-process.on('unhandledRejection', error => {
-  throw error;
+process.on('unhandledRejection', (e) => {
+    throw e;
 });
 
-// Enable the should interface with sinon
+// enable the should interface with sinon
 // and load chai-as-promised and sinon-chai by default
 const sinonChai = require('sinon-chai');
 const chaiAsPromised = require('chai-as-promised');
-const {should, use} = require('chai');
+const { should, use } = require('chai');
 
 should();
 use(sinonChai);
