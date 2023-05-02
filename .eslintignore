@@ -2,3 +2,5 @@
 admin/words.js
 gulpfile.js
 test/**
+lib/**
+main.js
