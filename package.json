@@ -20,6 +20,9 @@
     "type": "git",
     "url": "https://github.com/iobroker-community-adapters/ioBroker.panasonic-viera"
   },
+  "engines": {
+    "node": ">=16"
+  },
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
     "node-panasonic-viera": "^0.4.1",
