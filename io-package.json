@@ -88,7 +88,6 @@
                 "zh-cn": "初始版本"
             }
         },
-        "title": "Panasonic Viera Smart-TV",
         "titleLang": {
             "en": "Panasonic Viera Smart-TV",
             "de": "Panasonic Viera Smart-TV",
@@ -115,7 +114,10 @@
         },
         "compact": true,
         "platform": "Javascript/Node.js",
-        "license": "MIT",
+        "licenseInformation": {
+            "license": "MIT",
+            "type": "free"
+        },
         "authors": [
             "ldittmar <iobroker@lmdsoft.de>"
         ],
@@ -131,7 +133,18 @@
         ],
         "readme": "https://github.com/iobroker-community-adapters/ioBroker.panasonic-viera/blob/master/README.md",
         "loglevel": "info",
-        "type": "multimedia"
+        "tier": 2,
+        "type": "multimedia",
+        "dependencies": [
+            {
+              "js-controller": ">=5.0.19"
+            }
+        ],
+        "globalDependencies": [
+            {
+              "admin": ">=6.13.16"
+            }
+        ]
     },
     "native": {
         "ip": "",
