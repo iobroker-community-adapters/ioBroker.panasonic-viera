@@ -26,7 +26,8 @@
         "it": "aggiunto il supporto per impostare l'applicazione e la chiave di crittografia nell'amministratore dell'adattatore\nadattatore cambiato per utilizzare node-panasonic-viera per supportare i moderni modelli di TV",
         "es": "soporte agregado para configurar la aplicación y la clave de cifrado en el administrador del adaptador\nAdaptador cambiado para usar node-panasonic-viera para admitir modelos de TV modernos",
         "pl": "dodano obsługę ustawiania klucza aplikacji i klucza szyfrowania w administratorze adaptera\nzmieniono adapter, aby używać node-panasonic-viera do obsługi nowoczesnych modeli telewizorów",
-        "zh-cn": "添加了对在适配器管理中设置应用程序和加密密钥的支持\n更改了适配器以使用node-panasonic-viera来支持现代电视模型"
+        "zh-cn": "添加了对在适配器管理中设置应用程序和加密密钥的支持\n更改了适配器以使用node-panasonic-viera来支持现代电视模型",
+        "uk": "додана підтримка встановлення програми та ключа шифрування в адміністраторі адаптера\nзмінений адаптер на використання node-panasonic-viera для підтримки сучасних моделей телевізорів"
       },
       "1.0.2": {
         "en": "some fixes",
@@ -38,7 +39,8 @@
         "es": "algunas correcciones",
         "it": "alcune correzioni",
         "pl": "niektóre poprawki",
-        "zh-cn": "一些修复"
+        "zh-cn": "一些修复",
+        "uk": "деякі виправлення"
       },
       "1.0.1": {
         "en": "compact mode compatibility added",
@@ -50,7 +52,8 @@
         "it": "aggiunta la compatibilità in modalità compatta",
         "es": "compatibilidad de modo compacto agregado",
         "pl": "Dodano kompatybilność w trybie kompaktowym",
-        "zh-cn": "增加了紧凑模式兼容性"
+        "zh-cn": "增加了紧凑模式兼容性",
+        "uk": "додано сумісність із компактним режимом"
       },
       "1.0.0": {
         "en": "Support of admin3",
@@ -62,7 +65,8 @@
         "it": "Supporto di admin3",
         "es": "Soporte de admin3",
         "pl": "Wsparcie dla admin3",
-        "zh-cn": "支持管理员3"
+        "zh-cn": "支持管理员3",
+        "uk": "Підтримка admin3"
       },
       "0.1.0": {
         "en": "Test phase terminated. Adapter enabled.",
@@ -74,7 +78,8 @@
         "pl": "Faza testowa została zakończona. Adapter włączony.",
         "it": "Fase di prova terminata Adattatore abilitato.",
         "es": "Fase de prueba terminada. Adaptador habilitado.",
-        "zh-cn": "测试阶段终止。 启用适配器。"
+        "zh-cn": "测试阶段终止。 启用适配器。",
+        "uk": "Тестовий етап завершено. Адаптер включений."
       },
       "0.0.5": {
         "en": "Open test phase",
@@ -86,7 +91,8 @@
         "it": "Fase di test aperta",
         "es": "Fase de prueba abierta",
         "pl": "Otwórz fazę testową",
-        "zh-cn": "开放测试阶段"
+        "zh-cn": "开放测试阶段",
+        "uk": "Відкрита фаза тестування"
       }
     },
     "titleLang": {
@@ -99,7 +105,8 @@
       "it": "Panasonic Viera Smart-TV",
       "es": "Panasonic Viera Smart-TV",
       "pl": "Panasonic Viera Smart-TV",
-      "zh-cn": "松下Viera智能電視"
+      "zh-cn": "松下Viera智能電視",
+      "uk": "Panasonic Viera Smart-TV"
     },
     "desc": {
       "en": "This is an ioBroker adapter for your Panasonic Viera Smart-TV. Tested with Panasonic TX-50DX780 and TX-50EXW.",
@@ -111,7 +118,8 @@
       "it": "Questo è un adattatore ioBroker per la tua Smart TV Panasonic Viera. Testato con Panasonic TX-50DX780 e TX-50EXW.",
       "es": "Este es un adaptador ioBroker para su Panasonic Viera Smart-TV. Probado con Panasonic TX-50DX780 y TX-50EXW.",
       "pl": "Jest to adapter ioBroker do Panasonic Viera Smart-TV. Przetestowane z Panasonic TX-50DX780 i TX-50EXW.",
-      "zh-cn": "这是适用于Panasonic Viera智能电视的ioBroker适配器。 使用Panasonic TX-50DX780和TX-50EXW进行测试。"
+      "zh-cn": "这是适用于Panasonic Viera智能电视的ioBroker适配器。 使用Panasonic TX-50DX780和TX-50EXW进行测试。",
+      "uk": "Це адаптер ioBroker для вашого Panasonic Viera Smart-TV. Протестовано на Panasonic TX-50DX780 і ​​TX-50EXW."
     },
     "compact": true,
     "platform": "Javascript/Node.js",
