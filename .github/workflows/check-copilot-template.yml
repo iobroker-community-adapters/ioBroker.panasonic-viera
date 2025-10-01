@@ -76,7 +76,7 @@ jobs:
       - name: Check for existing issues
         if: steps.version-check.outputs.status == 'update_available' || steps.version-check.outputs.status == 'not_initialized'
         id: check-issues
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const { data: issues } = await github.rest.issues.listForRepo({
@@ -94,7 +94,7 @@ jobs:
             
       - name: Create or update issue for template update
         if: (steps.version-check.outputs.status == 'update_available' || steps.version-check.outputs.status == 'not_initialized') && steps.check-issues.outputs.has_open_issue == 'false'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const status = '${{ steps.version-check.outputs.status }}';
