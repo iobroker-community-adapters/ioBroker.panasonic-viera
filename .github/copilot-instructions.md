@@ -1,6 +1,6 @@
 # ioBroker Adapter Development with GitHub Copilot
 
-**Version:** 0.4.0
+**Version:** 0.4.2
 **Template Source:** https://github.com/DrozmotiX/ioBroker-Copilot-Instructions
 
 This file contains instructions and best practices for GitHub Copilot when working on ioBroker adapter development.
@@ -137,22 +137,33 @@ tests.integration(path.join(__dirname, '..'), {
 
                         console.log('🔍 Step 3: Checking states after adapter run...');
                         
-                        // Verify essential states were created
-                        const essential_states = [
-                            'your-adapter.0.info.connection',
-                            'your-adapter.0.your-main-state'
-                        ];
+                        // Get all states created by adapter
+                        const stateIds = await harness.dbConnection.getStateIDs('your-adapter.0.*');
+                        
+                        console.log(`📊 Found ${stateIds.length} states`);
 
-                        for (const state_id of essential_states) {
-                            const state = await harness.states.getStateAsync(state_id);
-                            if (!state) {
-                                return reject(new Error(`Essential state not found: ${state_id}`));
-                            }
-                            console.log(`✅ Found state: ${state_id} = ${state.val}`);
+                        if (stateIds.length > 0) {
+                            console.log('✅ Adapter successfully created states');
+                            
+                            // Show sample of created states
+                            const allStates = await new Promise((res, rej) => {
+                                harness.states.getStates(stateIds, (err, states) => {
+                                    if (err) return rej(err);
+                                    res(states);
+                                });
+                            });
+                            
+                            console.log('Sample of created states:', 
+                                Object.keys(allStates).slice(0, 5).map(key => ({
+                                    id: key,
+                                    value: allStates[key].val
+                                }))
+                            );
+                            
+                            resolve(true);
+                        } else {
+                            reject(new Error('No states were created by the adapter'));
                         }
-
-                        console.log('✅ All integration tests passed!');
-                        resolve(true);
 
                     } catch (error) {
                         console.error('❌ Integration test failed:', error);
@@ -189,17 +200,212 @@ describe('Panasonic Viera Adapter Tests', () => {
 });
 ```
 
-## Error Handling Patterns
+## README Updates
 
-### General Adapter Error Handling
+### Required Sections
+When updating README.md files, ensure these sections are present and well-documented:
+
+1. **Installation** - Clear npm/ioBroker admin installation steps
+2. **Configuration** - Detailed configuration options with examples
+3. **Usage** - Practical examples and use cases
+4. **Changelog** - Version history and changes (use "## **WORK IN PROGRESS**" section for ongoing changes following AlCalzone release-script standard)
+5. **License** - License information (typically MIT for ioBroker adapters)
+6. **Support** - Links to issues, discussions, and community support
+
+### Documentation Standards
+- Use clear, concise language
+- Include code examples for configuration
+- Add screenshots for admin interface when applicable
+- Maintain multilingual support (at minimum English and German)
+- When creating PRs, add entries to README under "## **WORK IN PROGRESS**" section following ioBroker release script standard
+- Always reference related issues in commits and PR descriptions (e.g., "solves #xx" or "fixes #xx")
+
+### Mandatory README Updates for PRs
+For **every PR or new feature**, always add a user-friendly entry to README.md:
+
+- Add entries under `## **WORK IN PROGRESS**` section before committing
+- Use format: `* (author) **TYPE**: Description of user-visible change`
+- Types: **NEW** (features), **FIXED** (bugs), **ENHANCED** (improvements), **TESTING** (test additions), **CI/CD** (automation)
+- Focus on user impact, not technical implementation details
+- Example: `* (DutchmanNL) **FIXED**: Adapter now properly validates login credentials instead of always showing "credentials missing"`
+
+### Documentation Workflow Standards
+- **Mandatory README updates**: Establish requirement to update README.md for every PR/feature
+- **Standardized documentation**: Create consistent format and categories for changelog entries
+- **Enhanced development workflow**: Integrate documentation requirements into standard development process
+
+### Changelog Management with AlCalzone Release-Script
+Follow the [AlCalzone release-script](https://github.com/AlCalzone/release-script) standard for changelog management:
+
+#### Format Requirements
+- Always use `## **WORK IN PROGRESS**` as the placeholder for new changes
+- Add all PR/commit changes under this section until ready for release
+- Never modify version numbers manually - only when merging to main branch
+- Maintain this format in README.md or CHANGELOG.md:
+
+```markdown
+# Changelog
+
+<!--
+  Placeholder for the next version (at the beginning of the line):
+  ## **WORK IN PROGRESS**
+-->
+
+## **WORK IN PROGRESS**
+
+-   Did some changes
+-   Did some more changes
+
+## v0.1.0 (2023-01-01)
+Initial release
+```
+
+#### Workflow Process
+- **During Development**: All changes go under `## **WORK IN PROGRESS**`
+- **For Every PR**: Add user-facing changes to the WORK IN PROGRESS section
+- **Before Merge**: Version number and date are only added when merging to main
+- **Release Process**: The release-script automatically converts the placeholder to the actual version
+
+#### Change Entry Format
+Use this consistent format for changelog entries:
+- `- (author) **TYPE**: User-friendly description of the change`
+- Types: **NEW** (features), **FIXED** (bugs), **ENHANCED** (improvements)
+- Focus on user impact, not technical implementation details
+- Reference related issues: "fixes #XX" or "solves #XX"
+
+#### Example Entry
+```markdown
+## **WORK IN PROGRESS**
+
+- (DutchmanNL) **FIXED**: Adapter now properly validates login credentials instead of always showing "credentials missing" (fixes #25)
+- (DutchmanNL) **NEW**: Added support for device discovery to simplify initial setup
+```
+
+## Dependency Updates
+
+### Package Management
+- Always use `npm` for dependency management in ioBroker adapters
+- When working on new features in a repository with an existing package-lock.json file, use `npm ci` to install dependencies. Use `npm install` only when adding or updating dependencies.
+- Keep dependencies minimal and focused
+- Only update dependencies to latest stable versions when necessary or in separate Pull Requests. Avoid updating dependencies when adding features that don't require these updates.
+- When you modify `package.json`:
+  1. Run `npm install` to update and sync `package-lock.json`.
+  2. If `package-lock.json` was updated, commit both `package.json` and `package-lock.json`.
+
+### Dependency Best Practices
+- Prefer built-in Node.js modules when possible
+- Use `@iobroker/adapter-core` for adapter base functionality
+- Avoid deprecated packages
+- Document any specific version requirements
+
+## JSON-Config Admin Instructions
+
+### Configuration Schema
+When creating admin configuration interfaces:
+
+- Use JSON-Config format for modern ioBroker admin interfaces
+- Provide clear labels and help text for all configuration options
+- Include input validation and error messages
+- Group related settings logically
+- Example structure:
+  ```json
+  {
+    "type": "panel",
+    "items": {
+      "host": {
+        "type": "text",
+        "label": "Host address",
+        "help": "IP address or hostname of the device"
+      }
+    }
+  }
+  ```
+
+### Admin Interface Guidelines
+- Use consistent naming conventions
+- Provide sensible default values
+- Include validation for required fields
+- Add tooltips for complex configuration options
+- Ensure translations are available for all supported languages (minimum English and German)
+- Write end-user friendly labels and descriptions, avoiding technical jargon where possible
+
+### TV-Specific Configuration Example
+For ioBroker adapters, implement JSON-Config for modern admin interface:
+
+```json
+{
+  "type": "panel",
+  "items": {
+    "ip": {
+      "type": "ip",
+      "label": "TV IP Address",
+      "sm": 12,
+      "md": 6,
+      "lg": 4
+    },
+    "appId": {
+      "type": "text",
+      "label": "Application ID",
+      "help": "Get from TV's network settings",
+      "sm": 12,
+      "md": 6,
+      "lg": 4
+    },
+    "encryptionKey": {
+      "type": "password",
+      "label": "Encryption Key",
+      "help": "Pairing key from TV",
+      "sm": 12,
+      "md": 6,
+      "lg": 4
+    }
+  }
+}
+```
+
+## Best Practices for Dependencies
+
+### HTTP Client Libraries
+- **Preferred:** Use native `fetch` API (Node.js 20+ required for adapters; built-in since Node.js 18)
+- **Avoid:** `axios` unless specific features are required (reduces bundle size)
+
+### Example with fetch:
 ```javascript
 try {
-  // Risky operation
-  await someAsyncOperation();
+  const response = await fetch('https://api.example.com/data');
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+  }
+  const data = await response.json();
 } catch (error) {
-  this.log.error(`Operation failed: ${error.message}`);
+  this.log.error(`API request failed: ${error.message}`);
+}
+```
+
+### Other Dependency Recommendations
+- **Logging:** Use adapter built-in logging (`this.log.*`)
+- **Scheduling:** Use adapter built-in timers and intervals
+- **File operations:** Use Node.js `fs/promises` for async file operations
+- **Configuration:** Use adapter config system rather than external config libraries
+
+## Error Handling
+
+### Adapter Error Patterns
+- Always catch and log errors appropriately
+- Use adapter log levels (error, warn, info, debug)
+- Provide meaningful, user-friendly error messages that help users understand what went wrong
+- Handle network failures gracefully
+- Implement retry mechanisms where appropriate
+- Always clean up timers, intervals, and other resources in the `unload()` method
+
+### Example Error Handling:
+```javascript
+try {
+  await this.connectToDevice();
+} catch (error) {
+  this.log.error(`Failed to connect to device: ${error.message}`);
   this.setState('info.connection', false, true);
-  // Don't throw - handle gracefully
+  // Implement retry logic if needed
 }
 ```
 
@@ -227,7 +433,33 @@ async sendCommand(command) {
 }
 ```
 
-### State Management
+### Timer and Resource Cleanup:
+```javascript
+// In your adapter class
+private connectionTimer?: NodeJS.Timeout;
+
+async onReady() {
+  this.connectionTimer = setInterval(() => {
+    this.checkConnection();
+  }, 30000);
+}
+
+onUnload(callback) {
+  try {
+    // Clean up timers and intervals
+    if (this.connectionTimer) {
+      clearInterval(this.connectionTimer);
+      this.connectionTimer = undefined;
+    }
+    // Close connections, clean up resources
+    callback();
+  } catch (e) {
+    callback();
+  }
+}
+```
+
+### State Management for TV Adapters
 
 #### State Creation Patterns
 ```javascript
@@ -280,9 +512,26 @@ onStateChange(id, state) {
 }
 ```
 
+### Configuration Validation for TV Adapters
+```javascript
+// In main adapter class
+validateConfig() {
+  if (!this.config.ip) {
+    this.log.error('IP address is required');
+    return false;
+  }
+  
+  if (!this.config.appId || !this.config.encryptionKey) {
+    this.log.warn('Application ID and Encryption Key recommended for modern TVs');
+  }
+  
+  return true;
+}
+```
+
 ## Adapter Lifecycle Management
 
-### Initialization Pattern
+### Initialization Pattern for TV Adapters
 ```javascript
 async onReady() {
   // Validate configuration
@@ -312,7 +561,7 @@ startMonitoring() {
 }
 ```
 
-### Proper Cleanup
+### Proper Cleanup for TV Adapters
 ```javascript
 onUnload(callback) {
   try {
@@ -460,59 +709,6 @@ tests.integration(path.join(__dirname, ".."), {
         });
     }
 });
-```
-
-## JSON-Config Management
-
-### Modern Configuration UI
-For ioBroker adapters, implement JSON-Config for modern admin interface:
-
-```json
-{
-  "type": "panel",
-  "items": {
-    "ip": {
-      "type": "ip",
-      "label": "TV IP Address",
-      "sm": 12,
-      "md": 6,
-      "lg": 4
-    },
-    "appId": {
-      "type": "text",
-      "label": "Application ID",
-      "help": "Get from TV's network settings",
-      "sm": 12,
-      "md": 6,
-      "lg": 4
-    },
-    "encryptionKey": {
-      "type": "password",
-      "label": "Encryption Key",
-      "help": "Pairing key from TV",
-      "sm": 12,
-      "md": 6,
-      "lg": 4
-    }
-  }
-}
-```
-
-### Configuration Validation
-```javascript
-// In main adapter class
-validateConfig() {
-  if (!this.config.ip) {
-    this.log.error('IP address is required');
-    return false;
-  }
-  
-  if (!this.config.appId || !this.config.encryptionKey) {
-    this.log.warn('Application ID and Encryption Key recommended for modern TVs');
-  }
-  
-  return true;
-}
 ```
 
 ## Development Best Practices
