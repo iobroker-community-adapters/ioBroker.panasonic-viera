@@ -10,6 +10,7 @@
   "homepage": "https://github.com/iobroker-community-adapters/ioBroker.panasonic-viera",
   "license": "MIT",
   "keywords": [
+    "ioBroker",
     "panasonic",
     "viera",
     "smart-tv"
