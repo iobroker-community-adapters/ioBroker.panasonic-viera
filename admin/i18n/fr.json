@@ -1,0 +1,9 @@
+{
+    "Application ID": "ID d'application",
+    "Application ID from the TV network settings (required for encryption)": "ID d'application depuis les paramètres réseau du téléviseur (requise pour le chiffrement)",
+    "Encryption Key": "Clé de chiffrement",
+    "Encryption key from the TV network settings": "Clé de chiffrement depuis les paramètres réseau du téléviseur",
+    "IP": "IP",
+    "IP address or hostname of the TV": "Adresse IP ou nom d’hôte du téléviseur",
+    "on save adapter restarts with new config immediately": "Lors de la sauvegarde, l’adaptateur redémarre immédiatement avec la nouvelle configuration."
+}

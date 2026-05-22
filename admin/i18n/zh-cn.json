@@ -1,0 +1,9 @@
+{
+    "Application ID": "应用程序 ID",
+    "Application ID from the TV network settings (required for encryption)": "来自电视网络设置的应用程序 ID（加密必需）",
+    "Encryption Key": "加密密钥",
+    "Encryption key from the TV network settings": "来自电视网络设置的加密密钥",
+    "IP": "IP",
+    "IP address or hostname of the TV": "电视的 IP 地址或主机名",
+    "on save adapter restarts with new config immediately": "保存适配器立即重新启动新配置"
+}

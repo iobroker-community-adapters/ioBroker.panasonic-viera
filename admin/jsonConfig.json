@@ -1,0 +1,45 @@
+{
+    "type": "panel",
+    "items": {
+        "ip": {
+            "type": "ip",
+            "label": "IP",
+            "help": "IP address or hostname of the TV",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "app_id": {
+            "type": "text",
+            "label": "Application ID",
+            "help": "Application ID from the TV network settings (required for encryption)",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "encryption_key": {
+            "type": "password",
+            "label": "Encryption Key",
+            "help": "Encryption key from the TV network settings",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "saveInfo": {
+            "type": "staticText",
+            "text": "on save adapter restarts with new config immediately",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        }
+    }
+}

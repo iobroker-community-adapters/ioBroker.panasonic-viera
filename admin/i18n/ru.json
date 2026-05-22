@@ -1,0 +1,9 @@
+{
+    "Application ID": "Идентификатор приложения",
+    "Application ID from the TV network settings (required for encryption)": "Идентификатор приложения из сетевых настроек телевизора (требуется для шифрования)",
+    "Encryption Key": "Ключ шифрования",
+    "Encryption key from the TV network settings": "Ключ шифрования из сетевых настроек телевизора",
+    "IP": "IP",
+    "IP address or hostname of the TV": "IP-адрес или имя хоста телевизора",
+    "on save adapter restarts with new config immediately": "При сохранении адаптер перезапускается с новым конфигом немедленно."
+}
