@@ -1,9 +1,9 @@
 {
-    "Application ID": "Application ID",
-    "Application ID from the TV network settings (required for encryption)": "Application ID from the TV network settings (required for encryption)",
-    "Encryption Key": "Encryption Key",
-    "Encryption key from the TV network settings": "Encryption key from the TV network settings",
+    "Application ID": "ID de la aplicación",
+    "Application ID from the TV network settings (required for encryption)": "ID de la aplicación de la configuración de red del televisor (obligatoria para el cifrado)",
+    "Encryption Key": "Clave de cifrado",
+    "Encryption key from the TV network settings": "Clave de cifrado de la configuración de red del televisor",
     "IP": "IP",
-    "IP address or hostname of the TV": "IP address or hostname of the TV",
+    "IP address or hostname of the TV": "Dirección IP o nombre de host del televisor",
     "on save adapter restarts with new config immediately": "En guardar adaptador se reinicia con nueva configuración de inmediato."
 }

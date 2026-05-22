@@ -1,9 +1,9 @@
 {
-    "Application ID": "Application ID",
-    "Application ID from the TV network settings (required for encryption)": "Application ID from the TV network settings (required for encryption)",
-    "Encryption Key": "Encryption Key",
-    "Encryption key from the TV network settings": "Encryption key from the TV network settings",
+    "Application ID": "Applicatie-ID",
+    "Application ID from the TV network settings (required for encryption)": "Applicatie-ID uit de netwerkinstellingen van de tv (vereist voor versleuteling)",
+    "Encryption Key": "Versleutelingssleutel",
+    "Encryption key from the TV network settings": "Versleutelingssleutel uit de netwerkinstellingen van de tv",
     "IP": "IP",
-    "IP address or hostname of the TV": "IP address or hostname of the TV",
+    "IP address or hostname of the TV": "IP-adres of hostnaam van de tv",
     "on save adapter restarts with new config immediately": "On save-adapter wordt onmiddellijk opnieuw opgestart met nieuwe config."
 }
