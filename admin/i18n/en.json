@@ -1,4 +1,9 @@
 {
-    "Settings": "Settings",
+    "Application ID": "Application ID",
+    "Application ID from the TV network settings (required for encryption)": "Application ID from the TV network settings (required for encryption)",
+    "Encryption Key": "Encryption Key",
+    "Encryption key from the TV network settings": "Encryption key from the TV network settings",
+    "IP": "IP",
+    "IP address or hostname of the TV": "IP address or hostname of the TV",
     "on save adapter restarts with new config immediately": "on save adapter restarts with new config immediately"
 }
