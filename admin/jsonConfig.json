@@ -1,0 +1,35 @@
+{
+    "type": "panel",
+    "items": {
+        "ip": {
+            "type": "text",
+            "label": "IP",
+            "help": "192.168.x.x",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "app_id": {
+            "type": "text",
+            "label": "Application ID",
+            "help": "Application ID (for encryption)",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "encryption_key": {
+            "type": "text",
+            "label": "Encryption Key",
+            "help": "Encryption Key",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        }
+    }
+}

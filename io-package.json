@@ -134,6 +134,9 @@
     "mode": "daemon",
     "icon": "panasonic-viera.png",
     "materialize": true,
+    "adminUI": {
+      "config": "json"
+    },
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.panasonic-viera/master/admin/panasonic-viera.png",
     "keywords": [

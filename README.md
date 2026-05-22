@@ -21,6 +21,7 @@ This is an ioBroker adapter for your Panasonic Viera Smart-TV.
 - (copilot) Adapter requires js-controller >= 6.0.11 now
 - (copilot) Adapter requires admin >= 7.6.17 now
 - (copilot) **CI/CD**: Updated GitHub Copilot instructions template to v0.5.7
+- (copilot) **ENHANCED**: Migrated adapter admin configuration to jsonConfig and updated admin translations to short-form files.
 
 ### 2.1.0 (2024-04-25)
 * (mcm1957) Adapter requires node.js >= 18 and js-controller >= 5 now
