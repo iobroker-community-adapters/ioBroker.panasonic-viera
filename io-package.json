@@ -133,7 +133,6 @@
     ],
     "mode": "daemon",
     "icon": "panasonic-viera.png",
-    "materialize": true,
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.panasonic-viera/master/admin/panasonic-viera.png",
     "keywords": [
@@ -154,7 +153,10 @@
       {
         "admin": ">=7.7.22"
       }
-    ]
+    ],
+    "adminUI": {
+      "config": "materialize"
+    }
   },
   "native": {
     "ip": "",
