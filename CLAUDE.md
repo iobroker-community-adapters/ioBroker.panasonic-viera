@@ -46,12 +46,16 @@ The integration test caches the test installation in `%TEMP%/test-iobroker.panas
   `basic.volume`, `basic.mute`. Texts in `src-admin/src/i18n` (`custom_panasonicviera_*`).
 - `src/lib/tv.ts` — channel `tv` for the device type `tv` of the type-detector (>= 6.2.0), parallel to the old
   objects: `power` (`switch.power`), `key` (`media.key`, `TV_KEYS` → NRC), `volume` (`level.volume`), `muted`
-  (`media.mute`), `volumeUp` / `volumeDown`, `input` (`media.input`, `TV_INPUTS` → NRC), `unreach`. Keys and
-  labels of `common.states` must stay a subset of `TV_KEYS` / `TV_INPUTS`. No `app`: `sendAppCommand()` of the
-  library sends malformed XML. `onStateChange` handles `.tv.` before the button states (their names are sent as
-  keys). `updateVolume` / `updateMute` / `updatePower` keep `basic.*`, `info.tv_on` and `tv.*` in sync.
+  (`media.mute`), `volumeUp` / `volumeDown`, `input` (`media.input`, `TV_INPUTS` → NRC), `app` (`media.app`,
+  `TV_APPS` → product ID), `unreach`. Keys and labels of `common.states` must stay a subset of `TV_KEYS` /
+  `TV_INPUTS` / `TV_APPS`. `app` starts with `DEFAULT_TV_APPS` (product IDs of the Python library) and is replaced
+  once per start by the apps the TV reports (`X_GetAppList`, matched by name in `matchTvApps`).
+  `createTvObjects()` is awaited before the polling: states with `def` created later overwrite polled values.
+  `onStateChange` handles `.tv.` before the button states (their names are sent as keys). `updateVolume` / `updateMute` / `updatePower` keep `basic.*`, `info.tv_on` and `tv.*` in sync.
   The integration test checks the detection and runs against a simulated TV on 127.0.0.1:55000.
 - `src/lib/viera.ts` — `getMute()` replacement: the one of the library never settles on errors (unhandled rejection).
+  `launchApp()` replaces `sendAppCommand()` of the library (malformed XML `<X_AppType>vc_app<X_AppType>`),
+  `getAppList()` reads `X_GetAppList`. Both through `viera.private._soap_request`, so encrypted TVs work too.
 - `src/lib/pairing.ts` — PIN pairing of encrypted TVs (the library can only show the PIN): port of
   `request_pin_code()` / `authorize_pin_code()` of the Python library panasonic-viera (key derivation from the
   challenge, zero-padded AES-128-CBC + HMAC-SHA-256). sendTo `requestPin` `{ ip }` keeps the challenge in memory,

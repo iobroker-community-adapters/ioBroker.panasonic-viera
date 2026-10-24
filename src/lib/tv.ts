@@ -5,7 +5,7 @@ import { VieraKeys } from 'node-panasonic-viera';
  * to the existing objects. Keys of `common.states` of `key` and `input` come from `TV_KEYS` / `TV_INPUTS` of the
  * type-detector - only these keys are allowed, the labels are the ones of the type-detector.
  *
- * There is no `app` (`media.app`): `sendAppCommand()` of node-panasonic-viera 0.4.1 sends malformed XML.
+ * `app` (`media.app`) starts apps by product ID (src/lib/viera.ts `launchApp`); its keys are the ones of `TV_APPS`.
  */
 
 /** `TV_KEYS` of the type-detector → NRC code */
@@ -52,6 +52,52 @@ export const TV_INPUT_CODES: Record<string, { label: string; code: string }> = {
     HDMI3: { label: 'HDMI 3', code: VieraKeys.hdmi3 },
     HDMI4: { label: 'HDMI 4', code: VieraKeys.hdmi4 },
 };
+
+/** Product IDs of apps of `TV_APPS` known from the Python library panasonic-viera (apps.py), used until the TV sent its list */
+export const DEFAULT_TV_APPS: Record<string, { label: string; productId: string }> = {
+    YOUTUBE: { label: 'YouTube', productId: '0070000200180001' },
+    NETFLIX: { label: 'Netflix', productId: '0010000200000001' },
+    PRIME_VIDEO: { label: 'Prime Video', productId: '0010000100180001' },
+    BROWSER: { label: 'Browser', productId: '0077777700160002' },
+};
+
+/** `TV_APPS` with a pattern for the name the TV reports in X_GetAppList */
+const TV_APP_NAMES: { key: string; label: string; pattern: RegExp }[] = [
+    { key: 'YOUTUBE_MUSIC', label: 'YouTube Music', pattern: /^youtube ?music/ },
+    { key: 'YOUTUBE', label: 'YouTube', pattern: /^youtube/ },
+    { key: 'NETFLIX', label: 'Netflix', pattern: /^netflix/ },
+    { key: 'DISNEY_PLUS', label: 'Disney+', pattern: /^disney/ },
+    { key: 'PRIME_VIDEO', label: 'Prime Video', pattern: /prime ?video|^amazon/ },
+    { key: 'APPLE_TV', label: 'Apple TV', pattern: /^apple ?tv/ },
+    { key: 'MAX', label: 'Max', pattern: /^(hbo ?)?max$/ },
+    { key: 'PARAMOUNT_PLUS', label: 'Paramount+', pattern: /^paramount/ },
+    { key: 'DAZN', label: 'DAZN', pattern: /^dazn/ },
+    { key: 'WOW', label: 'WOW', pattern: /^wow\b/ },
+    { key: 'JOYN', label: 'Joyn', pattern: /^joyn/ },
+    { key: 'RTL_PLUS', label: 'RTL+', pattern: /^rtl ?(\+|plus)/ },
+    { key: 'MAGENTA_TV', label: 'MagentaTV', pattern: /^magenta ?tv/ },
+    { key: 'ARD_MEDIATHEK', label: 'ARD Mediathek', pattern: /^ard mediathek/ },
+    { key: 'ZDF_MEDIATHEK', label: 'ZDF Mediathek', pattern: /^zdf/ },
+    { key: 'SPOTIFY', label: 'Spotify', pattern: /^spotify/ },
+    { key: 'TWITCH', label: 'Twitch', pattern: /^twitch/ },
+    { key: 'PLEX', label: 'Plex', pattern: /^plex/ },
+    { key: 'BROWSER', label: 'Browser', pattern: /browser$|^web ?browser|^internet$/ },
+];
+
+/** The apps of the TV that are one of `TV_APPS`: key → label and product ID */
+export function matchTvApps(
+    apps: { name: string; productId: string }[],
+): Record<string, { label: string; productId: string }> {
+    const result: Record<string, { label: string; productId: string }> = {};
+    for (const app of apps) {
+        const name = app.name.trim().toLowerCase();
+        const found = TV_APP_NAMES.find(entry => entry.pattern.test(name));
+        if (found && !result[found.key]) {
+            result[found.key] = { label: found.label, productId: app.productId };
+        }
+    }
+    return result;
+}
 
 function labels(map: Record<string, { label: string }>): Record<string, string> {
     return Object.fromEntries(Object.entries(map).map(([key, value]) => [key, value.label]));
@@ -120,6 +166,18 @@ export const TV_OBJECTS: Record<string, ioBroker.SettableChannelObject | ioBroke
             read: true,
             write: true,
             states: labels(TV_INPUT_CODES),
+        },
+        native: {},
+    },
+    'tv.app': {
+        type: 'state',
+        common: {
+            name: 'App',
+            type: 'string',
+            role: 'media.app',
+            read: true,
+            write: true,
+            states: labels(DEFAULT_TV_APPS),
         },
         native: {},
     },

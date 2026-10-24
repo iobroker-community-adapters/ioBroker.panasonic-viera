@@ -5,8 +5,8 @@ import { VieraKeys, Viera } from 'node-panasonic-viera';
 import { discover } from './lib/discovery';
 import { STATE_KEY_MAP } from './lib/keys';
 import { authorizePinCode, requestPinCode } from './lib/pairing';
-import { TV_INPUT_CODES, TV_KEY_CODES, TV_OBJECTS } from './lib/tv';
-import { getMute } from './lib/viera';
+import { DEFAULT_TV_APPS, matchTvApps, TV_INPUT_CODES, TV_KEY_CODES, TV_OBJECTS } from './lib/tv';
+import { getAppList, getMute, launchApp } from './lib/viera';
 
 type MessageResponse =
     | { value: string; label: string }[]
@@ -33,13 +33,17 @@ class PanasonicVieraAdapter extends utils.Adapter {
     private isConnected: boolean | null = null;
     /** Last known `info.tv_on`, to switch `tv.power` only if it differs (the TV has only a toggle key) */
     private tvOn: boolean | null = null;
+    /** Apps of `tv.app`: key of `TV_APPS` → label and product ID. The defaults until the TV sent its list */
+    private tvApps: Record<string, { label: string; productId: string }> = { ...DEFAULT_TV_APPS };
+    /** The app list was read from the TV (once per start, while the TV is on) */
+    private appsLoaded = false;
     /** Challenge of the last `requestPin`, needed by `pair` */
     private pairing: { ip: string; challenge: Buffer; ts: number } | null = null;
 
     public constructor(options: Partial<utils.AdapterOptions> = {}) {
         super({ ...options, name: 'panasonic-viera' });
 
-        this.on('ready', () => this.onReady());
+        this.on('ready', () => void this.onReady());
         this.on('stateChange', (id, state) => this.onStateChange(id, state));
         this.on('message', obj => this.onMessage(obj));
     }
@@ -48,6 +52,7 @@ class PanasonicVieraAdapter extends utils.Adapter {
      * Commands of the settings:
      * - `discover` → `[{ value: ip, label }]`: TVs found via SSDP (`autocompleteSendTo` of the IP field)
      * - `remote` `{ key }`: an NRC code, from the remote control (src-admin/src/RemoteControlComponent.tsx)
+     * - `launchApp` `{ app }`: a key of `tv.app` (e.g. `YOUTUBE`), from the remote control
      * - `requestPin` `{ ip }`: the TV shows a PIN (pairing of encrypted TVs, buttons in admin/jsonConfig.json)
      * - `pair` `{ ip, pin }` → `{ native: { app_id, encryption_key } }`: written into the form by `useNative`
      *
@@ -83,6 +88,10 @@ class PanasonicVieraAdapter extends utils.Adapter {
                 await this.sendRemoteKey(key);
                 return { result: 'ok' };
             }
+
+            case 'launchApp':
+                await this.startApp(messageString(obj.message, 'app'));
+                return { result: 'ok' };
 
             case 'requestPin': {
                 const ip = this.getPairingIp(obj.message);
@@ -148,8 +157,50 @@ class PanasonicVieraAdapter extends utils.Adapter {
         }
     }
 
-    private onReady(): void {
-        void this.createTvObjects();
+    /** Starts an app of `tv.app` by its key, e.g. `YOUTUBE` */
+    private async startApp(app: string): Promise<void> {
+        const entry = this.tvApps[app];
+        if (!entry) {
+            throw new Error(`Unknown app ${app}`);
+        }
+        if (!this.viera) {
+            throw new Error('Please configure the Panasonic Viera adapter');
+        }
+        const viera = await this.connect(this.viera);
+        await launchApp(viera, entry.productId);
+        this.log.debug(`Started app ${app} (${entry.productId})`);
+    }
+
+    /**
+     * Reads the apps of the TV once and offers the ones of `TV_APPS` in `tv.app`. If the TV does not send a list,
+     * the defaults stay (and it is tried again on the next poll).
+     */
+    private async loadTvApps(viera: Viera): Promise<void> {
+        if (this.appsLoaded) {
+            return;
+        }
+        try {
+            const apps = await getAppList(viera);
+            this.log.debug(`Apps of the TV: ${JSON.stringify(apps)}`);
+            const matched = matchTvApps(apps);
+            if (!Object.keys(matched).length) {
+                return;
+            }
+            this.tvApps = matched;
+            this.appsLoaded = true;
+            const obj = await this.getObjectAsync('tv.app');
+            if (obj) {
+                obj.common.states = Object.fromEntries(Object.entries(matched).map(([key, a]) => [key, a.label]));
+                await this.setObjectAsync('tv.app', obj);
+            }
+        } catch (error) {
+            this.log.debug(`Cannot read the apps of the TV: ${(error as Error).message || error}`);
+        }
+    }
+
+    private async onReady(): Promise<void> {
+        // before the polling: a state with `def` that is created later would overwrite the polled value
+        await this.createTvObjects();
         if (this.config.ip && this.config.ip !== '0.0.0.0') {
             this.viera = new Viera();
 
@@ -234,6 +285,11 @@ class PanasonicVieraAdapter extends utils.Adapter {
                 break;
             }
 
+            case 'app':
+                await this.startApp(String(val));
+                await this.setState('tv.app', { val, ack: true });
+                break;
+
             case 'volume':
                 await this.connect(viera);
                 await viera.setVolume(Number(val));
@@ -303,6 +359,7 @@ class PanasonicVieraAdapter extends utils.Adapter {
                     const mute = await getMute(viera);
                     await this.updateMute(mute);
                     await this.updatePower(true);
+                    await this.loadTvApps(viera);
                 } catch (error) {
                     this.log.debug(`getMute: ${error}`);
                     await this.updatePower(false);

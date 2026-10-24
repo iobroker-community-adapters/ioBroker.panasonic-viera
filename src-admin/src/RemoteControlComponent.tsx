@@ -89,6 +89,27 @@ const INPUTS: { code: string; label: string }[] = [
     { code: NRC.Hdmi4, label: 'HDMI 4' },
 ];
 
+/** Apps shown until the instance told the ones of the TV (`common.states` of `tv.app`) */
+const DEFAULT_APPS: { id: string; label: string }[] = [
+    { id: 'YOUTUBE', label: 'YouTube' },
+    { id: 'NETFLIX', label: 'Netflix' },
+    { id: 'PRIME_VIDEO', label: 'Prime Video' },
+    { id: 'BROWSER', label: 'Browser' },
+];
+
+/** Brand-like colors of the app buttons - text only, no logos */
+const APP_COLORS: Record<string, string> = {
+    YOUTUBE: '#ff0000',
+    YOUTUBE_MUSIC: '#ff0000',
+    NETFLIX: '#e50914',
+    DISNEY_PLUS: '#113ccf',
+    PRIME_VIDEO: '#00a8e1',
+    APPLE_TV: '#000000',
+    SPOTIFY: '#1db954',
+    TWITCH: '#9146ff',
+    PLEX: '#e5a00d',
+};
+
 /** Keyboard keys that work while the remote has the focus */
 const KEYBOARD: Record<string, string> = {
     ArrowUp: NRC.Up,
@@ -144,6 +165,8 @@ interface RemoteControlComponentState extends ConfigGenericState {
     volume: number | null;
     muted: boolean | null;
     numbers: boolean;
+    /** Apps of `tv.app` */
+    apps: { id: string; label: string }[];
 }
 
 /**
@@ -169,6 +192,7 @@ export default class RemoteControlComponent extends ConfigGeneric<ConfigGenericP
             volume: null,
             muted: null,
             numbers: false,
+            apps: DEFAULT_APPS,
         };
     }
 
@@ -188,6 +212,23 @@ export default class RemoteControlComponent extends ConfigGeneric<ConfigGenericP
         await super.componentDidMount();
         this.mounted = true;
         this.subscribe();
+        await this.loadApps();
+    }
+
+    /** The apps the instance offers in `tv.app` (it reads them from the TV) */
+    async loadApps(): Promise<void> {
+        try {
+            const obj = await this.props.oContext.socket.getObject(`${this.target}.tv.app`);
+            const states = obj?.common?.states;
+            if (this.mounted && states && typeof states === 'object' && !Array.isArray(states)) {
+                const apps = Object.entries(states as Record<string, string>).map(([id, label]) => ({ id, label }));
+                if (apps.length) {
+                    this.setState({ apps });
+                }
+            }
+        } catch {
+            // keep the defaults
+        }
     }
 
     componentWillUnmount(): void {
@@ -231,16 +272,22 @@ export default class RemoteControlComponent extends ConfigGeneric<ConfigGenericP
         }
     };
 
-    async send(code: string): Promise<void> {
+    /** Sends a key (NRC code) */
+    send(code: string): Promise<void> {
+        return this.request(code, 'remote', { key: code });
+    }
+
+    /** Sends `command` to the instance; `busy` is the button that shows the spinner */
+    async request(busy: string, command: string, message: Record<string, string>): Promise<void> {
         if (this.state.busy || !this.props.alive) {
             return;
         }
-        this.setState({ busy: code, error: '' });
+        this.setState({ busy, error: '' });
 
         let error = '';
         try {
             const response = (await Promise.race([
-                this.props.oContext.socket.sendTo(this.target, 'remote', { key: code }),
+                this.props.oContext.socket.sendTo(this.target, command, message),
                 new Promise(resolve =>
                     setTimeout(() => resolve({ error: I18n.t('custom_panasonicviera_no_answer') }), SEND_TIMEOUT),
                 ),
@@ -463,6 +510,54 @@ export default class RemoteControlComponent extends ConfigGeneric<ConfigGenericP
         );
     }
 
+    /** The apps of `tv.app` as colored text buttons */
+    renderApps(): React.JSX.Element {
+        return (
+            <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 1, width: '100%' }}>
+                {this.state.apps.map(app => {
+                    const name = `app:${app.id}`;
+                    const busy = this.state.busy === name;
+                    const color = APP_COLORS[app.id] ?? COLORS.key;
+                    return (
+                        <ButtonBase
+                            key={app.id}
+                            aria-label={app.label}
+                            disabled={!this.props.alive || (!!this.state.busy && !busy) || this.isOff}
+                            onClick={() => void this.request(name, 'launchApp', { app: app.id })}
+                            sx={{
+                                height: 34,
+                                borderRadius: '17px',
+                                backgroundColor: color,
+                                border: '1px solid rgba(255,255,255,0.12)',
+                                color: '#ffffff',
+                                fontSize: 12,
+                                fontWeight: 'bold',
+                                px: 1,
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                boxShadow: '0 2px 4px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12)',
+                                transition: 'filter 120ms, transform 80ms',
+                                '&:hover': { filter: 'brightness(1.15)' },
+                                '&:active': { transform: 'scale(0.96)' },
+                                '&.Mui-disabled': { opacity: 0.45 },
+                            }}
+                        >
+                            {busy ? (
+                                <CircularProgress
+                                    size={16}
+                                    sx={{ color: '#ffffff' }}
+                                />
+                            ) : (
+                                app.label
+                            )}
+                        </ButtonBase>
+                    );
+                })}
+            </Box>
+        );
+    }
+
     renderStatus(): React.JSX.Element {
         const { online, power, volume, muted } = this.state;
         let color = '#5f6368';
@@ -550,6 +645,8 @@ export default class RemoteControlComponent extends ConfigGeneric<ConfigGenericP
                     {off ? null : (
                         <>
                             {this.renderInputs()}
+
+                            {this.renderApps()}
 
                             <Box sx={row}>
                                 {this.code(NRC.Home, <Home />, I18n.t('custom_panasonicviera_home'))}

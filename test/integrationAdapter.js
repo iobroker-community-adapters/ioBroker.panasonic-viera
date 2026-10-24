@@ -24,6 +24,18 @@ function startFakeTv(keys) {
                 answer = '<CurrentMute>1</CurrentMute>';
             } else if (action.includes('#X_SendKey')) {
                 keys.push(/<X_KeyEvent>([^<]*)<\/X_KeyEvent>/.exec(body)[1]);
+            } else if (action.includes('#X_GetAppList')) {
+                // the format of the TV: one string, apostrophes escaped
+                answer =
+                    '<X_AppList>vc_app&apos;product_id=0070000200180001&apos;YouTube&apos;http://a/1.png&apos;' +
+                    'vc_app&apos;product_id=0010000200000001&apos;Netflix&apos;http://a/2.png&apos;' +
+                    'vc_app&apos;product_id=0387878700000050&apos;Multi Window&apos;http://a/3.png&apos;</X_AppList>';
+            } else if (action.includes('#X_LaunchApp')) {
+                // X_AppType must be a closed element (node-panasonic-viera 0.4.1 sends it unclosed)
+                const launch = /<X_AppType>vc_app<\/X_AppType><X_LaunchKeyword>product_id=([0-9A-F]+)<\/X_LaunchKeyword>/.exec(
+                    body,
+                );
+                keys.push(launch ? `APP:${launch[1]}` : 'APP:malformed');
             }
             res.writeHead(200, { 'Content-Type': 'text/xml' });
             res.end(`<?xml version="1.0"?><s:Envelope><s:Body>${answer}</s:Body></s:Envelope>`);
@@ -166,6 +178,7 @@ tests.integration(path.join(__dirname, '..'), {
                     VOLUME_UP: 'tv.volumeUp',
                     VOLUME_DOWN: 'tv.volumeDown',
                     INPUT: 'tv.input',
+                    APP: 'tv.app',
                     UNREACH: 'tv.unreach',
                 });
             });
@@ -265,6 +278,29 @@ tests.integration(path.join(__dirname, '..'), {
                 await harness.states.setStateAsync(`${NS}.tv.power`, { val: true, ack: false });
                 await new Promise(resolve => setTimeout(resolve, 1000));
                 assert.ok(!keys.includes('NRC_POWER-ONOFF'), `keys sent: ${keys.join(', ')}`);
+
+                // the apps of the TV replace the defaults in tv.app (Multi Window is none of TV_APPS)
+                for (let i = 0; i < 40; i++) {
+                    const obj = await harness.objects.getObjectAsync(`${NS}.tv.app`);
+                    if (!obj.common.states.PRIME_VIDEO) {
+                        break;
+                    }
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+                const appObj = await harness.objects.getObjectAsync(`${NS}.tv.app`);
+                assert.deepStrictEqual(appObj.common.states, { YOUTUBE: 'YouTube', NETFLIX: 'Netflix' });
+
+                // YouTube is started by its product ID
+                await harness.states.setStateAsync(`${NS}.tv.app`, { val: 'YOUTUBE', ack: false });
+                await waitForState(harness, `${NS}.tv.app`, 'YOUTUBE');
+                assert.ok(keys.includes('APP:0070000200180001'), `keys sent: ${keys.join(', ')}`);
+
+                // the same from the remote control
+                const response = await new Promise(resolve =>
+                    harness.sendTo(NS, 'launchApp', { app: 'NETFLIX' }, resolve),
+                );
+                assert.deepStrictEqual(response, { result: 'ok' });
+                assert.ok(keys.includes('APP:0010000200000001'), `keys sent: ${keys.join(', ')}`);
 
                 // the old button states still work, basic.LEFT was broken before
                 await harness.states.setStateAsync(`${NS}.basic.LEFT`, { val: true, ack: false });

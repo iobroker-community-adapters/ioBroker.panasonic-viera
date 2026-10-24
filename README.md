@@ -83,7 +83,12 @@ with it:
 | `tv.volumeUp`    | `button.volume.up`              | volume up                                                           |
 | `tv.volumeDown`  | `button.volume.down`            | volume down                                                         |
 | `tv.input`       | `media.input`                   | `TV`, `HDMI1` ... `HDMI4`                                           |
+| `tv.app`         | `media.app`                     | start an app: `YOUTUBE`, `NETFLIX`, `PRIME_VIDEO`, `BROWSER`, ...   |
 | `tv.unreach`     | `indicator.maintenance.unreach` | the TV does not answer the ping                                     |
+
+`tv.app` offers YouTube, Netflix, Prime Video and Browser first. As soon as the TV is on, the adapter reads the
+apps installed on the TV and offers those of them that the type-detector knows. The **Remote control** tab has
+buttons for the same apps.
 
 Switching the TV on via the network requires **Networked Standby** and **Powered On by Apps** on the TV.
 
@@ -101,6 +106,7 @@ Switching the TV on via the network requires **Networked Standby** and **Powered
 - (bluefox) Newer (encrypted) TVs can be paired with a PIN directly in the settings
 - (bluefox) Added a remote control to the instance settings (tab "Remote control", requires admin 8)
 - (bluefox) Added the channel `tv` for the device type `tv` of the type-detector, so visualizations and the devices adapter can control the TV
+- (bluefox) Apps like YouTube and Netflix can be started (`tv.app` and buttons in the remote control)
 - (copilot) Adapter requires node.js >= 22 now
 - (iobroker-bot) Adapter requires node.js >= 20 now.
 - (copilot) Adapter requires admin >= 7.7.22 now
