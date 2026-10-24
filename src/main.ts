@@ -4,6 +4,7 @@ import { VieraKeys, Viera } from 'node-panasonic-viera';
 
 import { discover } from './lib/discovery';
 import { STATE_KEY_MAP } from './lib/keys';
+import { TV_INPUT_CODES, TV_KEY_CODES, TV_OBJECTS } from './lib/tv';
 import { getMute } from './lib/viera';
 
 type MessageResponse = { value: string; label: string }[] | { result: 'ok' };
@@ -17,6 +18,8 @@ const STATUS_INTERVAL = 30_000;
 class PanasonicVieraAdapter extends utils.Adapter {
     private viera: Viera | null = null;
     private isConnected: boolean | null = null;
+    /** Last known `info.tv_on`, to switch `tv.power` only if it differs (the TV has only a toggle key) */
+    private tvOn: boolean | null = null;
 
     public constructor(options: Partial<utils.AdapterOptions> = {}) {
         super({ ...options, name: 'panasonic-viera' });
@@ -85,13 +88,14 @@ class PanasonicVieraAdapter extends utils.Adapter {
             throw new Error(`The TV refused ${key}: ${fault?.[1] || 'unknown error'}`);
         }
         if (key === VieraKeys.volume_up || key === VieraKeys.volume_down) {
-            await this.setState('basic.volume', { val: await viera.getVolume(), ack: true });
+            await this.updateVolume(await viera.getVolume());
         } else if (key === VieraKeys.mute) {
-            await this.setState('basic.mute', { val: await getMute(viera), ack: true });
+            await this.updateMute(await getMute(viera));
         }
     }
 
     private onReady(): void {
+        void this.createTvObjects();
         if (this.config.ip && this.config.ip !== '0.0.0.0') {
             this.viera = new Viera();
 
@@ -106,7 +110,12 @@ class PanasonicVieraAdapter extends utils.Adapter {
     }
 
     private onStateChange(id: string, state: ioBroker.State | null | undefined): void {
-        if (id && state && !state.ack) {
+        if (id && state && !state.ack && id.startsWith(`${this.namespace}.tv.`)) {
+            // the channel tv of the type-detector, before the button states: their names are sent as keys
+            this.handleTvCommand(id.substring(this.namespace.length + 4), state.val).catch(error =>
+                this.log.error(`${id}: ${(error as Error).message || error}`),
+            );
+        } else if (id && state && !state.ack) {
             // e.g. `basic.POWER`
             let cmd = id.split('.').slice(-2).join('.');
             this.log.debug(`state triggered: ${cmd}: ${state.val}`);
@@ -119,10 +128,88 @@ class PanasonicVieraAdapter extends utils.Adapter {
         }
     }
 
+    /** Creates or updates the channel `tv` (device type `tv` of the type-detector) */
+    private async createTvObjects(): Promise<void> {
+        for (const [id, obj] of Object.entries(TV_OBJECTS)) {
+            await this.extendObjectAsync(id, obj);
+        }
+    }
+
+    private async updateVolume(volume: number): Promise<void> {
+        await this.setState('basic.volume', { val: volume, ack: true });
+        await this.setState('tv.volume', { val: volume, ack: true });
+    }
+
+    private async updateMute(mute: boolean): Promise<void> {
+        await this.setState('basic.mute', { val: mute, ack: true });
+        await this.setState('tv.muted', { val: mute, ack: true });
+    }
+
+    /** `info.tv_on`: the TV answers the volume / mute requests */
+    private async updatePower(on: boolean): Promise<void> {
+        this.tvOn = on;
+        await this.setState('info.tv_on', { val: on, ack: true });
+        await this.setState('tv.power', { val: on, ack: true });
+    }
+
+    /** A write to the channel `tv`; `state` is the ID relative to the channel, e.g. `power` */
+    private async handleTvCommand(state: string, val: ioBroker.StateValue): Promise<void> {
+        if (!this.viera) {
+            throw new Error('Please configure the Panasonic Viera adapter');
+        }
+        const viera = this.viera;
+        switch (state) {
+            case 'power':
+                // the TV has only a toggle key: send it only if the TV is not already in the wanted state
+                if (!!val !== this.tvOn) {
+                    await this.sendRemoteKey(VieraKeys.power);
+                    this.setTimeout(() => void this.checkStatus(), 3000);
+                }
+                await this.setState('tv.power', { val: !!val, ack: true });
+                break;
+
+            case 'key':
+            case 'input': {
+                const map = state === 'key' ? TV_KEY_CODES : TV_INPUT_CODES;
+                const entry = map[String(val)];
+                if (!entry) {
+                    throw new Error(`Unknown ${state} ${String(val)}`);
+                }
+                await this.sendRemoteKey(entry.code);
+                await this.setState(`tv.${state}`, { val, ack: true });
+                break;
+            }
+
+            case 'volume':
+                await this.connect(viera);
+                await viera.setVolume(Number(val));
+                await this.updateVolume(await viera.getVolume());
+                break;
+
+            case 'muted':
+                await this.connect(viera);
+                await viera.setMute(!!val);
+                await this.updateMute(await getMute(viera));
+                break;
+
+            case 'volumeUp':
+            case 'volumeDown':
+                await this.sendRemoteKey(state === 'volumeUp' ? VieraKeys.volume_up : VieraKeys.volume_down);
+                break;
+
+            default:
+                throw new Error('Read-only state');
+        }
+    }
+
     private setConnected(isConnected: boolean): void {
         if (this.isConnected !== isConnected) {
             this.isConnected = isConnected;
             void this.setState('info.connection', { val: isConnected, ack: true });
+            void this.setState('tv.unreach', { val: !isConnected, ack: true });
+            if (!isConnected) {
+                void this.setState('tv.power', { val: false, ack: true });
+            }
         }
     }
 
@@ -160,11 +247,11 @@ class PanasonicVieraAdapter extends utils.Adapter {
                 try {
                     await this.connect(viera);
                     const mute = await getMute(viera);
-                    await this.setState('basic.mute', { val: mute, ack: true });
-                    await this.setState('info.tv_on', { val: true, ack: true });
+                    await this.updateMute(mute);
+                    await this.updatePower(true);
                 } catch (error) {
                     this.log.debug(`getMute: ${error}`);
-                    await this.setState('info.tv_on', { val: false, ack: true });
+                    await this.updatePower(false);
                 }
                 break;
 
@@ -173,7 +260,7 @@ class PanasonicVieraAdapter extends utils.Adapter {
                     await this.connect(viera);
                     await viera.setMute(!!value);
                     const mute = await getMute(viera);
-                    await this.setState('basic.mute', { val: mute, ack: true });
+                    await this.updateMute(mute);
                 } catch (error) {
                     this.log.error(`getMute: ${error}`);
                 }
@@ -183,11 +270,11 @@ class PanasonicVieraAdapter extends utils.Adapter {
                 try {
                     await this.connect(viera);
                     const volume = await viera.getVolume();
-                    await this.setState('basic.volume', { val: volume, ack: true });
-                    await this.setState('info.tv_on', { val: true, ack: true });
+                    await this.updateVolume(volume);
+                    await this.updatePower(true);
                 } catch (error) {
                     this.log.debug(`getVolume: ${error}`);
-                    await this.setState('info.tv_on', { val: false, ack: true });
+                    await this.updatePower(false);
                 }
                 break;
 
@@ -197,8 +284,8 @@ class PanasonicVieraAdapter extends utils.Adapter {
                     await this.connect(viera);
                     await viera.sendKey(cmd === 'VOLUP' ? VieraKeys.volume_up : VieraKeys.volume_down);
                     const volume = await viera.getVolume();
-                    await this.setState('basic.volume', { val: volume, ack: true });
-                    await this.setState('info.tv_on', { val: true, ack: true });
+                    await this.updateVolume(volume);
+                    await this.updatePower(true);
                 } catch (error) {
                     this.log.error(`getVolume: ${error}`);
                 }
@@ -209,8 +296,8 @@ class PanasonicVieraAdapter extends utils.Adapter {
                     await this.connect(viera);
                     await viera.setVolume(value as number);
                     const volume = await viera.getVolume();
-                    await this.setState('basic.volume', { val: volume, ack: true });
-                    await this.setState('info.tv_on', { val: true, ack: true });
+                    await this.updateVolume(volume);
+                    await this.updatePower(true);
                 } catch (error) {
                     this.log.error(`getVolume: ${error}`);
                 }

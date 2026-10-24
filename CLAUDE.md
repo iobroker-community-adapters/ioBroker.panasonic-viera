@@ -44,6 +44,13 @@ The integration test caches the test installation in `%TEMP%/test-iobroker.panas
 - `src-admin/src/RemoteControlComponent.tsx` — remote control in the "Remote control" tab (custom JsonConfig
   component, `guiApi: 2`, needs admin 8). Status via subscriptions of `info.connection`, `info.tv_on`,
   `basic.volume`, `basic.mute`. Texts in `src-admin/src/i18n` (`custom_panasonicviera_*`).
+- `src/lib/tv.ts` — channel `tv` for the device type `tv` of the type-detector (>= 6.2.0), parallel to the old
+  objects: `power` (`switch.power`), `key` (`media.key`, `TV_KEYS` → NRC), `volume` (`level.volume`), `muted`
+  (`media.mute`), `volumeUp` / `volumeDown`, `input` (`media.input`, `TV_INPUTS` → NRC), `unreach`. Keys and
+  labels of `common.states` must stay a subset of `TV_KEYS` / `TV_INPUTS`. No `app`: `sendAppCommand()` of the
+  library sends malformed XML. `onStateChange` handles `.tv.` before the button states (their names are sent as
+  keys). `updateVolume` / `updateMute` / `updatePower` keep `basic.*`, `info.tv_on` and `tv.*` in sync.
+  The integration test checks the detection and runs against a simulated TV on 127.0.0.1:55000.
 - `src/lib/viera.ts` — `getMute()` replacement: the one of the library never settles on errors (unhandled rejection).
 - `src/types/node-panasonic-viera.d.ts` — the library has no typings. Note: `connect()` never rejects.
 - `src/lib/adapter-config.d.ts` — typed `this.config`; must match `native` in `io-package.json` and

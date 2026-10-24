@@ -9,6 +9,25 @@
 
 This is an ioBroker adapter for your Panasonic Viera Smart-TV.
 
+## Channel `tv` (type-detector)
+
+In addition to the existing objects the adapter creates the channel `panasonic-viera.0.tv`, which the ioBroker
+type-detector (>= 6.2.0) recognizes as device type `tv`. Visualizations and the devices adapter can control the TV
+with it:
+
+| State            | Role                            | Description                                                         |
+|------------------|---------------------------------|---------------------------------------------------------------------|
+| `tv.power`       | `switch.power`                  | on / off (the TV has only a toggle key, it is sent only if needed)  |
+| `tv.key`         | `media.key`                     | a key: `UP`, `DOWN`, `SELECT`, `BACK`, `HOME`, `NUMBER_1`, `RED`, ...   |
+| `tv.volume`      | `level.volume`                  | volume 0-100                                                        |
+| `tv.muted`       | `media.mute`                    | mute                                                                |
+| `tv.volumeUp`    | `button.volume.up`              | volume up                                                           |
+| `tv.volumeDown`  | `button.volume.down`            | volume down                                                         |
+| `tv.input`       | `media.input`                   | `TV`, `HDMI1` ... `HDMI4`                                           |
+| `tv.unreach`     | `indicator.maintenance.unreach` | the TV does not answer the ping                                     |
+
+Switching the TV on via the network requires **Networked Standby** and **Powered On by Apps** on the TV.
+
 ## Changelog
 <!--
     Placeholder for the next version (at the beginning of the line):
@@ -21,6 +40,7 @@ This is an ioBroker adapter for your Panasonic Viera Smart-TV.
 - (bluefox) The adapter no longer restarts when the TV answers the ping but not the mute request
 - (bluefox) The IP field offers the TVs found in the network
 - (bluefox) Added a remote control to the instance settings (tab "Remote control", requires admin 8)
+- (bluefox) Added the channel `tv` for the device type `tv` of the type-detector, so visualizations and the devices adapter can control the TV
 - (copilot) Adapter requires node.js >= 22 now
 - (iobroker-bot) Adapter requires node.js >= 20 now.
 - (copilot) Adapter requires admin >= 7.7.22 now
