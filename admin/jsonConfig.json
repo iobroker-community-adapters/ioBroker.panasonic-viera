@@ -1,0 +1,49 @@
+{
+    "i18n": true,
+    "type": "panel",
+    "items": {
+        "_logo": {
+            "type": "staticImage",
+            "src": "panasonic-viera.png",
+            "style": { "width": "64px" },
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "ip": {
+            "newLine": true,
+            "type": "text",
+            "label": "IP",
+            "maxLength": 15,
+            "help": "192.168.x.x",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "app_id": {
+            "newLine": true,
+            "type": "text",
+            "label": "Application ID",
+            "help": "Application ID (for encryption)",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "encryption_key": {
+            "newLine": true,
+            "type": "text",
+            "label": "Encryption Key",
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        }
+    }
+}
