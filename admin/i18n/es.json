@@ -5,5 +5,12 @@
     "Encryption Key": "Clave de cifrado",
     "Settings": "Ajustes",
     "TVs found in the network are offered for selection (the instance must be running)": "Los televisores encontrados en la red se ofrecen para seleccionar (la instancia debe estar en ejecución)",
-    "Remote control": "Mando a distancia"
+    "Remote control": "Mando a distancia",
+    "Pairing (newer TVs only)": "Emparejamiento (solo televisores más nuevos)",
+    "Newer TVs (from about 2019) only accept encrypted commands. Switch the TV on, press \"Show PIN on the TV\", enter the PIN and press \"Pair\". Application ID and Encryption Key are filled in, then save the settings. Older TVs need no pairing.": "Los televisores más nuevos (desde aproximadamente 2019) solo aceptan comandos cifrados. Encienda el televisor, pulse \"Mostrar PIN en el televisor\", introduzca el PIN y pulse \"Emparejar\". Se rellenan el ID de aplicación y la clave de cifrado; después guarde la configuración. Los televisores más antiguos no necesitan emparejamiento.",
+    "Show PIN on the TV": "Mostrar PIN en el televisor",
+    "PIN shown on the TV": "PIN mostrado en el televisor",
+    "Pair": "Emparejar",
+    "The TV shows a PIN now. Enter it and press \"Pair\".": "El televisor muestra ahora un PIN. Introdúzcalo y pulse \"Emparejar\".",
+    "Paired. Application ID and Encryption Key are filled in - please save the settings.": "Emparejado. ID de aplicación y clave de cifrado rellenados - guarde la configuración."
 }

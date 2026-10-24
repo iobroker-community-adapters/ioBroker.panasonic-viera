@@ -4,10 +4,23 @@ import { VieraKeys, Viera } from 'node-panasonic-viera';
 
 import { discover } from './lib/discovery';
 import { STATE_KEY_MAP } from './lib/keys';
+import { authorizePinCode, requestPinCode } from './lib/pairing';
 import { TV_INPUT_CODES, TV_KEY_CODES, TV_OBJECTS } from './lib/tv';
 import { getMute } from './lib/viera';
 
-type MessageResponse = { value: string; label: string }[] | { result: 'ok' };
+type MessageResponse =
+    | { value: string; label: string }[]
+    | { result: string }
+    | { native: { app_id: string; encryption_key: string }; saveConfig: boolean; result: string };
+
+/** A string attribute of a sendTo message, '' if it is missing or no string / number */
+function messageString(message: unknown, key: string): string {
+    const value = (message as Record<string, unknown> | undefined)?.[key];
+    return typeof value === 'string' || typeof value === 'number' ? String(value).trim() : '';
+}
+
+/** How long a PIN shown on the TV can be used, the TV itself gives up earlier */
+const PIN_VALIDITY = 5 * 60_000;
 
 /** An NRC code like `NRC_POWER-ONOFF` */
 const NRC_CODE_REGEX = /^NRC_[A-Z0-9_]+-ONOFF$/;
@@ -20,6 +33,8 @@ class PanasonicVieraAdapter extends utils.Adapter {
     private isConnected: boolean | null = null;
     /** Last known `info.tv_on`, to switch `tv.power` only if it differs (the TV has only a toggle key) */
     private tvOn: boolean | null = null;
+    /** Challenge of the last `requestPin`, needed by `pair` */
+    private pairing: { ip: string; challenge: Buffer; ts: number } | null = null;
 
     public constructor(options: Partial<utils.AdapterOptions> = {}) {
         super({ ...options, name: 'panasonic-viera' });
@@ -33,6 +48,8 @@ class PanasonicVieraAdapter extends utils.Adapter {
      * Commands of the settings:
      * - `discover` → `[{ value: ip, label }]`: TVs found via SSDP (`autocompleteSendTo` of the IP field)
      * - `remote` `{ key }`: an NRC code, from the remote control (src-admin/src/RemoteControlComponent.tsx)
+     * - `requestPin` `{ ip }`: the TV shows a PIN (pairing of encrypted TVs, buttons in admin/jsonConfig.json)
+     * - `pair` `{ ip, pin }` → `{ native: { app_id, encryption_key } }`: written into the form by `useNative`
      *
      * Every command answers with its result or `{ error }`.
      */
@@ -67,9 +84,46 @@ class PanasonicVieraAdapter extends utils.Adapter {
                 return { result: 'ok' };
             }
 
+            case 'requestPin': {
+                const ip = this.getPairingIp(obj.message);
+                this.pairing = { ip, challenge: await requestPinCode(ip, 'ioBroker'), ts: Date.now() };
+                this.log.info(`Pairing: the TV ${ip} shows a PIN now`);
+                return { result: 'pinShown' };
+            }
+
+            case 'pair': {
+                const ip = this.getPairingIp(obj.message);
+                const pin = messageString(obj.message, 'pin');
+                if (!/^\d{4}$/.test(pin)) {
+                    throw new Error('Please enter the 4-digit PIN shown on the TV');
+                }
+                if (!this.pairing || this.pairing.ip !== ip || Date.now() - this.pairing.ts > PIN_VALIDITY) {
+                    throw new Error('Please let the TV show a PIN first');
+                }
+                const result = await authorizePinCode(ip, this.pairing.challenge, pin);
+                // the challenge is used up; after a wrong PIN it stays, so the PIN can be typed again
+                this.pairing = null;
+                this.log.info(`Pairing: the TV ${ip} is paired`);
+                return {
+                    native: { app_id: result.appId, encryption_key: result.encryptionKey },
+                    // the admin asks the user to save the settings (useNative of the sendTo button)
+                    saveConfig: true,
+                    result: 'paired',
+                };
+            }
+
             default:
                 throw new Error(`Unknown command ${obj.command}`);
         }
+    }
+
+    /** The IP of the pairing commands: from the form, so it works before the settings are saved */
+    private getPairingIp(message: unknown): string {
+        const ip = messageString(message, 'ip');
+        if (!ip) {
+            throw new Error('Please enter the IP address of the TV first');
+        }
+        return ip;
     }
 
     /**

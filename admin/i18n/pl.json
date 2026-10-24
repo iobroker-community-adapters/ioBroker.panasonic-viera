@@ -5,5 +5,12 @@
     "Encryption Key": "Klucz szyfrowania",
     "Settings": "Ustawienia",
     "TVs found in the network are offered for selection (the instance must be running)": "Telewizory znalezione w sieci są proponowane do wyboru (instancja musi działać)",
-    "Remote control": "Pilot"
+    "Remote control": "Pilot",
+    "Pairing (newer TVs only)": "Parowanie (tylko nowsze telewizory)",
+    "Newer TVs (from about 2019) only accept encrypted commands. Switch the TV on, press \"Show PIN on the TV\", enter the PIN and press \"Pair\". Application ID and Encryption Key are filled in, then save the settings. Older TVs need no pairing.": "Nowsze telewizory (od około 2019 r.) przyjmują tylko szyfrowane polecenia. Włącz telewizor, naciśnij „Pokaż PIN na telewizorze”, wpisz PIN i naciśnij „Sparuj”. ID aplikacji i klucz szyfrowania zostaną uzupełnione, następnie zapisz ustawienia. Starsze telewizory nie wymagają parowania.",
+    "Show PIN on the TV": "Pokaż PIN na telewizorze",
+    "PIN shown on the TV": "PIN z telewizora",
+    "Pair": "Sparuj",
+    "The TV shows a PIN now. Enter it and press \"Pair\".": "Telewizor wyświetla teraz PIN. Wpisz go i naciśnij „Sparuj”.",
+    "Paired. Application ID and Encryption Key are filled in - please save the settings.": "Sparowano. ID aplikacji i klucz szyfrowania uzupełnione - zapisz ustawienia."
 }

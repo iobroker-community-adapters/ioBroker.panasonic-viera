@@ -25,67 +25,48 @@ This is an ioBroker adapter for your Panasonic Viera Smart-TV.
 
 - **Older TVs (roughly before 2019)** talk to the adapter unencrypted. They need **no pairing**: enter only the IP
   address and leave **Application ID** and **Encryption Key** empty.
-- **Newer TVs** only accept encrypted commands. They need an **Application ID** and an **Encryption Key**, which you
-  get once by pairing with a PIN shown on the TV (step 3).
+- **Newer TVs** only accept encrypted commands. They need an **Application ID** and an **Encryption Key**, which the
+  adapter gets once by pairing with a PIN shown on the TV (step 4).
 
 If you are not sure, try without pairing first: enter only the IP address, save, and press a key in the
 **Remote control** tab. If the TV reacts, you are done. If not, pair it.
 
-### 3. Pair the TV (newer TVs only)
+### 3. Enter the IP address
 
-The adapter cannot do the pairing itself yet. You do it once with the small Python tool
-[panasonic-viera](https://github.com/florianholzapfel/panasonic-viera) on any computer in the same network as the TV
-(Python 3 is required):
+1. Make sure the `panasonic-viera` instance is **running** (it may still show "Please configure" in the log - that
+   is fine). The search for TVs and the pairing are done by the running instance.
+2. Open the settings of the instance.
+3. **IP**: click into the field. TVs found in your network are offered for selection. Otherwise type the IP address.
 
-1. Install the tool:
+### 4. Pair the TV (newer TVs only)
 
-    ```shell
-    pip3 install panasonic-viera
-    ```
+All in the **Settings** tab, section **Pairing (newer TVs only)**:
 
-    On Windows the commands are `pip` and `python` instead of `pip3` and `python3`.
+1. Switch the TV **on** (not standby).
+2. Press **Show PIN on the TV**. The TV shows a 4-digit PIN for the remote "ioBroker".
+3. Type the PIN into **PIN shown on the TV**.
+4. Press **Pair**. **Application ID** and **Encryption Key** are filled in.
+5. **Save** the settings. The instance restarts and talks to the TV encrypted from now on.
 
-2. Save the following script as `viera_pair.py` and replace `192.168.1.50` with the IP address of your TV:
-
-    ```python
-    import panasonic_viera
-
-    rc = panasonic_viera.RemoteControl("192.168.1.50")
-    # the TV shows a 4-digit PIN now, "ioBroker" is the name of the remote shown on the TV
-    rc.request_pin_code(name="ioBroker")
-    pin = input("Enter the PIN shown on the TV: ")
-    rc.authorize_pin_code(pincode=pin)
-    print("Application ID:", rc.app_id)
-    print("Encryption Key:", rc.enc_key)
-    ```
-
-3. Make sure the TV is **on**, then run the script:
-
-    ```shell
-    python3 viera_pair.py
-    ```
-
-4. A PIN appears on the TV. Type it in and press Enter. Do it quickly: the PIN is only valid for a short time.
-5. The script prints the **Application ID** and the **Encryption Key**. Keep them, you need them in the next step.
+The PIN itself is not saved, only the Application ID and the Encryption Key.
 
 If it does not work:
 
-- **No PIN appears** or the script ends with `Connection refused` / `timed out`: the TV must be **on** (not in standby),
-  **TV Remote** must be switched on (step 1) and the IP address in the script must be the one of the TV.
-- **The PIN is rejected**: it was typed wrong or too late. Run the script again, the TV shows a new PIN.
-- **An error right after starting** on an older TV: older TVs do not support pairing - they need none (step 2).
+- **No PIN appears** or the message says the TV does not answer: the TV must be **on** (not in standby), **TV Remote**
+  must be switched on (step 1) and the IP address must be the one of the TV.
+- **Invalid PIN code**: it was typed wrong. Type it again and press **Pair**. If the PIN disappeared from the TV,
+  press **Show PIN on the TV** again - the TV shows a new PIN.
+- **"Please let the TV show a PIN first"**: press **Show PIN on the TV** first. Also after a restart of the instance
+  or after more than 5 minutes a new PIN is needed.
+- **An error right after "Show PIN on the TV"** on an older TV: older TVs do not support pairing - they need none
+  (step 2).
 
-### 4. Configure the adapter
+### 5. Check that it works
 
-1. Open the settings of the `panasonic-viera` instance.
-2. **IP**: click into the field. TVs found in your network are offered for selection (the instance must be
-   running for this). Otherwise type the IP address.
-3. **Application ID** and **Encryption Key**: paste the values from step 3 (leave both empty for older TVs).
-4. Save. The instance restarts with the new settings.
-5. Check that it works: `panasonic-viera.0.info.connection` becomes `true` while the TV answers, and the
-   **Remote control** tab of the settings controls the TV.
+`panasonic-viera.0.info.connection` becomes `true` while the TV answers, and the **Remote control** tab of the
+settings controls the TV.
 
-If the TV stops reacting after a firmware update or a factory reset, pair it again (step 3) and enter the new values.
+If the TV stops reacting after a firmware update or a factory reset, pair it again (step 4).
 
 ## Channel `tv` (type-detector)
 
@@ -117,6 +98,7 @@ Switching the TV on via the network requires **Networked Standby** and **Powered
 - (bluefox) Fixed the buttons basic.VOLUP, basic.VOLDOWN and basic.LEFT, they sent an invalid key
 - (bluefox) The adapter no longer restarts when the TV answers the ping but not the mute request
 - (bluefox) The IP field offers the TVs found in the network
+- (bluefox) Newer (encrypted) TVs can be paired with a PIN directly in the settings
 - (bluefox) Added a remote control to the instance settings (tab "Remote control", requires admin 8)
 - (bluefox) Added the channel `tv` for the device type `tv` of the type-detector, so visualizations and the devices adapter can control the TV
 - (copilot) Adapter requires node.js >= 22 now

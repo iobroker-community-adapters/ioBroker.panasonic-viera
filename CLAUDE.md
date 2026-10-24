@@ -52,6 +52,12 @@ The integration test caches the test installation in `%TEMP%/test-iobroker.panas
   keys). `updateVolume` / `updateMute` / `updatePower` keep `basic.*`, `info.tv_on` and `tv.*` in sync.
   The integration test checks the detection and runs against a simulated TV on 127.0.0.1:55000.
 - `src/lib/viera.ts` — `getMute()` replacement: the one of the library never settles on errors (unhandled rejection).
+- `src/lib/pairing.ts` — PIN pairing of encrypted TVs (the library can only show the PIN): port of
+  `request_pin_code()` / `authorize_pin_code()` of the Python library panasonic-viera (key derivation from the
+  challenge, zero-padded AES-128-CBC + HMAC-SHA-256). sendTo `requestPin` `{ ip }` keeps the challenge in memory,
+  `pair` `{ ip, pin }` answers `{ native: { app_id, encryption_key }, saveConfig: true }` for `useNative` of the
+  sendTo button. The IP comes from the form (`jsonData`), so pairing works before saving. Verified against the
+  Python library with a simulated TV; the integration test has an own simulated pairing TV.
 - `src/types/node-panasonic-viera.d.ts` — the library has no typings. Note: `connect()` never rejects.
 - `src/lib/adapter-config.d.ts` — typed `this.config`; must match `native` in `io-package.json` and
   `admin/jsonConfig.json`.

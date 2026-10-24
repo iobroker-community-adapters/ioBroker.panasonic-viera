@@ -5,5 +5,12 @@
     "Encryption Key": "Ключ шифрования",
     "Settings": "Настройки",
     "TVs found in the network are offered for selection (the instance must be running)": "Найденные в сети телевизоры предлагаются для выбора (экземпляр должен быть запущен)",
-    "Remote control": "Пульт ДУ"
+    "Remote control": "Пульт ДУ",
+    "Pairing (newer TVs only)": "Сопряжение (только новые телевизоры)",
+    "Newer TVs (from about 2019) only accept encrypted commands. Switch the TV on, press \"Show PIN on the TV\", enter the PIN and press \"Pair\". Application ID and Encryption Key are filled in, then save the settings. Older TVs need no pairing.": "Новые телевизоры (примерно с 2019 года) принимают только зашифрованные команды. Включите телевизор, нажмите «Показать PIN на телевизоре», введите PIN и нажмите «Сопрячь». ID приложения и ключ шифрования будут заполнены, затем сохраните настройки. Старым телевизорам сопряжение не нужно.",
+    "Show PIN on the TV": "Показать PIN на телевизоре",
+    "PIN shown on the TV": "PIN с телевизора",
+    "Pair": "Сопрячь",
+    "The TV shows a PIN now. Enter it and press \"Pair\".": "Телевизор показывает PIN. Введите его и нажмите «Сопрячь».",
+    "Paired. Application ID and Encryption Key are filled in - please save the settings.": "Сопряжено. ID приложения и ключ шифрования заполнены - сохраните настройки."
 }

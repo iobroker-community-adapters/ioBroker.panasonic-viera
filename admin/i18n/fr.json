@@ -5,5 +5,12 @@
     "Encryption Key": "Clé de chiffrement",
     "Settings": "Paramètres",
     "TVs found in the network are offered for selection (the instance must be running)": "Les téléviseurs trouvés sur le réseau sont proposés à la sélection (l'instance doit être en cours d'exécution)",
-    "Remote control": "Télécommande"
+    "Remote control": "Télécommande",
+    "Pairing (newer TVs only)": "Appairage (téléviseurs récents uniquement)",
+    "Newer TVs (from about 2019) only accept encrypted commands. Switch the TV on, press \"Show PIN on the TV\", enter the PIN and press \"Pair\". Application ID and Encryption Key are filled in, then save the settings. Older TVs need no pairing.": "Les téléviseurs récents (à partir de 2019 environ) n'acceptent que des commandes chiffrées. Allumez le téléviseur, appuyez sur « Afficher le PIN sur le téléviseur », saisissez le PIN et appuyez sur « Appairer ». L'ID d'application et la clé de chiffrement sont renseignés, enregistrez ensuite les paramètres. Les anciens téléviseurs n'ont pas besoin d'appairage.",
+    "Show PIN on the TV": "Afficher le PIN sur le téléviseur",
+    "PIN shown on the TV": "PIN affiché sur le téléviseur",
+    "Pair": "Appairer",
+    "The TV shows a PIN now. Enter it and press \"Pair\".": "Le téléviseur affiche maintenant un PIN. Saisissez-le et appuyez sur « Appairer ».",
+    "Paired. Application ID and Encryption Key are filled in - please save the settings.": "Appairé. L'ID d'application et la clé de chiffrement sont renseignés - enregistrez les paramètres."
 }

@@ -5,5 +5,12 @@
     "Encryption Key": "加密密钥",
     "Settings": "设置",
     "TVs found in the network are offered for selection (the instance must be running)": "将列出网络中找到的电视供选择（实例必须正在运行）",
-    "Remote control": "遥控器"
+    "Remote control": "遥控器",
+    "Pairing (newer TVs only)": "配对（仅限较新的电视）",
+    "Newer TVs (from about 2019) only accept encrypted commands. Switch the TV on, press \"Show PIN on the TV\", enter the PIN and press \"Pair\". Application ID and Encryption Key are filled in, then save the settings. Older TVs need no pairing.": "较新的电视（约 2019 年起）只接受加密命令。打开电视，点击“在电视上显示 PIN”，输入 PIN 后点击“配对”。应用程序 ID 和加密密钥会自动填入，然后保存设置。较旧的电视无需配对。",
+    "Show PIN on the TV": "在电视上显示 PIN",
+    "PIN shown on the TV": "电视上显示的 PIN",
+    "Pair": "配对",
+    "The TV shows a PIN now. Enter it and press \"Pair\".": "电视现在显示 PIN。请输入后点击“配对”。",
+    "Paired. Application ID and Encryption Key are filled in - please save the settings.": "已配对。应用程序 ID 和加密密钥已填入 - 请保存设置。"
 }

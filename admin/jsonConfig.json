@@ -32,6 +32,101 @@
                     "lg": 4,
                     "xl": 4
                 },
+                "_pairingHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Pairing (newer TVs only)",
+                    "size": 4,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12
+                },
+                "_pairingHelp": {
+                    "newLine": true,
+                    "type": "staticText",
+                    "text": "Newer TVs (from about 2019) only accept encrypted commands. Switch the TV on, press \"Show PIN on the TV\", enter the PIN and press \"Pair\". Application ID and Encryption Key are filled in, then save the settings. Older TVs need no pairing.",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12
+                },
+                "_requestPin": {
+                    "newLine": true,
+                    "type": "sendTo",
+                    "label": "Show PIN on the TV",
+                    "command": "requestPin",
+                    "jsonData": "{\"ip\": \"${data.ip}\"}",
+                    "showProcess": true,
+                    "variant": "outlined",
+                    "disabled": "!data.ip",
+                    "result": {
+                        "pinShown": {
+                            "en": "The TV shows a PIN now. Enter it and press \"Pair\".",
+                            "de": "Der Fernseher zeigt jetzt eine PIN. Sie eingeben und „Koppeln“ drücken.",
+                            "ru": "Телевизор показывает PIN. Введите его и нажмите «Сопрячь».",
+                            "pt": "A TV está mostrando um PIN. Digite-o e pressione \"Emparelhar\".",
+                            "nl": "De tv toont nu een PIN. Voer deze in en druk op \"Koppelen\".",
+                            "fr": "Le téléviseur affiche maintenant un PIN. Saisissez-le et appuyez sur « Appairer ».",
+                            "it": "Il TV mostra ora un PIN. Inseriscilo e premi \"Associa\".",
+                            "es": "El televisor muestra ahora un PIN. Introdúzcalo y pulse \"Emparejar\".",
+                            "pl": "Telewizor wyświetla teraz PIN. Wpisz go i naciśnij „Sparuj”.",
+                            "uk": "Телевізор показує PIN. Введіть його та натисніть «Сполучити».",
+                            "zh-cn": "电视现在显示 PIN。请输入后点击“配对”。"
+                        }
+                    },
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "pin": {
+                    "newLine": true,
+                    "type": "text",
+                    "label": "PIN shown on the TV",
+                    "maxLength": 4,
+                    "doNotSave": true,
+                    "disabled": "!data.ip",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "_pair": {
+                    "newLine": true,
+                    "type": "sendTo",
+                    "label": "Pair",
+                    "command": "pair",
+                    "jsonData": "{\"ip\": \"${data.ip}\", \"pin\": \"${data.pin}\"}",
+                    "useNative": true,
+                    "showProcess": true,
+                    "variant": "contained",
+                    "disabled": "!data.ip || !/^\\d{4}$/.test(data.pin || \"\")",
+                    "result": {
+                        "paired": {
+                            "en": "Paired. Application ID and Encryption Key are filled in - please save the settings.",
+                            "de": "Gekoppelt. Anwendungs-ID und Schlüssel sind eingetragen - bitte die Einstellungen speichern.",
+                            "ru": "Сопряжено. ID приложения и ключ шифрования заполнены - сохраните настройки.",
+                            "pt": "Emparelhado. ID do aplicativo e chave de criptografia preenchidos - salve as configurações.",
+                            "nl": "Gekoppeld. Applicatie-ID en encryptiesleutel zijn ingevuld - sla de instellingen op.",
+                            "fr": "Appairé. L'ID d'application et la clé de chiffrement sont renseignés - enregistrez les paramètres.",
+                            "it": "Associato. ID applicazione e chiave di crittografia compilati - salva le impostazioni.",
+                            "es": "Emparejado. ID de aplicación y clave de cifrado rellenados - guarde la configuración.",
+                            "pl": "Sparowano. ID aplikacji i klucz szyfrowania uzupełnione - zapisz ustawienia.",
+                            "uk": "Сполучено. ID застосунку та ключ шифрування заповнено - збережіть налаштування.",
+                            "zh-cn": "已配对。应用程序 ID 和加密密钥已填入 - 请保存设置。"
+                        }
+                    },
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
                 "app_id": {
                     "newLine": true,
                     "type": "text",

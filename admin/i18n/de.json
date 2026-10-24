@@ -5,5 +5,12 @@
     "Encryption Key": "Verschlüsselungsschlüssel",
     "Settings": "Einstellungen",
     "TVs found in the network are offered for selection (the instance must be running)": "Im Netzwerk gefundene Fernseher werden zur Auswahl angeboten (die Instanz muss laufen)",
-    "Remote control": "Fernbedienung"
+    "Remote control": "Fernbedienung",
+    "Pairing (newer TVs only)": "Kopplung (nur neuere Fernseher)",
+    "Newer TVs (from about 2019) only accept encrypted commands. Switch the TV on, press \"Show PIN on the TV\", enter the PIN and press \"Pair\". Application ID and Encryption Key are filled in, then save the settings. Older TVs need no pairing.": "Neuere Fernseher (ab etwa 2019) nehmen nur verschlüsselte Befehle an. Fernseher einschalten, „PIN auf dem Fernseher anzeigen“ drücken, die PIN eingeben und „Koppeln“ drücken. Anwendungs-ID und Schlüssel werden eingetragen, danach die Einstellungen speichern. Ältere Fernseher brauchen keine Kopplung.",
+    "Show PIN on the TV": "PIN auf dem Fernseher anzeigen",
+    "PIN shown on the TV": "PIN vom Fernseher",
+    "Pair": "Koppeln",
+    "The TV shows a PIN now. Enter it and press \"Pair\".": "Der Fernseher zeigt jetzt eine PIN. Sie eingeben und „Koppeln“ drücken.",
+    "Paired. Application ID and Encryption Key are filled in - please save the settings.": "Gekoppelt. Anwendungs-ID und Schlüssel sind eingetragen - bitte die Einstellungen speichern."
 }

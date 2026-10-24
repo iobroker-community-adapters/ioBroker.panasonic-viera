@@ -5,5 +5,12 @@
     "Encryption Key": "Chiave di crittografia",
     "Settings": "Impostazioni",
     "TVs found in the network are offered for selection (the instance must be running)": "I TV trovati nella rete vengono proposti per la selezione (l'istanza deve essere in esecuzione)",
-    "Remote control": "Telecomando"
+    "Remote control": "Telecomando",
+    "Pairing (newer TVs only)": "Associazione (solo TV più recenti)",
+    "Newer TVs (from about 2019) only accept encrypted commands. Switch the TV on, press \"Show PIN on the TV\", enter the PIN and press \"Pair\". Application ID and Encryption Key are filled in, then save the settings. Older TVs need no pairing.": "I TV più recenti (dal 2019 circa) accettano solo comandi crittografati. Accendi il TV, premi \"Mostra PIN sul TV\", inserisci il PIN e premi \"Associa\". ID applicazione e chiave di crittografia vengono compilati, poi salva le impostazioni. I TV più vecchi non necessitano di associazione.",
+    "Show PIN on the TV": "Mostra PIN sul TV",
+    "PIN shown on the TV": "PIN mostrato sul TV",
+    "Pair": "Associa",
+    "The TV shows a PIN now. Enter it and press \"Pair\".": "Il TV mostra ora un PIN. Inseriscilo e premi \"Associa\".",
+    "Paired. Application ID and Encryption Key are filled in - please save the settings.": "Associato. ID applicazione e chiave di crittografia compilati - salva le impostazioni."
 }

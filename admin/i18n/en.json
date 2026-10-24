@@ -5,5 +5,12 @@
     "Encryption Key": "Encryption Key",
     "Settings": "Settings",
     "TVs found in the network are offered for selection (the instance must be running)": "TVs found in the network are offered for selection (the instance must be running)",
-    "Remote control": "Remote control"
+    "Remote control": "Remote control",
+    "Pairing (newer TVs only)": "Pairing (newer TVs only)",
+    "Newer TVs (from about 2019) only accept encrypted commands. Switch the TV on, press \"Show PIN on the TV\", enter the PIN and press \"Pair\". Application ID and Encryption Key are filled in, then save the settings. Older TVs need no pairing.": "Newer TVs (from about 2019) only accept encrypted commands. Switch the TV on, press \"Show PIN on the TV\", enter the PIN and press \"Pair\". Application ID and Encryption Key are filled in, then save the settings. Older TVs need no pairing.",
+    "Show PIN on the TV": "Show PIN on the TV",
+    "PIN shown on the TV": "PIN shown on the TV",
+    "Pair": "Pair",
+    "The TV shows a PIN now. Enter it and press \"Pair\".": "The TV shows a PIN now. Enter it and press \"Pair\".",
+    "Paired. Application ID and Encryption Key are filled in - please save the settings.": "Paired. Application ID and Encryption Key are filled in - please save the settings."
 }
