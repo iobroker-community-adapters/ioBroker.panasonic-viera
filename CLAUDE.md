@@ -11,7 +11,10 @@ ioBroker adapter for Panasonic Viera Smart-TVs. It uses [node-panasonic-viera](h
 ## Commands
 
 ```bash
-npm run build              # tsc -p tsconfig.build.json: src/ -> build/ (gitignored, common.nogit: true)
+npm run build              # build-backend + build-admin
+npm run build-backend      # tsc -p tsconfig.build.json: src/ -> build/ (gitignored, common.nogit: true)
+npm run build-admin        # tsx tasks.ts: src-admin/ (vite, module federation) -> admin/custom/ (gitignored)
+npm run 0-clean|1-npm|2-build|3-copy   # single steps of build-admin
 npm run check              # type check only
 npm run lint               # eslint (@iobroker/eslint-config); fix with: npx eslint -c eslint.config.mjs --fix src
 npm test                   # = test:package
@@ -20,6 +23,9 @@ npm run translate          # translate admin/i18n/en.json into the other languag
 ```
 
 There is no `prepare` script on purpose: the build only runs via `npm run build` and in CI (`build: true`).
+`src-admin/` is not linted / type-checked by the root config; check it with `cd src-admin && npx tsc`.
+The integration test caches the test installation in `%TEMP%/test-iobroker.panasonic-viera`: after changing
+`io-package.json` delete that folder, otherwise the old instance object is used.
 
 ## Architecture
 
@@ -33,6 +39,11 @@ There is no `prepare` script on purpose: the build only runs via `npm run build`
   - Every command opens a new session (`viera.connect()`), this was always like this.
   - `onMessage` (`common.messagebox: true`): `discover` → `[{ value: ip, label }]` for the `autocompleteSendTo` of the
     IP field (`src/lib/discovery.ts`: SSDP `urn:panasonic-com:device:p00RemoteController:1`, description via `fetch`).
+  - `remote` `{ key }` (NRC code) from the remote control: sent also while the ping fails (power on), SOAP faults
+    are reported, volume / mute are read back after their keys.
+- `src-admin/src/RemoteControlComponent.tsx` — remote control in the "Remote control" tab (custom JsonConfig
+  component, `guiApi: 2`, needs admin 8). Status via subscriptions of `info.connection`, `info.tv_on`,
+  `basic.volume`, `basic.mute`. Texts in `src-admin/src/i18n` (`custom_panasonicviera_*`).
 - `src/lib/viera.ts` — `getMute()` replacement: the one of the library never settles on errors (unhandled rejection).
 - `src/types/node-panasonic-viera.d.ts` — the library has no typings. Note: `connect()` never rejects.
 - `src/lib/adapter-config.d.ts` — typed `this.config`; must match `native` in `io-package.json` and

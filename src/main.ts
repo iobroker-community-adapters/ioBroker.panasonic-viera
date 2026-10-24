@@ -6,7 +6,10 @@ import { discover } from './lib/discovery';
 import { STATE_KEY_MAP } from './lib/keys';
 import { getMute } from './lib/viera';
 
-type MessageResponse = { value: string; label: string }[];
+type MessageResponse = { value: string; label: string }[] | { result: 'ok' };
+
+/** An NRC code like `NRC_POWER-ONOFF` */
+const NRC_CODE_REGEX = /^NRC_[A-Z0-9_]+-ONOFF$/;
 
 /** Polling interval of checkStatus() */
 const STATUS_INTERVAL = 30_000;
@@ -26,6 +29,7 @@ class PanasonicVieraAdapter extends utils.Adapter {
     /**
      * Commands of the settings:
      * - `discover` → `[{ value: ip, label }]`: TVs found via SSDP (`autocompleteSendTo` of the IP field)
+     * - `remote` `{ key }`: an NRC code, from the remote control (src-admin/src/RemoteControlComponent.tsx)
      *
      * Every command answers with its result or `{ error }`.
      */
@@ -51,8 +55,39 @@ class PanasonicVieraAdapter extends utils.Adapter {
                 }));
             }
 
+            case 'remote': {
+                const key = (obj.message as { key?: unknown } | undefined)?.key;
+                if (typeof key !== 'string' || !NRC_CODE_REGEX.test(key)) {
+                    throw new Error(`Invalid key ${String(key)}`);
+                }
+                await this.sendRemoteKey(key);
+                return { result: 'ok' };
+            }
+
             default:
                 throw new Error(`Unknown command ${obj.command}`);
+        }
+    }
+
+    /**
+     * Sends a key of the remote control and refreshes volume or mute if the key changed them. Unlike the states
+     * it is also sent while the TV does not answer the ping (power on via "Powered On by Apps"), and an error
+     * answer of the TV is reported.
+     */
+    private async sendRemoteKey(key: string): Promise<void> {
+        if (!this.viera) {
+            throw new Error('Please configure the Panasonic Viera adapter');
+        }
+        const viera = await this.connect(this.viera);
+        const answer = await viera.sendKey(key);
+        const fault = /<errorDescription>([^<]*)<\/errorDescription>/.exec(answer || '');
+        if (fault || (answer || '').includes('s:Fault')) {
+            throw new Error(`The TV refused ${key}: ${fault?.[1] || 'unknown error'}`);
+        }
+        if (key === VieraKeys.volume_up || key === VieraKeys.volume_down) {
+            await this.setState('basic.volume', { val: await viera.getVolume(), ack: true });
+        } else if (key === VieraKeys.mute) {
+            await this.setState('basic.mute', { val: await getMute(viera), ack: true });
         }
     }
 

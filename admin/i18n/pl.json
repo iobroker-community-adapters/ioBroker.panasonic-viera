@@ -4,5 +4,6 @@
     "Application ID (for encryption)": "ID aplikacji (do szyfrowania)",
     "Encryption Key": "Klucz szyfrowania",
     "Settings": "Ustawienia",
-    "TVs found in the network are offered for selection (the instance must be running)": "Telewizory znalezione w sieci są proponowane do wyboru (instancja musi działać)"
+    "TVs found in the network are offered for selection (the instance must be running)": "Telewizory znalezione w sieci są proponowane do wyboru (instancja musi działać)",
+    "Remote control": "Pilot"
 }

@@ -4,5 +4,6 @@
     "Application ID (for encryption)": "ID застосунку (для шифрування)",
     "Encryption Key": "Ключ шифрування",
     "Settings": "Налаштування",
-    "TVs found in the network are offered for selection (the instance must be running)": "Знайдені в мережі телевізори пропонуються для вибору (екземпляр має бути запущений)"
+    "TVs found in the network are offered for selection (the instance must be running)": "Знайдені в мережі телевізори пропонуються для вибору (екземпляр має бути запущений)",
+    "Remote control": "Пульт"
 }

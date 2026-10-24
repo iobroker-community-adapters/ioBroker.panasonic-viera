@@ -4,5 +4,6 @@
     "Application ID (for encryption)": "ID do aplicativo (para criptografia)",
     "Encryption Key": "Chave de criptografia",
     "Settings": "Configurações",
-    "TVs found in the network are offered for selection (the instance must be running)": "As TVs encontradas na rede são oferecidas para seleção (a instância deve estar em execução)"
+    "TVs found in the network are offered for selection (the instance must be running)": "As TVs encontradas na rede são oferecidas para seleção (a instância deve estar em execução)",
+    "Remote control": "Controle remoto"
 }
