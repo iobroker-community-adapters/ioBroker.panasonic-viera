@@ -98,6 +98,10 @@ declare module 'node-panasonic-viera' {
     };
 
     export class Viera {
+        /** Internal part of the library, only used for `getMute()` (see src/lib/viera.ts) */
+        readonly 'private': {
+            _soap_request(url: string, urn: string, action: string, parameters: string): Promise<string>;
+        };
         /**
          * Sets IP and credentials and requests a session (encrypted TVs only).
          * Never rejects: an error is returned as resolved value.

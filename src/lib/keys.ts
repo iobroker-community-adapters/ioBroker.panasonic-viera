@@ -50,6 +50,8 @@ export const STATE_KEY_MAP: Record<string, string> = {
     'info.INFO': VieraKeys.info,
     'others.INTERNET': VieraKeys.connect,
     'basic.left': VieraKeys.left,
+    // the state is called basic.LEFT, the entry above never matched
+    'basic.LEFT': VieraKeys.left,
     'info.MENU': VieraKeys.menu,
     'others.MPX': VieraKeys.mpx,
     // 'basic.mute': VieraKeys.mute,
@@ -89,8 +91,9 @@ export const STATE_KEY_MAP: Record<string, string> = {
     'others.DMS_CH_DOWN': VieraKeys.dms_ch_down,
     'basic.UP': VieraKeys.up,
     'others.VIERA_LINK': VieraKeys.link,
-    // 'basic.VOLDOWN': VieraKeys.volume_down,
-    // 'basic.VOLUP': VieraKeys.volume_up,
+    // handled by sendCommand: the volume is read afterwards
+    'basic.VOLDOWN': 'VOLDOWN',
+    'basic.VOLUP': 'VOLUP',
     'info.VTOOLS': VieraKeys.vtools,
     'basic.YELLOW': VieraKeys.yellow,
     'others.RECLIST': VieraKeys.reclist,

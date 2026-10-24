@@ -3,6 +3,7 @@ import { promise as ping } from 'ping';
 import { VieraKeys, Viera } from 'node-panasonic-viera';
 
 import { STATE_KEY_MAP } from './lib/keys';
+import { getMute } from './lib/viera';
 
 /** Polling interval of checkStatus() */
 const STATUS_INTERVAL = 30_000;
@@ -86,7 +87,7 @@ class PanasonicVieraAdapter extends utils.Adapter {
             case 'getMute':
                 try {
                     await this.connect(viera);
-                    const mute = await viera.getMute();
+                    const mute = await getMute(viera);
                     await this.setState('basic.mute', { val: mute, ack: true });
                     await this.setState('info.tv_on', { val: true, ack: true });
                 } catch (error) {
@@ -99,7 +100,7 @@ class PanasonicVieraAdapter extends utils.Adapter {
                 try {
                     await this.connect(viera);
                     await viera.setMute(!!value);
-                    const mute = await viera.getMute();
+                    const mute = await getMute(viera);
                     await this.setState('basic.mute', { val: mute, ack: true });
                 } catch (error) {
                     this.log.error(`getMute: ${error}`);
