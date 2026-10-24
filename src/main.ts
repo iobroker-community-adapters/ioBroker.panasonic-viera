@@ -2,8 +2,11 @@ import * as utils from '@iobroker/adapter-core';
 import { promise as ping } from 'ping';
 import { VieraKeys, Viera } from 'node-panasonic-viera';
 
+import { discover } from './lib/discovery';
 import { STATE_KEY_MAP } from './lib/keys';
 import { getMute } from './lib/viera';
+
+type MessageResponse = { value: string; label: string }[];
 
 /** Polling interval of checkStatus() */
 const STATUS_INTERVAL = 30_000;
@@ -17,6 +20,40 @@ class PanasonicVieraAdapter extends utils.Adapter {
 
         this.on('ready', () => this.onReady());
         this.on('stateChange', (id, state) => this.onStateChange(id, state));
+        this.on('message', obj => this.onMessage(obj));
+    }
+
+    /**
+     * Commands of the settings:
+     * - `discover` → `[{ value: ip, label }]`: TVs found via SSDP (`autocompleteSendTo` of the IP field)
+     *
+     * Every command answers with its result or `{ error }`.
+     */
+    private onMessage(obj: ioBroker.Message): void {
+        if (!obj?.callback) {
+            return;
+        }
+        this.handleMessage(obj)
+            .then(response => this.sendTo(obj.from, obj.command, response, obj.callback))
+            .catch(err =>
+                this.sendTo(obj.from, obj.command, { error: (err as Error).message || String(err) }, obj.callback),
+            );
+    }
+
+    private async handleMessage(obj: ioBroker.Message): Promise<MessageResponse> {
+        switch (obj.command) {
+            case 'discover': {
+                const tvs = await discover(this);
+                this.log.debug(`Discovery: ${JSON.stringify(tvs)}`);
+                return tvs.map(tv => ({
+                    value: tv.ip,
+                    label: `${tv.friendlyName || tv.modelName || tv.modelNumber} (${tv.ip})`,
+                }));
+            }
+
+            default:
+                throw new Error(`Unknown command ${obj.command}`);
+        }
     }
 
     private onReady(): void {

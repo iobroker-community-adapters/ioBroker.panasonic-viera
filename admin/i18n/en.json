@@ -3,5 +3,6 @@
     "Application ID": "Application ID",
     "Application ID (for encryption)": "Application ID (for encryption)",
     "Encryption Key": "Encryption Key",
-    "Settings": "Settings"
+    "Settings": "Settings",
+    "TVs found in the network are offered for selection (the instance must be running)": "TVs found in the network are offered for selection (the instance must be running)"
 }

@@ -144,6 +144,7 @@
     "loglevel": "info",
     "tier": 2,
     "type": "multimedia",
+    "messagebox": true,
     "dependencies": [
       {
         "js-controller": ">=6.0.11"

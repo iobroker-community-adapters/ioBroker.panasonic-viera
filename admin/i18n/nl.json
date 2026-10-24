@@ -3,5 +3,6 @@
     "Application ID": "Applicatie-ID",
     "Application ID (for encryption)": "Applicatie-ID (voor versleuteling)",
     "Encryption Key": "Versleutelingssleutel",
-    "Settings": "Instellingen"
+    "Settings": "Instellingen",
+    "TVs found in the network are offered for selection (the instance must be running)": "In het netwerk gevonden tv's worden ter keuze aangeboden (de instantie moet draaien)"
 }

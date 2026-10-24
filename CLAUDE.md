@@ -31,6 +31,9 @@ There is no `prepare` script on purpose: the build only runs via `npm run build`
     (`src/lib/keys.ts`) to an NRC code; `basic.mute` / `basic.volume` set mute / volume; everything else is sent
     as key. Commands are only sent while the ping answers.
   - Every command opens a new session (`viera.connect()`), this was always like this.
+  - `onMessage` (`common.messagebox: true`): `discover` → `[{ value: ip, label }]` for the `autocompleteSendTo` of the
+    IP field (`src/lib/discovery.ts`: SSDP `urn:panasonic-com:device:p00RemoteController:1`, description via `fetch`).
+- `src/lib/viera.ts` — `getMute()` replacement: the one of the library never settles on errors (unhandled rejection).
 - `src/types/node-panasonic-viera.d.ts` — the library has no typings. Note: `connect()` never rejects.
 - `src/lib/adapter-config.d.ts` — typed `this.config`; must match `native` in `io-package.json` and
   `admin/jsonConfig.json`.

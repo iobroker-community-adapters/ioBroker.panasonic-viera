@@ -19,6 +19,7 @@ This is an ioBroker adapter for your Panasonic Viera Smart-TV.
 - (bluefox) The adapter was refactored to TypeScript and JsonConfig
 - (bluefox) Fixed the buttons basic.VOLUP, basic.VOLDOWN and basic.LEFT, they sent an invalid key
 - (bluefox) The adapter no longer restarts when the TV answers the ping but not the mute request
+- (bluefox) The IP field offers the TVs found in the network
 - (copilot) Adapter requires node.js >= 22 now
 - (iobroker-bot) Adapter requires node.js >= 20 now.
 - (copilot) Adapter requires admin >= 7.7.22 now

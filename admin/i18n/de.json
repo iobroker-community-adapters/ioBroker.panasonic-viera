@@ -3,5 +3,6 @@
     "Application ID": "Anwendungs-ID",
     "Application ID (for encryption)": "Anwendungs-ID (für die Verschlüsselung)",
     "Encryption Key": "Verschlüsselungsschlüssel",
-    "Settings": "Einstellungen"
+    "Settings": "Einstellungen",
+    "TVs found in the network are offered for selection (the instance must be running)": "Im Netzwerk gefundene Fernseher werden zur Auswahl angeboten (die Instanz muss laufen)"
 }
