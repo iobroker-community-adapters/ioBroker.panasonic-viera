@@ -1,0 +1,16 @@
+{
+    "IP": "IP",
+    "Application ID": "ID застосунку",
+    "Application ID (for encryption)": "ID застосунку (для шифрування)",
+    "Encryption Key": "Ключ шифрування",
+    "Settings": "Налаштування",
+    "TVs found in the network are offered for selection (the instance must be running)": "Знайдені в мережі телевізори пропонуються для вибору (екземпляр має бути запущений)",
+    "Remote control": "Пульт",
+    "Pairing (newer TVs only)": "Сполучення (лише новіші телевізори)",
+    "Newer TVs (from about 2019) only accept encrypted commands. Switch the TV on, press \"Show PIN on the TV\", enter the PIN and press \"Pair\". Application ID and Encryption Key are filled in, then save the settings. Older TVs need no pairing.": "Новіші телевізори (приблизно з 2019 року) приймають лише зашифровані команди. Увімкніть телевізор, натисніть «Показати PIN на телевізорі», введіть PIN і натисніть «Сполучити». ID застосунку та ключ шифрування буде заповнено, потім збережіть налаштування. Старішим телевізорам сполучення не потрібне.",
+    "Show PIN on the TV": "Показати PIN на телевізорі",
+    "PIN shown on the TV": "PIN з телевізора",
+    "Pair": "Сполучити",
+    "The TV shows a PIN now. Enter it and press \"Pair\".": "Телевізор показує PIN. Введіть його та натисніть «Сполучити».",
+    "Paired. Application ID and Encryption Key are filled in - please save the settings.": "Сполучено. ID застосунку та ключ шифрування заповнено - збережіть налаштування."
+}

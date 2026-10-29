@@ -1,0 +1,16 @@
+{
+    "IP": "IP",
+    "Application ID": "Applicatie-ID",
+    "Application ID (for encryption)": "Applicatie-ID (voor versleuteling)",
+    "Encryption Key": "Versleutelingssleutel",
+    "Settings": "Instellingen",
+    "TVs found in the network are offered for selection (the instance must be running)": "In het netwerk gevonden tv's worden ter keuze aangeboden (de instantie moet draaien)",
+    "Remote control": "Afstandsbediening",
+    "Pairing (newer TVs only)": "Koppelen (alleen nieuwere tv's)",
+    "Newer TVs (from about 2019) only accept encrypted commands. Switch the TV on, press \"Show PIN on the TV\", enter the PIN and press \"Pair\". Application ID and Encryption Key are filled in, then save the settings. Older TVs need no pairing.": "Nieuwere tv's (vanaf ongeveer 2019) accepteren alleen versleutelde opdrachten. Zet de tv aan, druk op \"PIN op de tv tonen\", voer de PIN in en druk op \"Koppelen\". Applicatie-ID en encryptiesleutel worden ingevuld, sla daarna de instellingen op. Oudere tv's hoeven niet gekoppeld te worden.",
+    "Show PIN on the TV": "PIN op de tv tonen",
+    "PIN shown on the TV": "PIN op de tv",
+    "Pair": "Koppelen",
+    "The TV shows a PIN now. Enter it and press \"Pair\".": "De tv toont nu een PIN. Voer deze in en druk op \"Koppelen\".",
+    "Paired. Application ID and Encryption Key are filled in - please save the settings.": "Gekoppeld. Applicatie-ID en encryptiesleutel zijn ingevuld - sla de instellingen op."
+}
