@@ -97,8 +97,7 @@ Switching the TV on via the network requires **Networked Standby** and **Powered
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 2.2.0 (2026-10-29)
 - (bluefox) The adapter was refactored to TypeScript and JsonConfig
 - (bluefox) Fixed the buttons basic.VOLUP, basic.VOLDOWN and basic.LEFT, they sent an invalid key
 - (bluefox) The adapter no longer restarts when the TV answers the ping but not the mute request
@@ -128,18 +127,6 @@ Switching the TV on via the network requires **Networked Standby** and **Powered
 ### 1.0.1
 * (ldittmar) compact mode compatibility added
 * (ldittmar) add chinese support
-
-### 1.0.0
-* (ldittmar) Support of admin3
-
-### 0.1.0
-* (ldittmar) Test phase terminated. Adapter enabled.
-
-### 0.0.5
-* (ldittmar) Open beta test phase - please test it and give me feedback here as a issue or in the forum http://forum.iobroker.net/viewtopic.php?f=23&t=3854
-
-### 0.0.1
-* (ldittmar) initial release
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
