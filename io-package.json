@@ -144,6 +144,8 @@
     "loglevel": "info",
     "tier": 2,
     "type": "multimedia",
+    "connectionType": "local",
+    "dataSource": "poll",
     "messagebox": true,
     "dependencies": [
       {
@@ -179,7 +181,7 @@
       "_id": "info.tv_on",
       "type": "state",
       "common": {
-        "role": "indicator.tv_on",
+        "role": "indicator",
         "name": "Indicator if TV is switched on",
         "type": "boolean",
         "read": true,
