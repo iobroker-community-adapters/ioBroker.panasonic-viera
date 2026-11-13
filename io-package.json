@@ -136,6 +136,7 @@
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.panasonic-viera/master/admin/panasonic-viera.png",
     "keywords": [
+      "ioBroker",
       "panasonic",
       "viera",
       "smart-tv"

@@ -101,6 +101,7 @@ Switching the TV on via the network requires **Networked Standby** and **Powered
 - (bluefox) Added connectionType and dataSource to io-package.json
 - (bluefox) Corrected the role of info.tv_on
 - (bluefox) Adapter is tested with node.js 22, 24 and 26
+- (GermanBluefox) Added dependabot entry for src-admin and keyword "ioBroker" (#471)
 
 ### 2.2.0 (2026-10-29)
 - (bluefox) The adapter was refactored to TypeScript and JsonConfig
