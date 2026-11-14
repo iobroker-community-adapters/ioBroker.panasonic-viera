@@ -43,7 +43,7 @@
     "@types/node-ssdp": "^4.0.5",
     "@types/ping": "^0.4.4",
     "tsx": "^4.21.0",
-    "typescript": "~6.0.3"
+    "typescript": "~7.0.2"
   },
   "main": "build/main.js",
   "files": [
